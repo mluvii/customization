@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" />
+  <style>
+    :root {
+      --main-color: #6eb6bc;
+      --secondary-color: #9ecee2;
+      --hovered-star: #ffbf00;
+    }
+
+    .rating-stars {
+      display: flex;
+      justify-content: center;
+    }
+
+    svg {
+      padding: 4px;
+    }
+
+    .star-path, svg {
+      transition: all 0.15s;
+    }
+
+    svg:hover {
+      transform: scale(1.15);
+    }
+
+    svg:hover > .star-path {
+      fill: var(--hovered-star) !important;
+    }
+
+    .inner-container {
+      background-color: #fff;
+    }
+
+    input[type="email"], input[type="submit"], textarea, .inner-container {
+      border-radius: 0.5rem !important;
+    }
+
+    input[type="email"], textarea {
+      border: 2px solid rgb(214, 218, 222) !important;
+      box-shadow: none !important;
+    }
+
+    input[type="email"]:focus, textarea:focus {
+      border: 2px solid var(--main-color) !important;
+    }
+
+    input[type="submit"] {
+      background-color: var(--main-color);
+      box-sizing: border-box;
+      border: none;
+      box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4) !important;
+      transition: all 0.15s;
+    }
+
+    input[type="submit"]:hover, input[type="submit"]:focus {
+      background-color: var(--main-color) !important;
+      box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4) !important;
+    }
+
+    input[type="submit"]:active {
+      transform: translateY(2px);
+      box-shadow: none !important;
+    }
+
+    #email_checkbox {
+      line-height: 1.6;
+      margin-left: 
+    }
+
+    #email_checkbox:before, #email_checkbox:after {
+      height: 1.2rem;
+      width: 1.2rem;
+      left: -26px;
+      box-shadow: none !important;
+    }
+
+    .custom-checkbox {
+      padding-left: 26px;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: var(--main-color) !important;
+    }
+
+    .custom-control-input:active ~ .custom-control-label::before {
+      background-color: var(--secondary-color) !important;
+    }
+
+    .curp {
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <form id="my_form" class="m-3 d-flex flex-column justify-content-center">
+    <p class="text-center mt-3 mb-3 font-weight-bold">Jak jste s námi byli spokojeni?</p>
+    <div class="inner-container p-3">
+      <div class="rating-stars mb-1">
+        <label class="icon">
+          <svg class="curp" width="38px" height="38px" viewBox="0 0 512 512" xml:space="preserve">
+            <polygon class="star-path" fill="#e5e5e5" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+              259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+              29.274,197.007 188.165,173.919 "/>
+          </svg>
+          <input 
+            value="1"
+            type="radio" 
+            id="rating_1"
+            name="rating" 
+            class="d-none" 
+            onclick="onRatingClick(this)"
+          />
+        </label>
+            <label>
+          <svg class="curp" width="38px" height="38px" viewBox="0 0 512 512" xml:space="preserve">
+            <polygon class="star-path" fill="#e5e5e5" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+              259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+              29.274,197.007 188.165,173.919 "/>
+          </svg>
+          <input 
+            value="2"
+            type="radio" 
+            id="rating_2"
+            name="rating" 
+            class="d-none" 
+            onclick="onRatingClick(this)"
+          />
+        </label>
+            <label>
+          <svg class="curp" width="38px" height="38px" viewBox="0 0 512 512" xml:space="preserve">
+            <polygon class="star-path" fill="#e5e5e5" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+              259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+              29.274,197.007 188.165,173.919 "/>
+          </svg>
+          <input 
+            value="3"
+            type="radio" 
+            id="rating_3"
+            name="rating" 
+            class="d-none" 
+            onclick="onRatingClick(this)"
+          />
+        </label>
+            <label>
+          <svg class="curp" width="38px" height="38px" viewBox="0 0 512 512" xml:space="preserve">
+            <polygon class="star-path" fill="#e5e5e5" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+              259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+              29.274,197.007 188.165,173.919 "/>
+          </svg>
+          <input 
+            value="4"
+            type="radio" 
+            id="rating_4"
+            name="rating" 
+            class="d-none" 
+            onclick="onRatingClick(this)"
+          />
+        </label>
+            <label>
+          <svg class="curp" width="38px" height="38px" viewBox="0 0 512 512" xml:space="preserve">
+            <polygon class="star-path" fill="#e5e5e5" stroke-width="37.6152" stroke-linecap="round" stroke-linejoin="round" stroke-miterlimit="10" points="
+              259.216,29.942 330.27,173.919 489.16,197.007 374.185,309.08 401.33,467.31 259.216,392.612 117.104,467.31 144.25,309.08 
+              29.274,197.007 188.165,173.919 "/>
+          </svg>
+          <input 
+            value="5"
+            type="radio" 
+            id="rating_5"
+            name="rating" 
+            class="d-none" 
+            onclick="onRatingClick(this)"
+          />
+        </label>
+      </div>
+  
+      <textarea 
+        rows="4"
+        id="feedback" 
+        name="feedback"
+        class="form-control feedback"
+        placeholder="Vaše zpětná vazba"
+      ></textarea>
+  
+      <div class="custom-control custom-checkbox mt-3 mb-2">
+        <input type="checkbox" class="custom-control-input" id="send_to_email">
+        <label id="email_checkbox" class="custom-control-label curp" for="send_to_email">
+          Chci poslat přepis konverzace
+        </label>
+      </div>
+  
+      <div class="form-group">
+        <input 
+          disabled
+          required
+          id="email" 
+          type="email" 
+          placeholder="E-mailová adresa" 
+          class="form-control email" 
+        />
+      </div>
+    </div>
+    
+    <div class="form-group d-flex">
+      <input 
+        id="submit"
+        type="submit" 
+        value="Ok"
+        class="btn btn-primary mt-3 mx-auto px-5" 
+      />
+    </div>
+  </form>
+  <script>
+    var selectedStarColor = '#FFD700';
+    var emptyStarColor = '#e5e5e5';
+
+    var form = document.getElementById('my_form');
+    var stars = [...document.querySelectorAll('svg')];
+    var starRating = null;
+
+    stars.forEach(star => {
+      star.addEventListener('mouseenter', fillStars);
+      star.addEventListener('mouseleave', resetStars);
+    });
+
+    function setFilledStars(endIndex) {
+      stars.forEach(function(star, index) {
+        if (index < endIndex) {
+          star.children[0].style.setProperty('fill', selectedStarColor);
+        }
+        else if (index >= endIndex) {
+          star.children[0].style.setProperty('fill', emptyStarColor);
+        }
+      })
+    }
+
+    function fillStars(e) {
+      setFilledStars(stars.indexOf(e.target));
+    }
+
+    function resetStars(e) {
+      return starRating ? setFilledStars(starRating) : setFilledStars(0);
+    }
+
+    function onRatingClick(target) {
+      starRating = target.value;
+    }
+
+    var checkbox = document.getElementById('send_to_email');
+
+    checkbox.onchange = function(e) {
+      document.getElementById('email').disabled = !e.target.checked;
+    };
+
+    form.onsubmit = function (e) {
+      e.preventDefault();
+
+      var email = document.getElementById('email').value;
+      var feedback = document.getElementById('feedback').value;
+      var checked = document.getElementById('send_to_email').checked;
+      
+      window.parent.postMessage({
+        type: "FEEDBACK_ACTION",
+        email: checked ? email : null,
+        stars: starRating,
+        content: feedback
+      }, "*");
+    };
+  </script>
+</body>
+</html>
