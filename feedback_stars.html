@@ -6,12 +6,6 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" />
   <style>
-    :root {
-      --main-color: #6eb6bc;
-      --secondary-color: #9ecee2;
-      --hovered-star: #ffbf00;
-    }
-
     .rating-stars {
       display: flex;
       justify-content: center;
@@ -30,7 +24,7 @@
     }
 
     svg:hover > .star-path {
-      fill: var(--hovered-star) !important;
+      fill: #ffbf00 !important;
     }
 
     .inner-container {
@@ -47,11 +41,11 @@
     }
 
     input[type="email"]:focus, textarea:focus {
-      border: 2px solid var(--main-color) !important;
+      border: 2px solid #6eb6bc !important;
     }
 
     input[type="submit"] {
-      background-color: var(--main-color);
+      background-color: #6eb6bc;
       box-sizing: border-box;
       border: none;
       box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4) !important;
@@ -59,7 +53,7 @@
     }
 
     input[type="submit"]:hover, input[type="submit"]:focus {
-      background-color: var(--main-color) !important;
+      background-color: #6eb6bc !important;
       box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.4) !important;
     }
 
@@ -85,11 +79,11 @@
     }
 
     .custom-control-input:checked ~ .custom-control-label::before {
-      background-color: var(--main-color) !important;
+      background-color: #6eb6bc !important;
     }
 
     .custom-control-input:active ~ .custom-control-label::before {
-      background-color: var(--secondary-color) !important;
+      background-color: #9ecee2 !important;
     }
 
     .curp {
@@ -220,10 +214,11 @@
     var emptyStarColor = '#e5e5e5';
 
     var form = document.getElementById('my_form');
-    var stars = [...document.querySelectorAll('svg')];
+    // var stars = [...document.querySelectorAll('svg')];
+    var stars = Array.prototype.slice.call(document.querySelectorAll('svg'));
     var starRating = null;
 
-    stars.forEach(star => {
+    stars.forEach(function(star) {
       star.addEventListener('mouseenter', fillStars);
       star.addEventListener('mouseleave', resetStars);
     });
@@ -231,10 +226,10 @@
     function setFilledStars(endIndex) {
       stars.forEach(function(star, index) {
         if (index < endIndex) {
-          star.children[0].style.setProperty('fill', selectedStarColor);
+          star.childNodes[1].style.setProperty('fill', selectedStarColor);
         }
         else if (index >= endIndex) {
-          star.children[0].style.setProperty('fill', emptyStarColor);
+          star.childNodes[1].style.setProperty('fill', emptyStarColor);
         }
       })
     }

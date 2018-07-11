@@ -48,28 +48,37 @@
       .curp {
         cursor: pointer;
       }
-      
-      .rating-options {
-        flex: 1;
-        padding: 0 4px;
+
+      #rating, #handler {
+        height: 36px;
+      }
+
+      .icon {
+        height: 30px;
         z-index: 2;
       }
       
-      .rating-options:after {
+      .rating-options {
+        flex: 1 1 auto;
+        padding: 0 4px;
+        z-index: 2;
+        align-items: center;
+      }
+
+      #rating-age {
+        position: absolute;
+        top: 50%;
         left: 1rem;
         content: '';
         height: 2px;
-        z-index: -1;
         position: absolute;
-        top: calc(50% - 4px);
         width: calc(100% - 2rem);
         background-color: #E9ECEE;
       }
       
       #handler {
         left: 0;
-        top: -4px;
-        z-index: 2;
+        z-index: 3;
       }
       
       .feedback {
@@ -116,7 +125,7 @@
                   <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
                 </svg>
                 <input 
-                  value="1"
+                  value="5"
                   type="radio" 
                   id="rating_0"
                   name="rating" 
@@ -132,7 +141,7 @@
                   <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z"/>
                 </svg>
                 <input 
-                  value="2"
+                  value="4"
                   type="radio" 
                   id="rating_1"
                   name="rating" 
@@ -162,7 +171,7 @@
                   <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.5,1.8-1.6,2-3,3.7c-1.4,1.7-1.4,1.8-2.5,3c-1,1.3-1.6,1.9-3.2,4c0.3,1.8,1.2,3.6,2.6,5C33.9,53.1,39.8,53.1,43.4,49.5z"/>
                 </svg>
                 <input 
-                  value="4"
+                  value="2"
                   type="radio" 
                   id="rating_3"
                   name="rating" 
@@ -177,7 +186,7 @@
                   <path class="left-eye" fill="#FFFFFF" d="M43.2,49.3c3.1-3.1,3.5-7.9,1.2-11.5c-1.2-0.2-1.4-0.3-2.6-0.5c-1.2-0.2-4.3-0.6-6.4-1c-2.1-0.4-2.6-0.5-4.4-0.7c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C33.8,52.9,39.6,52.9,43.2,49.3z" />
                 </svg>
                 <input 
-                  value="5"
+                  value="1"
                   type="radio" 
                   id="rating_4"
                   name="rating" 
@@ -185,6 +194,8 @@
                 />
               </label>
             </div>
+
+            <div id="rating-age"></div>
       
             <div id="handler" class="curp position-absolute">
               <svg width="40px" viewBox="0 0 115.4 113.4">
@@ -252,7 +263,7 @@
             return {
               element: 		el,
               offsetLeft: el.offsetLeft,
-              bodyColor:	el.querySelector('.body').dataset.fill,
+              bodyColor:	el.querySelector('.body').getAttribute('data-fill'),
               mouth: 			el.querySelector('.mouth').getAttribute('d'),
               leftEye: 		el.querySelector('.left-eye').getAttribute('d'),
               rightEye: 	el.querySelector('.right-eye').getAttribute('d')
@@ -376,6 +387,13 @@
             var feedback = document.getElementById('feedback').value;
             var checked = document.getElementById('send_to_email').checked;
             var rating = document.querySelector('input[type="radio"]:checked');
+
+            console.warn({
+              type: "FEEDBACK_ACTION",
+              email: checked ? email : null,
+              stars: rating.value,
+              content: feedback
+            });
 
             window.parent.postMessage({
               type: "FEEDBACK_ACTION",
