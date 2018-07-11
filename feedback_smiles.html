@@ -388,13 +388,6 @@
             var checked = document.getElementById('send_to_email').checked;
             var rating = document.querySelector('input[type="radio"]:checked');
 
-            console.warn({
-              type: "FEEDBACK_ACTION",
-              email: checked ? email : null,
-              stars: rating.value,
-              content: feedback
-            });
-
             window.parent.postMessage({
               type: "FEEDBACK_ACTION",
               email: checked ? email : null,
