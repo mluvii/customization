@@ -6,395 +6,395 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" />
   <style>
-      body {
-        color: #304558;
-      }
-      
-      #my_form {
-        background-color: #eaf3f4;
-      }
-      
-      .inner-container {
-        background-color: #fff;
-      }
-      
-      input[type="email"], input[type="submit"], textarea, .inner-container {
-        border-radius: 0.5rem !important;
-      }
-      
-      input[type="email"]:focus, textarea:focus {
-        border: 1px solid #4a8299 !important;
-        box-shadow: 0 0 0 2px #4a8299 !important;
-      }
-      
-      input[type="submit"] {
-        background-color: #4a8299;
-        box-sizing: border-box;
-        border: none;
-      }
-      
-      input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active {
-        box-shadow: none !important;
-      }
-      
-      input[type="submit"]:hover {
-        background-color: #5fadcc !important;
-      }
-      
-      input[type="submit"]:active {
-        background-color: #35687c !important;
-      }
-      
-      .curp {
-        cursor: pointer;
-      }
+    body {
+      color: #304558;
+    }
 
-      #rating, #handler {
-        height: 36px;
-      }
+    #my_form {
+      background-color: #eaf3f4;
+    }
 
-      .icon {
-        height: 30px;
-        z-index: 2;
-      }
-      
-      .rating-options {
-        flex: 1 1 auto;
-        padding: 0 4px;
-        z-index: 2;
-        align-items: center;
-      }
+    .inner-container {
+      background-color: #fff;
+    }
 
-      #rating-age {
-        position: absolute;
-        top: 50%;
-        left: 1rem;
-        content: '';
-        height: 2px;
-        position: absolute;
-        width: calc(100% - 2rem);
-        background-color: #E9ECEE;
-      }
-      
-      #handler {
-        left: 0;
-        z-index: 3;
-      }
-      
-      .feedback {
-        border: 1px solid #ced4da !important;
-        border: none;
-        margin-top: 15px;
-      }
-      
-      #email_checkbox {
-        line-height: 1.9;
-      }
-      
-      #email_checkbox:before, #email_checkbox:after {
-        height: 1.5rem;
-        width: 1.5rem;
-        left: -30px;
-        box-shadow: none !important;
-      }
-      
-      .custom-checkbox {
-        padding-left: 30px;
-      }
-      
-      .custom-control-input:checked ~ .custom-control-label::before {
-        background-color: #4a8299 !important;
-      }
-      
-      .custom-control-input:active ~ .custom-control-label::before {
-        background-color: #9ecee2 !important;
-      }
+    input[type="email"], input[type="submit"], textarea, .inner-container {
+      border-radius: 0.5rem !important;
+    }
+
+    input[type="email"]:focus, textarea:focus {
+      border: 1px solid #4a8299 !important;
+      box-shadow: 0 0 0 2px #4a8299 !important;
+    }
+
+    input[type="submit"] {
+      background-color: #4a8299;
+      box-sizing: border-box;
+      border: none;
+    }
+
+    input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active {
+      box-shadow: none !important;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #5fadcc !important;
+    }
+
+    input[type="submit"]:active {
+      background-color: #35687c !important;
+    }
+
+    .curp {
+      cursor: pointer;
+    }
+
+    #rating, #handler {
+      height: 36px;
+    }
+
+    .icon {
+      height: 30px;
+      z-index: 2;
+    }
+
+    .rating-options {
+      flex: 1 1 auto;
+      padding: 0 4px;
+      z-index: 2;
+      align-items: center;
+    }
+
+    #rating-age {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      content: '';
+      height: 2px;
+      position: absolute;
+      width: calc(100% - 2rem);
+      background-color: #E9ECEE;
+    }
+
+    #handler {
+      left: 0;
+      z-index: 3;
+    }
+
+    .feedback {
+      border: 1px solid #ced4da !important;
+      border: none;
+      margin-top: 15px;
+    }
+
+    #email_checkbox {
+      line-height: 1.9;
+    }
+
+    #email_checkbox:before, #email_checkbox:after {
+      height: 1.5rem;
+      width: 1.5rem;
+      left: -30px;
+      box-shadow: none !important;
+    }
+
+    .custom-checkbox {
+      padding-left: 30px;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: #4a8299 !important;
+    }
+
+    .custom-control-input:active ~ .custom-control-label::before {
+      background-color: #9ecee2 !important;
+    }
   </style>
 </head>
 <body>
-    <form id="my_form" class="p-2 m-2">
-        <p class="text-center mt-3 mb-3 font-weight-bold">Jak jste s námi byli spokojeni?</p>
-        <div class="inner-container px-3 pt-4 pb-2">
-          <div id="rating" class="rating d-flex justify-content-center mx-auto position-relative">
-            <div id="rating_options" class="rating-options d-flex justify-content-between">
-              <label class="icon curp mb-0">
-                <svg width="30px" viewBox="0 0 115.4 113.4">
-                  <circle class="body" fill="#C6CCD0" data-fill="#7bca71" cx="57.7" cy="56.7" r="56.7" />
-                  <path class="mouth" fill="#FFFFFF" d="M57.8,70.7c-6.4,0-19.4,0-27.8,0c-1.9,0-3.2,1-4,2.3c-0.9,1.5-0.9,3.4,0.3,5c7.1,9.6,18.5,15.7,31.4,15.7c12.8,0,24.2-6.2,31.4-15.7c1.1-1.5,1.1-3.3,0.4-4.7c-0.7-1.5-2.3-2.6-4.2-2.6C79.1,70.7,66.1,70.7,57.8,70.7z" />
-                  <path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z" />
-                  <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
-                </svg>
-                <input 
-                  value="5"
-                  type="radio" 
-                  id="rating_0"
-                  name="rating" 
-                  class="d-none" 
-                  checked="true"
-                />
-              </label>
-              <label class="icon curp mb-0">
-                <svg width="30px" viewBox="0 0 115.4 113.4">
-                  <circle class="body" fill="#C6CCD0" data-fill="#acd567" cx="57.7" cy="56.7" r="56.7" />
-                  <path class="mouth" fill="#FFFFFF" d="M57.6,86.7c8.5,0,16.7-2.2,23.9-6.3c2.2-1.3,3-4.1,1.7-6.3c-1.3-2.2-4.1-3-6.3-1.7c-5.9,3.3-12.5,5.1-19.4,5.1s-13.5-1.8-19.4-5.1c-2.2-1.3-5-0.5-6.3,1.7c-1.3,2.2-0.5,5,1.7,6.3C40.9,84.5,49.1,86.7,57.6,86.7z"/>
-                  <path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z"/>
-                  <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z"/>
-                </svg>
-                <input 
-                  value="4"
-                  type="radio" 
-                  id="rating_1"
-                  name="rating" 
-                  class="d-none" 
-                />
-              </label>
-              <label class="icon curp mb-0">
-                <svg width="30px" viewBox="0 0 115.4 113.4">
-                  <circle class="body" fill="#C6CCD0" data-fill="#fcdb5b" cx="57.7" cy="56.7" r="56.7" />
-                  <path class="mouth" fill="#FFFFFF" d="M57.7,74.7c-5.9,1-11.6,2.3-17.4,3.5c-2.5,0.6-4,3-3.5,5.5c0.6,2.5,3,4,5.5,3.5c5.7-1.3,11.2-2.4,17-3.5c5.8-1.1,11.7-2,17.6-2.9c2.5-0.4,4.3-2.7,3.9-5.2c-0.4-2.5-2.7-4.3-5.2-3.9c-6,0.9-12,1.8-35.4,6.5L57.7,74.7z"/>
-                  <path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z"/>
-                  <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z"/>
-                </svg>
-                <input 
-                  value="3"
-                  type="radio" 
-                  id="rating_2"
-                  name="rating" 
-                  class="d-none" 
-                />
-              </label>
-              <label class="icon curp mb-0">
-                <svg width="30px" viewBox="0 0 115.4 113.4">
-                  <circle class="body" fill="#C6CCD0" data-fill="#ffb94f" cx="57.7" cy="56.7" r="56.7" />
-                  <path class="mouth" fill="#FFFFFF" d="M57.6,73c-7.5,0-14.5,1.3-22.3,4c-2.4,0.8-3.7,3.5-2.8,5.9c0.8,2.4,3.5,3.7,5.9,2.8c6.8-2.4,12.8-3.5,19.2-3.5c7.2,0,15,1.4,18.6,3.2c2.3,1.2,5,0.3,6.2-1.9c1.2-2.3,0.3-5-1.9-6.2C75.4,74.6,66.1,73,57.6,73z"/>
-                  <path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.5,1.8,1.6,2,3,3.7c1.4,1.7,1.4,1.8,2.5,3c1,1.3,1.6,1.9,3.2,4c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.8,46.4,68.4,41.5,70.7,38z"/>
-                  <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.5,1.8-1.6,2-3,3.7c-1.4,1.7-1.4,1.8-2.5,3c-1,1.3-1.6,1.9-3.2,4c0.3,1.8,1.2,3.6,2.6,5C33.9,53.1,39.8,53.1,43.4,49.5z"/>
-                </svg>
-                <input 
-                  value="2"
-                  type="radio" 
-                  id="rating_3"
-                  name="rating" 
-                  class="d-none" 
-                />
-              </label>
-              <label class="icon curp mb-0">
-                <svg width="30px" viewBox="0 0 115.4 113.4">
-                  <circle class="body" fill="#C6CCD0" data-fill="#ff7b48" cx="57.7" cy="56.7" r="56.7"  />
-                  <path class="mouth" fill="#FFFFFF" d="M57.3,71.5c-8.5,0-16.6,2.2-23.8,6.3c-2.2,1.3-3,4.1-1.7,6.3c1.3,2.2,4.1,3,6.3,1.7c5.8-3.3,12.4-5.1,19.3-5.1s13.5,1.8,19.3,5.1c2.2,1.3,5,0.5,6.3-1.7c1.3-2.2,0.5-5-1.7-6.3C74,73.7,65.8,71.5,57.3,71.5z" />
-                  <path class="right-eye" fill="#FFFFFF" d="M70.3,37.8c1.2-0.2,1.4-0.3,2.6-0.5c1.2-0.2,4.3-0.6,6.4-1c2.1-0.4,2.6-0.5,4.4-0.7c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.4,46.2,68,41.4,70.3,37.8z" />
-                  <path class="left-eye" fill="#FFFFFF" d="M43.2,49.3c3.1-3.1,3.5-7.9,1.2-11.5c-1.2-0.2-1.4-0.3-2.6-0.5c-1.2-0.2-4.3-0.6-6.4-1c-2.1-0.4-2.6-0.5-4.4-0.7c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C33.8,52.9,39.6,52.9,43.2,49.3z" />
-                </svg>
-                <input 
-                  value="1"
-                  type="radio" 
-                  id="rating_4"
-                  name="rating" 
-                  class="d-none" 
-                />
-              </label>
-            </div>
+  <form id="my_form" class="p-2 m-2">
+		<p class="text-center mt-3 mb-3 font-weight-bold">Jak jste s námi byli spokojeni?</p>
+		<div class="inner-container px-3 pt-4 pb-2">
+			<div id="rating" class="rating d-flex justify-content-center mx-auto position-relative">
+				<div id="rating_options" class="rating-options d-flex justify-content-between">
+					<label class="icon curp mb-0">
+						<svg width="30px" viewBox="0 0 115.4 113.4">
+							<circle class="body" fill="#C6CCD0" data-fill="#7bca71" cx="57.7" cy="56.7" r="56.7" />
+							<path class="mouth" fill="#FFFFFF" d="M57.8,70.7c-6.4,0-19.4,0-27.8,0c-1.9,0-3.2,1-4,2.3c-0.9,1.5-0.9,3.4,0.3,5c7.1,9.6,18.5,15.7,31.4,15.7c12.8,0,24.2-6.2,31.4-15.7c1.1-1.5,1.1-3.3,0.4-4.7c-0.7-1.5-2.3-2.6-4.2-2.6C79.1,70.7,66.1,70.7,57.8,70.7z" />
+							<path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z" />
+							<path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
+						</svg>
+						<input 
+							value="5"
+							type="radio" 
+							id="rating_0"
+							name="rating" 
+							class="d-none" 
+							checked="true"
+						/>
+					</label>
+					<label class="icon curp mb-0">
+						<svg width="30px" viewBox="0 0 115.4 113.4">
+							<circle class="body" fill="#C6CCD0" data-fill="#acd567" cx="57.7" cy="56.7" r="56.7" />
+							<path class="mouth" fill="#FFFFFF" d="M57.6,86.7c8.5,0,16.7-2.2,23.9-6.3c2.2-1.3,3-4.1,1.7-6.3c-1.3-2.2-4.1-3-6.3-1.7c-5.9,3.3-12.5,5.1-19.4,5.1s-13.5-1.8-19.4-5.1c-2.2-1.3-5-0.5-6.3,1.7c-1.3,2.2-0.5,5,1.7,6.3C40.9,84.5,49.1,86.7,57.6,86.7z"/>
+							<path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z"/>
+							<path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z"/>
+						</svg>
+						<input 
+							value="4"
+							type="radio" 
+							id="rating_1"
+							name="rating" 
+							class="d-none" 
+						/>
+					</label>
+					<label class="icon curp mb-0">
+						<svg width="30px" viewBox="0 0 115.4 113.4">
+							<circle class="body" fill="#C6CCD0" data-fill="#fcdb5b" cx="57.7" cy="56.7" r="56.7" />
+							<path class="mouth" fill="#FFFFFF" d="M57.7,74.7c-5.9,1-11.6,2.3-17.4,3.5c-2.5,0.6-4,3-3.5,5.5c0.6,2.5,3,4,5.5,3.5c5.7-1.3,11.2-2.4,17-3.5c5.8-1.1,11.7-2,17.6-2.9c2.5-0.4,4.3-2.7,3.9-5.2c-0.4-2.5-2.7-4.3-5.2-3.9c-6,0.9-12,1.8-35.4,6.5L57.7,74.7z"/>
+							<path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z"/>
+							<path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z"/>
+						</svg>
+						<input 
+							value="3"
+							type="radio" 
+							id="rating_2"
+							name="rating" 
+							class="d-none" 
+						/>
+					</label>
+					<label class="icon curp mb-0">
+						<svg width="30px" viewBox="0 0 115.4 113.4">
+							<circle class="body" fill="#C6CCD0" data-fill="#ffb94f" cx="57.7" cy="56.7" r="56.7" />
+							<path class="mouth" fill="#FFFFFF" d="M57.6,73c-7.5,0-14.5,1.3-22.3,4c-2.4,0.8-3.7,3.5-2.8,5.9c0.8,2.4,3.5,3.7,5.9,2.8c6.8-2.4,12.8-3.5,19.2-3.5c7.2,0,15,1.4,18.6,3.2c2.3,1.2,5,0.3,6.2-1.9c1.2-2.3,0.3-5-1.9-6.2C75.4,74.6,66.1,73,57.6,73z"/>
+							<path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.5,1.8,1.6,2,3,3.7c1.4,1.7,1.4,1.8,2.5,3c1,1.3,1.6,1.9,3.2,4c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.8,46.4,68.4,41.5,70.7,38z"/>
+							<path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.5,1.8-1.6,2-3,3.7c-1.4,1.7-1.4,1.8-2.5,3c-1,1.3-1.6,1.9-3.2,4c0.3,1.8,1.2,3.6,2.6,5C33.9,53.1,39.8,53.1,43.4,49.5z"/>
+						</svg>
+						<input 
+							value="2"
+							type="radio" 
+							id="rating_3"
+							name="rating" 
+							class="d-none" 
+						/>
+					</label>
+					<label class="icon curp mb-0">
+						<svg width="30px" viewBox="0 0 115.4 113.4">
+							<circle class="body" fill="#C6CCD0" data-fill="#ff7b48" cx="57.7" cy="56.7" r="56.7"  />
+							<path class="mouth" fill="#FFFFFF" d="M57.3,71.5c-8.5,0-16.6,2.2-23.8,6.3c-2.2,1.3-3,4.1-1.7,6.3c1.3,2.2,4.1,3,6.3,1.7c5.8-3.3,12.4-5.1,19.3-5.1s13.5,1.8,19.3,5.1c2.2,1.3,5,0.5,6.3-1.7c1.3-2.2,0.5-5-1.7-6.3C74,73.7,65.8,71.5,57.3,71.5z" />
+							<path class="right-eye" fill="#FFFFFF" d="M70.3,37.8c1.2-0.2,1.4-0.3,2.6-0.5c1.2-0.2,4.3-0.6,6.4-1c2.1-0.4,2.6-0.5,4.4-0.7c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.4,46.2,68,41.4,70.3,37.8z" />
+							<path class="left-eye" fill="#FFFFFF" d="M43.2,49.3c3.1-3.1,3.5-7.9,1.2-11.5c-1.2-0.2-1.4-0.3-2.6-0.5c-1.2-0.2-4.3-0.6-6.4-1c-2.1-0.4-2.6-0.5-4.4-0.7c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C33.8,52.9,39.6,52.9,43.2,49.3z" />
+						</svg>
+						<input 
+							value="1"
+							type="radio" 
+							id="rating_4"
+							name="rating" 
+							class="d-none" 
+						/>
+					</label>
+				</div>
 
-            <div id="rating-age"></div>
-      
-            <div id="handler" class="curp position-absolute">
-              <svg width="40px" viewBox="0 0 115.4 113.4">
-              <circle fill="#8EC254" class="body" cx="57.7" cy="56.7" r="56.7" />
-              <path class="mouth" fill="#31464e" d="M57.8,70.7c-6.4,0-19.4,0-27.8,0c-1.9,0-3.2,1-4,2.3c-0.9,1.5-0.9,3.4,0.3,5c7.1,9.6,18.5,15.7,31.4,15.7c12.8,0,24.2-6.2,31.4-15.7c1.1-1.5,1.1-3.3,0.4-4.7c-0.7-1.5-2.3-2.6-4.2-2.6C79.1,70.7,66.1,70.7,57.8,70.7z" />
-              <path class="right-eye" fill="#31464e" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z" />
-              <path class="left-eye" fill="#31464e" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
-              </svg>
-            </div>
-          </div>
-      
-          <textarea 
-            rows="4"
-            id="feedback" 
-            name="feedback"
-            class="form-control feedback"
-            placeholder="Vaše zpětná vazba"
-          ></textarea>
-      
-          <div class="custom-control custom-checkbox mt-3 mb-2">
-            <input type="checkbox" class="custom-control-input" id="send_to_email">
-            <label id="email_checkbox" class="custom-control-label curp" for="send_to_email">
-              Chci poslat přepis konverzace
-            </label>
-          </div>
-      
-          <div class="form-group">
-            <input 
-              disabled
-              required
-              id="email" 
-              type="email" 
-              placeholder="E-mailová adresa" 
-              class="form-control email" 
-            />
-          </div>
-        </div>
-        
-        <div class="form-group d-flex">
-          <input 
-            id="submit"
-            type="submit" 
-            value="Ok"
-            class="btn btn-primary mt-3 mx-auto px-5" 
-          />
-        </div>
-      </form>
+				<div id="rating-age"></div>
 
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/flubber/0.4.2/flubber.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
-      <script>
+				<div id="handler" class="curp position-absolute">
+					<svg width="40px" viewBox="0 0 115.4 113.4">
+					<circle fill="#8EC254" class="body" cx="57.7" cy="56.7" r="56.7" />
+					<path class="mouth" fill="#31464e" d="M57.8,70.7c-6.4,0-19.4,0-27.8,0c-1.9,0-3.2,1-4,2.3c-0.9,1.5-0.9,3.4,0.3,5c7.1,9.6,18.5,15.7,31.4,15.7c12.8,0,24.2-6.2,31.4-15.7c1.1-1.5,1.1-3.3,0.4-4.7c-0.7-1.5-2.3-2.6-4.2-2.6C79.1,70.7,66.1,70.7,57.8,70.7z" />
+					<path class="right-eye" fill="#31464e" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z" />
+					<path class="left-eye" fill="#31464e" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
+					</svg>
+				</div>
+			</div>
 
-          // Variables
-          var handlerStartOffset = 0;
-          var handleDragStartOffset = 0;
-          var handler = document.getElementById('handler');
-          var ratingContainer = document.getElementById('rating');
-          var ratingContainerWidth = ratingContainer.offsetWidth;
-          var ratingOptionsContainer = document.getElementById('rating_options');
-          var icons = [].slice.call(ratingOptionsContainer.querySelectorAll('.icon'));
+			<textarea 
+				rows="4"
+				id="feedback" 
+				name="feedback"
+				class="form-control feedback"
+				placeholder="Vaše zpětná vazba"
+			></textarea>
 
-          icons = icons.map(function(el, i) {	
-            return {
-              element: 		el,
-              offsetLeft: el.offsetLeft,
-              bodyColor:	el.querySelector('.body').getAttribute('data-fill'),
-              mouth: 			el.querySelector('.mouth').getAttribute('d'),
-              leftEye: 		el.querySelector('.left-eye').getAttribute('d'),
-              rightEye: 	el.querySelector('.right-eye').getAttribute('d')
-            };
-          });
+			<div class="custom-control custom-checkbox mt-3 mb-2">
+				<input type="checkbox" class="custom-control-input" id="send_to_email">
+				<label id="email_checkbox" class="custom-control-label curp" for="send_to_email">
+					Chci poslat přepis konverzace
+				</label>
+			</div>
 
-          // Animation timeline.
-          var tl = new TimelineMax({ paused: true });
+			<div class="form-group">
+				<input 
+					disabled
+					required
+					id="email" 
+					type="email" 
+					placeholder="E-mailová adresa" 
+					class="form-control email" 
+				/>
+			</div>
+		</div>
 
-          icons.forEach(function(icon, i) {
-            icon.element.addEventListener('click', function() {
-              tl.tweenTo('rating_' + i, {
-                ease: Expo.easeOut
-              }).duration(.6);
-            });
-            
-            var iconMinimization = new TweenLite.to(icon.element, .6, {
-              scale: 0
-            });
-            
-            var body = handler.querySelector('.body');
-            var mouth = handler.querySelector('.mouth');
-            var leftEye = handler.querySelector('.left-eye');
-            var rightEye = handler.querySelector('.right-eye');
-            
-            var handlePosition = new TweenLite.to(handler, .6, {
-              left: icon.offsetLeft - 4,
-              onUpdate: function() {
-                var propgress = handlePosition.progress();
-                if (i !== 0) {
-                  var ic = icons[i - 1];
-                  var m = flubber.interpolate(ic.mouth, icon.mouth);
-                  var l = flubber.interpolate(ic.leftEye, icon.leftEye);
-                  var r = flubber.interpolate(ic.rightEye, icon.rightEye);
-                  mouth.setAttribute('d', m(propgress));
-                  leftEye.setAttribute('d', l(propgress));
-                  rightEye.setAttribute('d', r(propgress));
-                }
-              },
-              ease: Power0.easeNone
-            });
-            
-            var label = 'rating_' + i;
-            var prevLabel = 'rating_' + (i - 1);
-            
-            handlePosition.data = {
-              index: i,
-              label: label,
-              prevLabel: prevLabel
-            };
-            
-            var handlerColor = new TweenLite.to(body, .6, {
-              fill: icon.bodyColor
-            });	
-            
-            if (i !== 0) {
-              var iconMaximization = new TweenLite.to(icons[i - 1].element, .6, {
-                scale: 1
-              });
-            }
-            
-            tl.add(handlePosition)
-              .addLabel(label)
-              .add(handlerColor, '-=.6')
-              .add(iconMinimization, '-=.6');
-            
-            if (iconMaximization) {
-              tl.add(iconMaximization, '-=.6');
-            }
-          });
+		<div class="form-group d-flex">
+			<input 
+				id="submit"
+				type="submit" 
+				value="Ok"
+				class="btn btn-primary mt-3 mx-auto px-5" 
+			/>
+		</div>
+	</form>
 
-          function autocomplete(e) {
-            var label;
-            var curLabel = tl.currentLabel();
-            var nextLabel = tl.getLabelAfter();
-            var curLabelTime = tl.getLabelTime(curLabel);
-            var nextLabelTime = tl.getLabelTime(nextLabel);
-            var halfWay = curLabelTime + (nextLabelTime - curLabelTime) / 2 < tl.time();
-            
-            label = halfWay ? nextLabel : curLabel;
-            
-            if (label) {
-              tl.tweenTo(label);
-              document.getElementById(label).checked = true;	
-            }
-          };
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flubber/0.4.2/flubber.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script>
 
-          handler.addEventListener("mousedown", function(e) {
-            document.body.addEventListener("mousemove", handleMouseMove);
-            handleDragStartOffset = e.clientX + 16;
-            handlerStartOffset = parseInt(handler.style.left) || 0;
-          });
+    // Variables
+    var handlerStartOffset = 0;
+    var handleDragStartOffset = 0;
+    var handler = document.getElementById('handler');
+    var ratingContainer = document.getElementById('rating');
+    var ratingContainerWidth = ratingContainer.offsetWidth;
+    var ratingOptionsContainer = document.getElementById('rating_options');
+    var icons = [].slice.call(ratingOptionsContainer.querySelectorAll('.icon'));
 
-          document.body.addEventListener("mouseup", function(e) {
-            if (handleDragStartOffset) {
-              handleDragStartOffset = null;
-              document.body.removeEventListener("mousemove", handleMouseMove);
-              autocomplete();
-            }
-          });
+    icons = icons.map(function(el, i) {	
+      return {
+        element: 		el,
+        offsetLeft: el.offsetLeft,
+        bodyColor:	el.querySelector('.body').getAttribute('data-fill'),
+        mouth: 			el.querySelector('.mouth').getAttribute('d'),
+        leftEye: 		el.querySelector('.left-eye').getAttribute('d'),
+        rightEye: 	el.querySelector('.right-eye').getAttribute('d')
+      };
+    });
 
-          function handleMouseMove(e) {
-            var offsetX = e.clientX - handleDragStartOffset + 48 + 48 / 2;
-            var newProgress = Math.max(0, (offsetX + handlerStartOffset)  / ratingContainerWidth);
-            tl.progress(newProgress);
-          };
+    // Animation timeline.
+    var tl = new TimelineMax({ paused: true });
 
-          // Form
-          var form = document.getElementById('my_form');
-          var submit = document.getElementById('submit');
-          var checkbox = document.getElementById('send_to_email');
+    icons.forEach(function(icon, i) {
+      icon.element.addEventListener('click', function() {
+        tl.tweenTo('rating_' + i, {
+          ease: Expo.easeOut
+        }).duration(.6);
+      });
 
-          checkbox.onchange = function(e) {
-            document.getElementById('email').disabled = !e.target.checked;
-          };
+      var iconMinimization = new TweenLite.to(icon.element, .6, {
+        scale: 0
+      });
 
-          form.onsubmit = function (e) {
-            e.preventDefault();
+      var body = handler.querySelector('.body');
+      var mouth = handler.querySelector('.mouth');
+      var leftEye = handler.querySelector('.left-eye');
+      var rightEye = handler.querySelector('.right-eye');
 
-            var email = document.getElementById('email').value;
-            var feedback = document.getElementById('feedback').value;
-            var checked = document.getElementById('send_to_email').checked;
-            var rating = document.querySelector('input[type="radio"]:checked');
+      var handlePosition = new TweenLite.to(handler, .6, {
+        left: icon.offsetLeft - 4,
+        onUpdate: function() {
+          var propgress = handlePosition.progress();
+          if (i !== 0) {
+            var ic = icons[i - 1];
+            var m = flubber.interpolate(ic.mouth, icon.mouth);
+            var l = flubber.interpolate(ic.leftEye, icon.leftEye);
+            var r = flubber.interpolate(ic.rightEye, icon.rightEye);
+            mouth.setAttribute('d', m(propgress));
+            leftEye.setAttribute('d', l(propgress));
+            rightEye.setAttribute('d', r(propgress));
+          }
+        },
+        ease: Power0.easeNone
+      });
 
-            window.parent.postMessage({
-              type: "FEEDBACK_ACTION",
-              email: checked ? email : null,
-              stars: rating.value,
-              content: feedback
-            }, "*");
-          };
-      </script>
+      var label = 'rating_' + i;
+      var prevLabel = 'rating_' + (i - 1);
+
+      handlePosition.data = {
+        index: i,
+        label: label,
+        prevLabel: prevLabel
+      };
+
+      var handlerColor = new TweenLite.to(body, .6, {
+        fill: icon.bodyColor
+      });	
+
+      if (i !== 0) {
+        var iconMaximization = new TweenLite.to(icons[i - 1].element, .6, {
+          scale: 1
+        });
+      }
+
+      tl.add(handlePosition)
+        .addLabel(label)
+        .add(handlerColor, '-=.6')
+        .add(iconMinimization, '-=.6');
+
+      if (iconMaximization) {
+        tl.add(iconMaximization, '-=.6');
+      }
+    });
+
+    function autocomplete(e) {
+      var label;
+      var curLabel = tl.currentLabel();
+      var nextLabel = tl.getLabelAfter();
+      var curLabelTime = tl.getLabelTime(curLabel);
+      var nextLabelTime = tl.getLabelTime(nextLabel);
+      var halfWay = curLabelTime + (nextLabelTime - curLabelTime) / 2 < tl.time();
+
+      label = halfWay ? nextLabel || curLabel : curLabel;
+
+      if (label) {
+        tl.tweenTo(label);
+        document.getElementById(label).checked = true;	
+      }
+    };
+
+    handler.addEventListener("mousedown", function(e) {
+      document.body.addEventListener("mousemove", handleMouseMove);
+      handleDragStartOffset = e.clientX + 15;
+      handlerStartOffset = parseInt(handler.style.left) || 0;
+    });
+
+    document.body.addEventListener("mouseup", function(e) {
+      if (handleDragStartOffset) {
+        handleDragStartOffset = null;
+        document.body.removeEventListener("mousemove", handleMouseMove);
+        autocomplete();
+      }
+    });
+
+    function handleMouseMove(e) {
+      var offsetX = e.clientX - handleDragStartOffset + 48 + 48 / 2;
+      var newProgress = Math.max(0, (offsetX + handlerStartOffset)  / (ratingContainerWidth + 20));
+      tl.progress(newProgress);
+    };
+
+    // Form
+    var form = document.getElementById('my_form');
+    var submit = document.getElementById('submit');
+    var checkbox = document.getElementById('send_to_email');
+
+    checkbox.onchange = function(e) {
+      document.getElementById('email').disabled = !e.target.checked;
+    };
+
+    form.onsubmit = function (e) {
+      e.preventDefault();
+
+      var email = document.getElementById('email').value;
+      var feedback = document.getElementById('feedback').value;
+      var checked = document.getElementById('send_to_email').checked;
+      var rating = document.querySelector('input[type="radio"]:checked');
+
+      window.parent.postMessage({
+        type: "FEEDBACK_ACTION",
+        email: checked ? email : null,
+        stars: rating.value,
+        content: feedback
+      }, "*");
+    };
+  </script>
 </body>
 </html>
