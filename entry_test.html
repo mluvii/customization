@@ -161,7 +161,7 @@
       var name = $('#name').val();
       var email = $('#email').val();
       var phone = $('#phone').val();
-      var department = $('input[name="department"]:checked').val()
+      var department = $('input[name="department"]:checked').val();
       
      
         window.parent.postMessage({
@@ -227,6 +227,7 @@
       window.parent.postMessage({
         type: "ENQUEUE"
       }, "*");
+    });
   </script>
 </body>
 </html>
