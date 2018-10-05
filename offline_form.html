@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <link rel='stylesheet prefetch' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/css/bootstrap.min.css'>
+    <style type="text/css">
+      html, body {
+          background-color: transparent;
+        }        
+      .whiteBox {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        justify-content: center;
+        background-color: #fff;
+        box-shadow: 0 2px 8px 0 rgba(0,0,0,0.06);
+        border-radius: 16px;
+        margin-top: 24px;
+        margin-bottom: 24px;
+        padding: 24px;
+      }        
+      .customInput, .customTextArea {
+        height: 48px;
+        color: #304558;
+        font-size: 14px;
+        padding: 12px;
+        border-radius: 8px;
+        border:  2px solid #DADDE0;
+        outline: none;
+        box-sizing: border-box;
+        transition: border 0.2s ease;
+      }
+      .customTextArea:focus, .customInput:focus{
+        border: 2px solid #30A1F2
+      }
+      .customTextArea {
+        flex-grow: 1;
+        height: 80px;
+        overflow: auto;
+        resize: none;
+      }        
+      .customLabel {
+        margin: 8px 0
+      }
+      .customText {
+        text-align: center;
+        margin: 24px 16px 16px;
+		font-size: 14px;
+      }             
+      .btn[type="submit"] {
+        width: 100px;
+        margin: auto;
+        background-color: #00275A; 
+        color: white; /* Barva textu tlačítka */
+		cursor: pointer;
+      }
+	  
+	  .btn-info{
+	   border-color: #00275A; 
+	  }
+    </style>
+  </head>
+
+  <body>
+    <div class=customText" id="offlineText">
+    </div>
+    <form id="custom_form">
+      <div class="whiteBox">
+        <label class="customLabel" for="contact" id="mailPhoneLabel">Email/Telephone</label>
+        <input
+          required
+          class="customInput"
+          id="contact"
+               ></input>
+        <label class="customLabel" for="message" id="messageLabel">Message</label>
+        <textarea
+           required
+           class="customTextArea"
+           id="message"></textarea>
+      </div>
+      <button class="btn btn-info btn-block" type="submit" id="sendButton">Send</button>
+    </form>
+	<script type="text/javascript">
+   (function () {
+	var userLang = navigator.language || navigator.userLanguage; 
+	console.log("User lang: ", userLang);
+	if(userLang =="cs-CZ"){
+	  document.getElementById("offlineText").innerHTML = "Je nám to líto, ale právě teď nejsme online. Zanechte nám kontakt a my se vám co nejdříve ozveme zpět.";
+	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail/Telefon";
+	  document.getElementById("messageLabel").innerHTML = "Zpráva";
+	  document.getElementById("sendButton").innerHTML = "Odeslat";
+	}
+   })();
+   </script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.0.8/popper.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-beta/js/bootstrap.min.js'></script>
+    <script type="text/javascript">
+      const form = document.getElementById('custom_form');
+      form.onsubmit = function (e) {
+        e.preventDefault();
+          const contact = document.getElementById('contact').value;
+          const message = document.getElementById('message').value;
+
+          window.parent.postMessage({
+              type: "OFFLINE_ACTION",
+              contact,
+              message
+          }, "*");
+      };
+    </script>
+  </body>
+</html>
