@@ -78,6 +78,22 @@
 	   .customTextArea:focus + .customLabel{
 	    color: #00275A;
 	  }  
+	  
+	  #mailPhoneLabel{
+	  order: 1;
+	  }
+	  
+	  #contact{
+	  order: 2;
+	  }
+	  
+	  #messageLabel{
+	  order: 3;
+	  }
+	  
+	  #customTextArea{
+	  order: 4;
+	  }
 	 
     </style>
   </head>
@@ -87,21 +103,21 @@
     </div>
     <form id="custom_form">
       <div class="whiteBox">
-       <label class="customLabel" for="contact" id="mailPhoneLabel">Email/Telephone</label>
+       
         <input
           required
           class="customInput"
           id="contact"
 		  name="contact"
         ></input>
-		 
-       <label class="customLabel" for="message" id="messageLabel">Message</label>
+		 <label class="customLabel" for="contact" id="mailPhoneLabel">Email/Telephone</label>
+      
         <textarea
            required
            class="customTextArea"
 		   name="message"
            id="message"></textarea>
-		    
+		     <label class="customLabel" for="message" id="messageLabel">Message</label>
       </div>
       <button class="btn btn-info btn-block" type="submit" id="sendButton">Send</button>
     </form>
