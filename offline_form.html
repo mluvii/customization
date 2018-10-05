@@ -91,7 +91,7 @@
 	  order: 3;
 	  }
 	  
-	  #message{
+	  #customTextArea{
 	  order: 4;
 	  }
 	 
@@ -130,6 +130,11 @@
 	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail/Telefon";
 	  document.getElementById("messageLabel").innerHTML = "Zpráva";
 	  document.getElementById("sendButton").innerHTML = "Odeslat";
+	} else {
+	  document.getElementById("offlineText").innerHTML = "We apologize but we are unable to connect you to any available operators. Please, leave your contact information and we will contact you back later.";
+	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail/Phone";
+	  document.getElementById("messageLabel").innerHTML = "Message";
+	  document.getElementById("sendButton").innerHTML = "Send";
 	}
    })();
    </script>
