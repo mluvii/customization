@@ -223,6 +223,10 @@
           value: phone
 
         }, "*");
+      
+      window.parent.postMessage({
+        type: "ENQUEUE"
+      }, "*");
   </script>
 </body>
 </html>
