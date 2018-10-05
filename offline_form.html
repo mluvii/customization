@@ -125,7 +125,7 @@
    (function () {
 	var userLang = navigator.language || navigator.userLanguage; 
 	console.log("User lang: ", userLang);
-	if(userLang =="cs-CZ"){
+	if(userLang =="cs-CZ" || userLang =="cs"){
 	  document.getElementById("offlineText").innerHTML = "Je nám to líto, ale právě teď nejsme online. Zanechte nám kontakt a my se vám co nejdříve ozveme zpět.";
 	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail/Telefon";
 	  document.getElementById("messageLabel").innerHTML = "Zpráva";
