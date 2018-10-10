@@ -140,7 +140,10 @@
 	</div>
 	</div>
 	
-	<script type="text/javascript">
+		<script type="text/javascript">
+	 var onlineBool = false;
+
+
 (function () {
   var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
   scr.src = '//app.mluvii.com/widget/OOWidget.js';
@@ -148,32 +151,64 @@
     if (!owidget.isSupported) { return; }
 	owidget.setStatusUpdateCallback(function(status){
 	  if(status == 0){
+	    console.log("offline");
+	    document.getElementById("statusIndicator").classList.add("offline");
+		document.getElementById("statusIndicator").classList.remove("online");
+		document.getElementById("statusIndicator").classList.remove("busy");
+		onlineBool = false;
+
+      }	
+	  if(status == 1){
 	    console.log("online");
 	    document.getElementById("statusIndicator").classList.add("online");
 		document.getElementById("statusIndicator").classList.remove("offline");
 		document.getElementById("statusIndicator").classList.remove("busy");
-      }	
-	  if(status == 1){
-	  console.log("offline");
-	    document.getElementById("statusIndicator").classList.add("offline");
-		document.getElementById("statusIndicator").classList.remove("online");
-		document.getElementById("statusIndicator").classList.remove("busy");
+		onlineBool = true;
+
       }	
 	  if(status == 2){
 	  console.log("busy");
 	    document.getElementById("statusIndicator").classList.add("busy");
 		document.getElementById("statusIndicator").classList.remove("online");
 		document.getElementById("statusIndicator").classList.remove("offline");
+		onlineBool = true;
       }			
 	});
 	
     owidget.init("295b1064-cf5b-4a5d-9e05-e7a74f86ae5e", "UniCreditBank");
     owidget.connectToServer();
 	
+	 document.getElementById("numInput").oninput = function () {
+      var str = document.getElementById("numInput").value;
+      if (str.match("^[()/0-9. -]{6}$")) {
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("submitBtn").className = "goodCode";
+      } else {
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("submitBtn").className = "wrongCode";
+      }
+    };
+	 document.getElementById("numInput").onpropertychange = document.getElementById("numInput").oninput;
+    document.onkeypress = function keypressed(e) {
+      var keyCode = (window.event) ? e.which : e.keyCode;
+      if (keyCode == 13 && !document.getElementById("submitBtn").disabled && onlineBool) {
+        owidget.openAppOnCurrentPage('callshow', document.getElementById("numInput").value);
+      }
+    };
+
+
+	
 	document.getElementById("submitBtn").addEventListener("click", function(){
 	let val = document.getElementById("numInput").value;
      console.log("Clicked", val);	
-	  	
+	  if (str.match("^[()/0-9. -]{6}$")) {
+        document.getElementById("submitBtn").disabled = false;
+        document.getElementById("submitBtn").className = "goodCode";
+      } else {
+        document.getElementById("submitBtn").disabled = true;
+        document.getElementById("submitBtn").className = "wrongCode";
+      }
+	}
 	});
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
