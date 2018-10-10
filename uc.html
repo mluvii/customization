@@ -122,6 +122,10 @@
 	 border: none;
 	 font-family: 'PT Sans',sans-serif!important;
 	}
+	
+	.wrongCode{
+	 background-color: #a9a9a9;
+	}
 	</style>
 	<link href="https://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic" rel="stylesheet" type="text/css">
 	</head>
@@ -135,7 +139,7 @@
 		 </div>
 	  <label  for="numInput">Vložte kód</label>
 	  <input type="text" id="numInput" name="numInput"></input>
-	  <input type="button" id="submitBtn" value="Vstoupit do místnosti" />
+	  <input type="button" className="wrongCode" id="submitBtn" value="Vstoupit do místnosti" disabled />
 	</div>
 	</div>
 	</div>
@@ -198,17 +202,13 @@
 
 
 	
-	document.getElementById("submitBtn").addEventListener("click", function(){
-	let val = document.getElementById("numInput").value;
-     console.log("Clicked", val);	
-	  if (str.match("^[()/0-9. -]{6}$")) {
-        document.getElementById("submitBtn").disabled = false;
-        document.getElementById("submitBtn").className = "goodCode";
-      } else {
-        document.getElementById("submitBtn").disabled = true;
-        document.getElementById("submitBtn").className = "wrongCode";
+	 document.getElementById("submitBtn").onclick = function () {
+      var callshowNr = document.getElementById("numInput").value;
+      if (onlineBool) {
+        owidget.openAppOnCurrentPage('callshow', callshowNr);
       }
-	});
+    };
+
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 })();
