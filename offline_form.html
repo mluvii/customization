@@ -166,10 +166,11 @@
           const contact = document.getElementById('contact').value;
           const message = document.getElementById('message').value;
 		  const phone = document.getElementById('phone').value;
+		  const mes =  "Telefon: "+ phone +" - Zpráva: "+message;
           window.parent.postMessage({
               type: "OFFLINE_ACTION",
               contact,
-              "Telefon" + phone +" - Zpráva: "+message
+              mes
           }, "*");
       };
     </script>
