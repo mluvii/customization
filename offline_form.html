@@ -110,7 +110,15 @@
           id="contact"
 		  name="contact"
         ></input>
-		 <label class="customLabel" for="contact" id="mailPhoneLabel">Email/Telephone</label>
+		 <label class="customLabel" for="contact" id="mailPhoneLabel">Email</label>
+		 
+		  <input
+          
+          class="customInput"
+          id="phone"
+		  name="phone"
+        ></input>
+		 <label class="customLabel" for="contact" id="phoneLabel">Telephone</label>
       
         <textarea
            required
@@ -127,12 +135,14 @@
 	console.log("User lang: ", userLang);
 	if(userLang =="cs-CZ" || userLang =="cs"){
 	  document.getElementById("offlineText").innerHTML = "Je nám to líto, ale právě teď nejsme online. Zanechte nám kontakt a my se vám co nejdříve ozveme zpět.";
-	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail/Telefon";
+	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail";
+	  document.getElementById("phoneLabel").innerHTML = "Telefon";
 	  document.getElementById("messageLabel").innerHTML = "Zpráva";
 	  document.getElementById("sendButton").innerHTML = "Odeslat";
 	} else {
 	  document.getElementById("offlineText").innerHTML = "We apologize but we are unable to connect you to any available operators. Please, leave your contact information and we will contact you back later.";
-	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail/Phone";
+	  document.getElementById("mailPhoneLabel").innerHTML = "E-mail";
+	  document.getElementById("phoneLabel").innerHTML = "Phone";
 	  document.getElementById("messageLabel").innerHTML = "Message";
 	  document.getElementById("sendButton").innerHTML = "Send";
 	}
@@ -147,7 +157,6 @@
         e.preventDefault();
           const contact = document.getElementById('contact').value;
           const message = document.getElementById('message').value;
-
           window.parent.postMessage({
               type: "OFFLINE_ACTION",
               contact,
