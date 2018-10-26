@@ -168,8 +168,8 @@
 		  const mes =  "Telefon: "+ phone +" - Zpráva: "+message;
           window.parent.postMessage({
               type: "OFFLINE_ACTION",
-              contact,
-              mes
+              contact:contact,
+              message: mes
           }, "*");
       };
     </script>
