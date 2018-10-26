@@ -129,12 +129,12 @@ font-size: 20px;
 <script type="text/javascript">
 (function () {
   var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
-  scr.src = '//virtualni-prodejna.o2.cz/widget/OOWidget.js';
+  scr.src = '//app.mluvii.com/widget/OOWidget.js';
 
   var onlineBool = false;
   scr.$owidgetOnLoad = function (owidget) {
     if (!owidget.isSupported) { return; }
-     owidget.init("ecced5e0-65bd-48a5-b6b3-6970b170204b", "Spojit");
+    owidget.init("ecced5e0-65bd-48a5-b6b3-6970b170204b", "Spojit");
 
     document.getElementById("submitBtn").disabled = true;
     document.getElementById("submitBtn").onclick = function () {
