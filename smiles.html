@@ -229,23 +229,6 @@
                 placeholder="Vaše zpětná vazba"
               ></textarea>
         
-              <div class="custom-control custom-checkbox mt-3 mb-2">
-                <input type="checkbox" class="custom-control-input" id="send_to_email">
-                <label id="email_checkbox" class="custom-control-label curp" for="send_to_email">
-                  Chci poslat přepis konverzace
-                </label>
-              </div>
-        
-              <div class="form-group">
-                <input 
-                  disabled
-                  required
-                  id="email" 
-                  type="email" 
-                  placeholder="E-mailová adresa" 
-                  class="form-control email" 
-                />
-              </div>
             </div>
         
             <div class="form-group d-flex py-3 m-0">
@@ -391,23 +374,16 @@
     // Form
     var form = document.getElementById('my_form');
     var submit = document.getElementById('submit');
-    var checkbox = document.getElementById('send_to_email');
-
-    checkbox.onchange = function(e) {
-      document.getElementById('email').disabled = !e.target.checked;
-    };
 
     form.onsubmit = function (e) {
       e.preventDefault();
 
-      var email = document.getElementById('email').value;
       var feedback = document.getElementById('feedback').value;
-      var checked = document.getElementById('send_to_email').checked;
       var rating = document.querySelector('input[type="radio"]:checked');
 
       window.parent.postMessage({
         type: "FEEDBACK_ACTION",
-        email: checked ? email : null,
+        email: null,
         stars: rating.value,
         content: feedback
       }, "*");
