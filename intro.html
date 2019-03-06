@@ -17,6 +17,14 @@
 	#introVideo.visible{
 		display: block;
 	}
+	
+	#hint{
+		display: none;
+	}
+	
+	#hint.visible{
+		display: block;
+	}
 </style>
 </head>
 
@@ -28,6 +36,9 @@
 	</video>
 	<div id="startButton">
 		<p>Nechť hra započne! Pusťte si video!</p>
+	</div>
+	<div id="hint">
+		<p>V konzoli otevřete náš chat, kde naleznete jak pokračovat dále. Poradíme vám, hledejte na objektu $owidget</p>
 	</div>
 </div>
 
@@ -45,7 +56,8 @@
 
   document.getElementById('introVideo').addEventListener('ended',videoEndedHandler,false);
     function videoEndedHandler(e) {
-        console.log("Video ended");
+        document.getElementById('introVideo').classList.remove("visible");
+		 document.getElementById('hint').classList.add("visible");
     }
 	
    document.getElementById('startButton').addEventListener('click',startClicked,false);
