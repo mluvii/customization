@@ -25,16 +25,24 @@
 	#hint.visible{
 		display: block;
 	}
+	
+	#startButton{
+		display: none;
+	}
+	
+	#startButton.visible{
+		display: block;
+	}
 </style>
 </head>
 
 <body>
 <div id="centerDiv">
 	<video controls id="introVideo">
-		<source src="./intro.mp4" type="video/mp4">
+		<source src="./intro.mp4" type="video/mp4" autoplay>
 		Your browser does not support the video tag.
 	</video>
-	<div id="startButton">
+	<div id="startButton" class="visible">
 		<p>Nechť hra započne! Pusťte si video!</p>
 	</div>
 	<div id="hint">
@@ -63,6 +71,7 @@
    document.getElementById('startButton').addEventListener('click',startClicked,false);
     function startClicked(e) {
        document.getElementById('introVideo').classList.add("visible");
+	    document.getElementById('startButton').classList.remove("visible");
     }	
 </script>
 
