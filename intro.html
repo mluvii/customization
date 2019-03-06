@@ -13,7 +13,7 @@
 
 <body>
 <div id="centerDiv">
-	<video controls>
+	<video controls id="introVideo">
 		<source src="./intro.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
@@ -33,6 +33,11 @@
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 })();
+
+  document.getElementById('introVideo').addEventListener('ended',myHandler,false);
+    function myHandler(e) {
+        console.log("Video ended");
+    }
 </script>
 
 </body>
