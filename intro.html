@@ -5,8 +5,18 @@
 	#centerDiv{
 		text-align: center;
 		width: 90%;
-		margin-left: auto;
-		margin-right: auto;
+		align-left: auto;
+		align-right: auto;
+	}
+	
+	#introVideo{
+		width: 80%;
+		display: none;
+	}
+	
+	#introVideo.visible{
+		width: 80%;
+		display: none;
 	}
 </style>
 </head>
@@ -17,7 +27,7 @@
 		<source src="./intro.mp4" type="video/mp4">
 		Your browser does not support the video tag.
 	</video>
-	<div>
+	<div id="startButton">
 		<p>Nechť hra započne! Pusťte si video!</p>
 	</div>
 </div>
@@ -34,10 +44,15 @@
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 })();
 
-  document.getElementById('introVideo').addEventListener('ended',myHandler,false);
-    function myHandler(e) {
+  document.getElementById('introVideo').addEventListener('ended',videoEndedHandler,false);
+    function videoEndedHandler(e) {
         console.log("Video ended");
     }
+	
+   document.getElementById('startButton').addEventListener('click',startClicked,false);
+    function startClicked(e) {
+       document.getElementById('startButton').classList.add("visible");
+    }	
 </script>
 
 </body>
