@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+</head>
+    <body id="my_body">
+     <script type="text/javascript">
+        var body = document.getElementById('my_body');
+        body.onload = function(e) {
+          e.preventDefault();
+          window.parent.postMessage({
+                type: "ENQUEUE"
+            }, "*");
+        };
+     </script>
+
+</body>
+
+</html>
