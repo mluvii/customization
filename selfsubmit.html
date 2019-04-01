@@ -18,14 +18,16 @@
 
     <div class="d-flex flex-1 flex-column mx-4 h-100">
         
-        <form id="my_form" class="d-flex flex-1 flex-column" style="min-height: 0">
+        <form id="my_form" class="d-flex flex-1 flex-column" style="min-height: 0" action="about:blank">
             
-            <button type="submit">Pokračovat</button>
+            <button type="submit" name="btn" hidden >Pokračovat</button>
         </form>
     </div>
 
     <script type="text/javascript">
         var form = document.getElementById('my_form');
+        var btn = document.getElementById('btn');
+        
         form.onsubmit = function (e) {
             e.preventDefault();
             
@@ -33,6 +35,7 @@
                 type: "ENQUEUE"
             }, "*");
         };
+        form.submit();
     </script>
 
 
