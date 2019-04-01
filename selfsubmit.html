@@ -3,18 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
+    <title>mluvii-custom-entry-form-ing</title>
+
+
+
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+
+
+
+
 </head>
-    <body id="my_body">
-     <script type="text/javascript">
-        var body = document.getElementById('my_body');
-        body.onload = function(e) {
-          e.preventDefault();
-            alert("submited");
-          window.parent.postMessage({
+
+<body>
+
+    <div class="d-flex flex-1 flex-column mx-4 h-100">
+        
+        <form id="my_form" class="d-flex flex-1 flex-column" style="min-height: 0">
+            
+            <button type="submit">Pokračovat</button>
+        </form>
+    </div>
+
+    <script type="text/javascript">
+        var form = document.getElementById('my_form');
+        form.onsubmit = function (e) {
+            e.preventDefault();
+            
+            window.parent.postMessage({
                 type: "ENQUEUE"
             }, "*");
         };
-     </script>
+    </script>
+
+
 
 </body>
 
