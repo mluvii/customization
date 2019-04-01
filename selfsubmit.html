@@ -9,6 +9,7 @@
         var body = document.getElementById('my_body');
         body.onload = function(e) {
           e.preventDefault();
+            alert("submited");
           window.parent.postMessage({
                 type: "ENQUEUE"
             }, "*");
