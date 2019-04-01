@@ -5,13 +5,6 @@
     <meta charset="UTF-8">
     <title>mluvii-custom-entry-form-ing</title>
 
-
-
-    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
-
-
-
-
 </head>
 
 <body>
@@ -25,17 +18,18 @@
     </div>
 
     <script type="text/javascript">
-        var form = document.getElementById('my_form');
+   /*     var form = document.getElementById('my_form');
         var btn = document.getElementById('btn');
         
         form.onsubmit = function (e) {
             e.preventDefault();
-            
+      */      
             window.parent.postMessage({
                 type: "ENQUEUE"
             }, "*");
-        };
+ /*       };
         form.submit();
+        */
     </script>
 
 
