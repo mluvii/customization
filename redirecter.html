@@ -24,9 +24,34 @@
             display: block;
         }
 	    
+	  #chromeText {
+            display: none;
+        }
+	    
+	#chromeText.visible {
+            display: block;
+        }
+	    
 	#spinner.invisible{
 	    display: none;	
 	}
+	    
+	      #safariText {
+            display: none;
+        }
+	    
+	#safariText.visible {
+            display: block;
+        }
+	    
+    
+	#winChromeLink {
+            display: none;
+        }
+	    
+	#winChromeLink.visible {
+            display: block;
+        }
 	    
     </style>
 </head>
@@ -34,13 +59,20 @@
 	
 <p id="testingP">TESTING</p>	
 
-<div class="container"><span id="spinner" style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span> <a href="market://details?id=com.android.chrome" id="chromeLink">Download Google Chrome</a></div>
+<div class="container">
+	<span id="spinner" style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span>
+	<p id="chromeText">We can't guarantee you the best possible experience in this browser. Please use Google Chrome from link below.</p>
+	<a href="market://details?id=com.android.chrome" id="chromeLink">Download Google Chrome</a>
+	<p id="safariText">We can't guarantee you the best possible experience in this browser. Please use Safari instead.</p>
+	<a href="https://www.google.com/chrome/" id="winChromeLink">Download Google Chrome</a>
+	
+</div>
 <script type="text/javascript">
 var firstUsage = true;
 	
 	
 function startWidget(){
-	 var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+  var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
   scr.src = '//appchina.mluvii.com/widget/OOWidget.js';
   scr.$owidgetOnLoad = function (owidget) {
     if (!owidget.isSupported) { return; }
@@ -83,26 +115,26 @@ function startWidget(){
 	var isSafari = navigator.browserSpecs.name == "Safari";
     if(isAndroid) {
   	if(isChrome){
-		document.getElementById("testingP").innerHTML = "CHROME ON ANDROID";
 		startWidget();
 	} else{
-		document.getElementById("testingP").innerHTML = "SOMETHING ON ANDROID";
 		document.getElementById("chromeLink").className = "visible";
+		document.getElementById("chromeText").className = "visible";
 		document.getElementById("spinner").className = "invisible";
 	}
     } else if(iOS){
 	 if(isSafari){
-		document.getElementById("testingP").innerHTML = "SAFARI ON IOS";
 		startWidget();
 	} else{
-		document.getElementById("testingP").innerHTML = "SOMETHING ON IOS";
+		document.getElementById("safariText").className = "visible";
+		document.getElementById("spinner").className = "invisible";
 	}   
     } else { 
 	 if(isChrome){
-		document.getElementById("testingP").innerHTML = "CHROME ON SOMETHING";
 		startWidget();
 	} else{
-		document.getElementById("testingP").innerHTML = "SOMETHING ON SOMETHING";
+		document.getElementById("winChromeLink").className = "visible";
+		document.getElementById("chromeText").className = "visible";
+		document.getElementById("spinner").className = "invisible";
 	}
     }
 })();
