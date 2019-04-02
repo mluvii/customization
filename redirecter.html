@@ -65,7 +65,7 @@ function startWidget(){
 	console.log(navigator.browserSpecs);
     var ua = navigator.userAgent.toLowerCase();
     var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
-    var isChrome = navigator.browserSpecs[0] == "Chrome";
+    var isChrome = navigator.browserSpecs.name == "Chrome";
     if(isAndroid) {
   	if(isChrome){
 		document.getElementById("testingP").innerHTML = "CHROME ON ANDROID";
