@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="@ViewBag.PageLanguage">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        html, body, .container {
+            height: 100%;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span></div>
+<script type="text/javascript">
+(function () {
+  var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+  scr.src = '//appchina.mluvii.com/widget/OOWidget.js';
+  scr.$owidgetOnLoad = function (owidget) {
+    if (!owidget.isSupported) { return; }
+    owidget.init("98edd461-b739-4142-a7a8-c7f891cdfb74", "POC");
+    owidget.connectToServer();
+	owidget.openChat(true);
+  };
+  var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+})();
+
+    function openChat() {
+        if (!$owidget) {
+            return false;
+        }
+
+        $owidget.openAppOnCurrentPage('chat');
+        return true;
+    }
+</script>
+</body>
+</html>
