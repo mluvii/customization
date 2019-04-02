@@ -28,12 +28,13 @@ var firstUsage = false;
     if (!owidget.isSupported) { return; }
     owidget.init("98edd461-b739-4142-a7a8-c7f891cdfb74", "POC");
     owidget.connectToServer();
-	owidget.setStatusUpdateCallback(funciton(state){
+	owidget.setStatusUpdateCallback(function(state){
 		if(!firstUsage){
 			console.log("Good call");
 			owidget.openChat(true);
 			firstUsage = true;
 		}
+	});
 	});
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
