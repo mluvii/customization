@@ -30,6 +30,7 @@ var firstUsage = false;
     owidget.connectToServer();
 	owidget.setStatusUpdateCallback(funciton(state){
 		if(!firstUsage){
+			console.log("Good call");
 			owidget.openChat(true);
 			firstUsage = true;
 		}
