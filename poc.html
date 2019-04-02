@@ -20,6 +20,7 @@
 <body>
 <div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span></div>
 <script type="text/javascript">
+var firstUsage = false;
 (function () {
   var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
   scr.src = '//appchina.mluvii.com/widget/OOWidget.js';
@@ -27,7 +28,11 @@
     if (!owidget.isSupported) { return; }
     owidget.init("98edd461-b739-4142-a7a8-c7f891cdfb74", "POC");
     owidget.connectToServer();
-	owidget.openChat(true);
+	owidget.setStatusUpdateCallback(funciton(state){
+		if(firstUsage){
+			owidget.openChat(true);
+		}
+	});
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 })();
@@ -36,7 +41,7 @@
         if (!$owidget) {
             return false;
         }
-
+		
         $owidget.openAppOnCurrentPage('chat');
         return true;
     }
