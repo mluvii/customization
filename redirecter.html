@@ -52,6 +52,14 @@
 	#winChromeLink.visible {
             display: block;
         }
+	  
+	    #chromeDiv {
+            display: none;
+        }
+	    
+	#chromeDiv.visible {
+            display: block;
+        }
 	    
     </style>
 </head>
@@ -61,10 +69,13 @@
 
 <div class="container">
 	<span id="spinner" style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span>
+	<div id="chromeDiv">
 	<p id="chromeText">We can't guarantee you the best possible experience in this browser. Please use Google Chrome from link below.<br/></p>
 	<a href="market://details?id=com.android.chrome" id="chromeLink">Download Google Chrome</a>
-	<p id="safariText">We can't guarantee you the best possible experience in this browser. Please use Safari instead.</p>
 	<a href="https://www.google.com/chrome/" id="winChromeLink">Download Google Chrome</a>
+	</div>
+	<p id="safariText">We can't guarantee you the best possible experience in this browser. Please use Safari instead.</p>
+	
 	
 </div>
 <script type="text/javascript">
@@ -119,6 +130,7 @@ function startWidget(){
 	} else{
 		document.getElementById("chromeLink").className = "visible";
 		document.getElementById("chromeText").className = "visible";
+		document.getElementById("chromeDiv").className = "visible";
 		document.getElementById("spinner").className = "invisible";
 	}
     } else if(iOS){
@@ -134,6 +146,7 @@ function startWidget(){
 	} else{
 		document.getElementById("winChromeLink").className = "visible";
 		document.getElementById("chromeText").className = "visible";
+		document.getElementById("chromeDiv").className = "visible";
 		document.getElementById("spinner").className = "invisible";
 	}
     }
