@@ -23,13 +23,18 @@
 	#chromeLink.visible {
             display: block;
         }
+	    
+	#spinner.invisible{
+	    display: none;	
+	}
+	    
     </style>
 </head>
 <body>
 	
 <p id="testingP">TESTING</p>	
 
-<div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span> <a href="market://details?id=com.android.chrome" id="chromeLink">Download Google Chrome</a></div>
+<div class="container"><span id="spinner" style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span> <a href="market://details?id=com.android.chrome" id="chromeLink">Download Google Chrome</a></div>
 <script type="text/javascript">
 var firstUsage = true;
 	
@@ -83,6 +88,7 @@ function startWidget(){
 	} else{
 		document.getElementById("testingP").innerHTML = "SOMETHING ON ANDROID";
 		document.getElementById("chromeLink").className = "visible";
+		document.getElementById("spinner").className = "invisible";
 	}
     } else if(iOS){
 	 if(isSafari){
