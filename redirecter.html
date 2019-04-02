@@ -42,7 +42,11 @@
 		document.getElementById("testingP").innerHTML = "SOMETHING ON IOS";
 	}   
     } else { 
-	   document.getElementById("testingP").innerHTML = "SOMETHING ON SOMETHING"; 
+	 if(isChrome){
+		document.getElementById("testingP").innerHTML = "CHROME ON SOMETHING";
+	} else{
+		document.getElementById("testingP").innerHTML = "SOMETHING ON SOMETHING";
+	}
     }
 })();
 
