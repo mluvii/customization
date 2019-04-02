@@ -15,13 +15,21 @@
             align-items: center;
             justify-content: center;
         }
+	    
+	  #chromeLink {
+            display: none;
+        }
+	    
+	#chromeLink.visible {
+            display: block;
+        }
     </style>
 </head>
 <body>
 	
 <p id="testingP">TESTING</p>	
-<a href="market://details?id=com.android.chrome">Download Google Chrome</a>
-<div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span></div>
+
+<div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span> <a href="market://details?id=com.android.chrome" id="chromeLink">Download Google Chrome</a></div>
 <script type="text/javascript">
 var firstUsage = true;
 	
@@ -74,6 +82,7 @@ function startWidget(){
 		startWidget();
 	} else{
 		document.getElementById("testingP").innerHTML = "SOMETHING ON ANDROID";
+		document.getElementById("chromeLink").className = "visible";
 	}
     } else if(iOS){
 	 if(isSafari){
