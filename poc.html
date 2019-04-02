@@ -29,7 +29,7 @@ var firstUsage = 0;
     owidget.init("98edd461-b739-4142-a7a8-c7f891cdfb74", "POC");
     owidget.connectToServer();
 	owidget.setStatusUpdateCallback(function(state){
-		if(!firstUsage == 3){
+		if(firstUsage == 3){
 			console.log("Good call");
 			owidget.openChat(true);
 			firstUsage = 4;
