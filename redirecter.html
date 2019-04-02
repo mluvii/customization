@@ -23,6 +23,24 @@
 <div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span></div>
 <script type="text/javascript">
 
+function startWidget(){
+	 var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+  scr.src = '//appchina.mluvii.com/widget/OOWidget.js';
+  scr.$owidgetOnLoad = function (owidget) {
+    if (!owidget.isSupported) { return; }
+    owidget.init("98edd461-b739-4142-a7a8-c7f891cdfb74", "POC");
+    owidget.connectToServer();
+	owidget.setStatusUpdateCallback(function(state){
+		if(firstUsage){
+			console.log("Good call");
+			owidget.openAppOnCurrentPage('av');
+			firstUsage = false;
+		} 
+	});
+	}
+  var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+}
+	
 (function () {
     var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
     var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
@@ -32,18 +50,21 @@
     if(isAndroid) {
   	if(isChrome){
 		document.getElementById("testingP").innerHTML = "CHROME ON ANDROID";
+		startWidget();
 	} else{
 		document.getElementById("testingP").innerHTML = "SOMETHING ON ANDROID";
 	}
     } else if(iOS){
 	 if(isSafari){
 		document.getElementById("testingP").innerHTML = "SAFARI ON IOS";
+		startWidget();
 	} else{
 		document.getElementById("testingP").innerHTML = "SOMETHING ON IOS";
 	}   
     } else { 
 	 if(isChrome){
 		document.getElementById("testingP").innerHTML = "CHROME ON SOMETHING";
+		startWidget();
 	} else{
 		document.getElementById("testingP").innerHTML = "SOMETHING ON SOMETHING";
 	}
