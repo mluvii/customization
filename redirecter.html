@@ -19,14 +19,29 @@
 </head>
 <body>
 <div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span></div>
+<p id="testingP">TESTING</p>	
 <script type="text/javascript">
 
 (function () {
     var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
- 		if(iOS){
-		   location.replace("https://mluvii.github.io/customization/poc.html");
-		} else {
-      window.open(googlechrome://navigate?url=https://mluvii.github.io/customization/poc.html");
+    var isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && safari.pushNotification));
+    var isChrome = !!window.chrome && (!!window.chrome.webstore || !!window.chrome.runtime);
+    var ua = navigator.userAgent.toLowerCase();
+    var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
+    if(isAndroid) {
+  	if(isChrome){
+		document.getElementById("testingP").innerHTML = "CHROME ON ANDROID";
+	} else{
+		document.getElementById("testingP").innerHTML = "SOMETHING ON ANDROID";
+	}
+    } else if(iOS){
+	 if(isSafari){
+		document.getElementById("testingP").innerHTML = "SAFARI ON IOS";
+	} else{
+		document.getElementById("testingP").innerHTML = "SOMETHING ON IOS";
+	}   
+    } else { 
+	   document.getElementById("testingP").innerHTML = "SOMETHING ON SOMETHING"; 
     }
 })();
 
