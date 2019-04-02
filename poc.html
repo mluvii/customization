@@ -31,7 +31,8 @@ var firstUsage = true;
 	owidget.setStatusUpdateCallback(function(state){
 		if(firstUsage){
 			console.log("Good call");
-			owidget.openAppOnCurrentPage('av');
+			window.open("googlechrome://seznam.cz");
+			//owidget.openAppOnCurrentPage('av');
 			firstUsage = false;
 		} 
 	});
