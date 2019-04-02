@@ -66,6 +66,7 @@ function startWidget(){
     var ua = navigator.userAgent.toLowerCase();
     var isAndroid = ua.indexOf("android") > -1; //&& ua.indexOf("mobile");
     var isChrome = navigator.browserSpecs.name == "Chrome";
+	var isSafari = navigator.browserSpecs.name == "Safari";
     if(isAndroid) {
   	if(isChrome){
 		document.getElementById("testingP").innerHTML = "CHROME ON ANDROID";
