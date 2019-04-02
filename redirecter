@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="@ViewBag.PageLanguage">
+<head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <style>
+        html, body, .container {
+            height: 100%;
+            margin: 0;
+        }
+        .container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    </style>
+</head>
+<body>
+<div class="container"><span style="color: #868e96;" class="fa fa-spinner fa-spin fa-5x"></span></div>
+<script type="text/javascript">
+
+(function () {
+    var iOS = !!navigator.platform && /iPad|iPhone|iPod/.test(navigator.platform);
+ 		if(iOS){
+		   location.replace("https://mluvii.github.io/customization/poc.html");
+		} else {
+      location.replace("googlechrome://mluvii.github.io/customization/poc.html");
+    }
+})();
+
+</script>
+</body>
+</html>
