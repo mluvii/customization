@@ -1,0 +1,131 @@
+
+<!-- volba_v_rozcestniku -->
+
+<!DOCTYPE html>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+
+    <title>Chatbot</title>
+
+    <link
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <style>
+      body {
+        background-color: white;
+      }
+
+      html, body {
+	    height: 100%;
+	    display: flex; flex-direction: column; 
+   	}
+ 
+      p {
+        color: white;
+        padding: 1rem;
+      }
+
+      .vertical-align-middle {
+        display: flex;
+        width: 100%;
+        height: 100%;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #rozcestnik {
+        width: 100%;
+        max-height: 100%;
+        overflow: auto;
+      }
+
+      .form-control,
+      .btn {
+        border-radius: 8px;
+      }
+
+      .btn {
+        background-color: rgb(51, 153, 204); /* Barva talčítka */
+        color: white; /* Barva textu tlačítka */
+      }
+
+      #buttons {
+        padding: 2rem;
+        /*position: absolute;
+        bottom: 0px;*/
+        width: 100%;
+      }
+    </style>
+
+    <script type="text/javascript">
+      window.onload = function() {
+        var form = document.getElementById("rozcestnik");
+        
+        var operator = document.getElementById("operator");
+        operator.onclick = function(e) {
+          window.parent.postMessage(
+            {
+              type: "ADD_CUSTOM_DATA",
+              name: "volba_v_rozcestniku",
+              value: "operator"
+            },
+            "*"
+          );
+          window.parent.postMessage(
+            {
+              type: "ENQUEUE"
+            },
+            "*"
+          );
+
+          return false;
+        };
+
+        var chatbot = document.getElementById("chatbot");
+        chatbot.onclick = function(e) {
+          window.parent.postMessage(
+            {
+              type: "ADD_CUSTOM_DATA",
+              name: "volba_v_rozcestniku",
+              value: "chatbot"
+            },
+            "*"
+          );
+          window.parent.postMessage(
+            {
+              type: "ENQUEUE"
+            },
+            "*"
+          );
+
+          return false;
+        };
+      };
+    </script>
+  </head>
+
+  <body>
+      
+	        <div style="flex: 1; width: 100%; background-size: cover;     background-position: center center;
+ background-image: url('https://feedboto2zapojenio2t4779.blob.core.windows.net/public/chatbot_o2_happy.png');">
+	        </div>
+	        <div style="height: auto; color: #142466; padding: 9%; padding-bottom: 1%;">
+	        	<!-- Hi, let me help you choose the right product to fit your needs or chat with our coffee expert! -->
+            Dobrý den, jsem O2 GuruBot 🤖. Pomůžu vám se zapojením O2 TV 📺. Zlobí vás set-top box? I s tím si poradím! 💪
+	        </div>
+	        <div id="buttons" style="height: auto;">
+	        	<form id="rozcestnik">
+	          <button id="chatbot" class="btn btn-block">Pojďme na to</button>
+	           <button id="operator" class="btn btn-block">Operátor</button>
+	        </div>
+	        </form>
+    	
+      
+    
+  </body>
+</html>
