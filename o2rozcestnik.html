@@ -118,10 +118,8 @@
         };
 		
 		window.onmessage = (event) =>{
-		console.log("event: ",event);
-			if(event.type == 'mluviiLanguage'){
-			
-				console.log("Language is: ", event);
+			if(event.data.type == 'mluviiLanguage'){
+				console.log("Language is: ", event.data.lang);
 			}
 		};
 		
