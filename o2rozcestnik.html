@@ -116,7 +116,25 @@
 
           return false;
         };
+		
+		window.onmessage = (event) =>{
+		console.log("event: ",event);
+			if(event.type == 'mluviiLanguage'){
+			
+				console.log("Language is: ", event);
+			}
+		};
+		
+		window.parent.postMessage(
+            {
+              type: "GET_MLUVII_LANGUAGE"
+            },
+            "*"
+          );
+		
+		
       };
+	    
     </script>
   </head>
 
