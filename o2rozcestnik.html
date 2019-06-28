@@ -115,21 +115,7 @@
           );
 
           return false;
-        };
-		
-		window.onmessage = (event) =>{
-			if(event.data.type == 'mluviiLanguage'){
-				console.log("Language is: ", event.data.lang);
-			}
-		};
-		
-		window.parent.postMessage(
-            {
-              type: "GET_MLUVII_LANGUAGE"
-            },
-            "*"
-          );
-		
+        };		
 		
       };
 	    
