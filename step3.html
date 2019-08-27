@@ -1,0 +1,223 @@
+<html>
+<head>
+	<style type="text/css">
+		#background{
+			background: url('img/Step3.png');
+			width: 1920px;
+			height: 1080px;
+			background-repeat: no-repeat;
+			background-size: contain;
+		}
+		
+		body{
+		 margin: 0;
+		 font-size: 20px;
+		}
+		
+		::-webkit-scrollbar {
+			display: none;
+		}
+		
+		#profil{
+			width: 95px;
+			left: 490px;
+		}
+		
+		#udaje{
+			width: 105px;
+			left: 585px;		
+		}
+		
+		#datS{
+			width: 230px;
+			left: 690px;
+		}
+		
+		#kalendar{
+			width: 140px;
+			left: 920px;
+		}
+		
+		#dokumenty{
+			width: 160px;
+			left: 1060px;
+		}
+		
+		#podani{
+			width: 110px;
+			left: 1220px;
+		}
+		
+		.menu{
+			position: absolute;
+			height: 135px;
+			cursor: pointer;
+			top: 66px;
+		}
+		
+		.menu:hover .cara{
+			display: block;
+		}
+		
+		.cara{
+			position: absolute;
+			background-color: #fff;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 4px;
+			display: none;
+		}
+		
+		.cara.active{
+			display: block;
+		}
+		
+		#rejstrik{
+			top: 990px;
+			left: 480px;
+			width: 520px;
+			height: 100px;
+			position: absolute;
+			cursor: pointer;
+		}
+		
+		#poslat{
+			width:  269px;
+			height: 50px;
+			top: 1003px;
+			right: 34px;
+			position: absolute;
+			cursor: pointer;
+		}
+		
+		#text{
+			width:  740px;
+			height: 750px;
+			top: 240px;
+			right: 64px;
+			position: absolute;
+			cursor: pointer;
+			overflow-y: scroll;
+		}
+		
+		.select{
+			-moz-appearance:none; /* Firefox */
+			-webkit-appearance:none; /* Safari and Chrome */
+			appearance:none;
+			cursor: pointer;
+			border-width: 1;
+			border-top: 0;
+			border-left: 0;
+			border-right: 0;
+			border-color: #000;
+			padding: 5px;
+			background: transparent;
+			width: 100%;
+		}
+		
+		.selectDiv{
+			width: 500px;
+			background-image: url("./img/arrow.png");
+			background-repeat: no-repeat;
+			background-position: center right;
+		}
+		
+	</style>
+	
+	
+</head>
+<body>
+<div id="background">
+</div>
+<div id="profil" class="menu"><div class="cara"></div></div>
+<div id="udaje" class="menu"><div class="cara"></div></div>
+<div id="datS" class="menu"><div class="cara"></div></div>
+<div id="kalendar" class="menu"><div class="cara"></div></div>
+<div id="dokumenty" class="menu"><div class="cara"></div></div>
+<div id="podani" class="menu"><div class="cara active"></div></div>
+
+<div id="rejstrik" ></div>
+<div id="poslat" ></div>
+
+<div id="text">
+<p>Formulář je přenesen ze služby CzechPOINT@home.</p>
+<p>1) JSTE STÁTNÍM PŘÍSLUŠNÍKEM JINÉHO ČLENSKÉHO STÁTU EVROPSKÉ UNIE?<br/>
+Pokud jste státní příslušník jiného členského státu EU, je na základě § 16g odst. 2 zákona č. 269/1994 Sb., o Rejstříku trestů, v platném znění, odeslána žádost o výpis z Rejstříku trestů České republiky a zároveň je i odeslána žádost o výpis z rejstříku trestů členského státu EU, jehož jste státním příslušníkem. V tomto případě musí Rejstřík trestů ČR provést tzv. dožádání do jiného členského státu EU. Lhůta pro zpracování takové odpovědi je max. 25 pracovních dnů.</p>
+<p>Země</p>
+<div class="selectDiv">
+<select  name="zeme" class="select" >
+<option value="vyb">Vyberte ze seznamu</option>
+ <option value="vyb">Belgické království</option>
+<option value="vyb">Bulharská republika</option>
+<option value="vyb">Česká republika</option>
+<option value="vyb">Dánské království</option>
+<option value="vyb">Estonská republika</option>
+<option value="vyb">Finská republika</option>
+<option value="vyb">Francouzská republika</option>
+<option value="vyb">Chorvatská republika</option>
+<option value="vyb">Irsko</option>
+<option value="vyb">Italská republika</option>
+<option value="vyb">Kyperská republika</option>
+<option value="vyb">Litevská republika</option>
+<option value="vyb">Lotyšská republika</option>
+<option value="vyb">Lucemburské velkovévodství</option>
+<option value="vyb">Maďarsko</option>
+<option value="vyb">Maltská republika</option>
+<option value="vyb">Spolková republika Německo</option>
+<option value="vyb">Nizozemsko</option>
+<option value="vyb">Polská republika</option>
+<option value="vyb">Portugalská republika</option>
+<option value="vyb">Rakouská republika</option>
+<option value="vyb">Rumunsko</option>
+<option value="vyb">Řecká republika</option>
+<option value="vyb">Slovenská republika</option>
+<option value="vyb">Slovinská republika</option>
+<option value="vyb">Španělské království</option>
+<option value="vyb">Švédské království</option>
+<option value="vyb">Spojené království Velké Británie a Severního Irska</option>
+</select>
+</div>
+<p>2) POTŘEBUJETE OBDRŽET VÝPIS Z REJSTŘÍKU TRESTŮ JINÉHO STÁTU EVROPSKÉ UNIE?<br/>
+Pokud máte nebo jste měli bydliště v jiném členském státě EU nebo jste byli státními občany jiného členského státu EU, můžete požádat o vydání výpisu evidence rejstříku trestů jiného členského státu EU. V tomto případe je lhůta pro odeslání výpisu max. 25 pracovních dní.</p>
+<p>3) POTŘEBUJETE VÝPIS Z REJSTŘÍKU TRESTŮ Z DŮVODU PRAVIDELNÉHO A PŘÍMÉHO KONTAKTU S DĚTMI?<br/>
+Jedná se o volitelnou součást žádosti. Pokud potřebujete výpis z Rejstříku trestů k prokázání bezúhonnosti za účelem výkonu profesní nebo organizované dobrovolné činnosti, která zahrnuje přímý a pravidelný kontakt s dětmi, pak vyberte danou možnost:</p>
+<p>Typ výpisu</p>
+<div class="selectDiv">
+<select  name="bez"class="select">
+<option value="vyb">Vyberte ze seznamu</option>
+<option value="vyb">Bezúhonnost</option>
+<option value="vyb">Bezúhonnost za účelem výkonu profestní nebo organizované dobrovolné činnosti, která zahrnuje přímý a pravidelný kontakt s dětmi</option>
+</select>
+</div>
+<p></p>
+<p>Žádost může elektronicky provádět pouze oprávněná osoba, na kterou je žádost podána. Identifikace osoby proběhne z datové schránky odesílatele datové zprávy. Proto není nutné uvádět identifikační údaje Vaší osoby a můžete pokračovat k odeslání žádosti.</p>
+<p>Po vyplnění a odeslání formuláře Vám bude výpis zaslán do datové schránky.</p>
+
+<p>Datová schránka pro odeslání</p>
+<div class="selectDiv">
+<select  name="jmeno" class="select">
+<option value="vyb">Jan HOŘKÝ (a5edrfo | FO)</option>
+</select>
+</div>
+<p></p>
+
+<p></p>
+</div>
+
+<script type="text/javascript">
+		(function(){
+			let podani = document.getElementById("profil");
+			podani.addEventListener("click", function(){
+				window.location = "./Step1.html";
+			});
+			
+			let rejstrik = document.getElementById("rejstrik");
+			rejstrik.addEventListener("click", function(){
+				window.location = "./Step3.html";
+			});
+		}
+		)();
+	</script>
+</body>
+</html>
