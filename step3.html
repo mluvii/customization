@@ -99,6 +99,7 @@
 			position: absolute;
 			cursor: pointer;
 			overflow-y: scroll;
+			color: #888;
 		}
 		
 		.select{
@@ -110,10 +111,11 @@
 			border-top: 0;
 			border-left: 0;
 			border-right: 0;
-			border-color: #000;
+			border-color: #888;
 			padding: 5px;
 			background: transparent;
 			width: 100%;
+			color: #888;
 		}
 		
 		.selectDiv{
@@ -121,6 +123,10 @@
 			background-image: url("./img/arrow.png");
 			background-repeat: no-repeat;
 			background-position: center right;
+		}
+		
+		.smallSelect{
+			width: 300px !important;
 		}
 		
 	</style>
@@ -195,8 +201,8 @@ Jedná se o volitelnou součást žádosti. Pokud potřebujete výpis z Rejstř�
 <p>Po vyplnění a odeslání formuláře Vám bude výpis zaslán do datové schránky.</p>
 
 <p>Datová schránka pro odeslání</p>
-<div class="selectDiv">
-<select  name="jmeno" class="select">
+<div class="selectDiv smallSelect">
+<select  name="jmeno" class="select ">
 <option value="vyb">Jan HOŘKÝ (a5edrfo | FO)</option>
 </select>
 </div>
