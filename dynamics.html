@@ -1,0 +1,15 @@
+<html>
+<head>
+</head>
+<body>
+ <script>
+        function ciLoadDone() {
+            console.log("CI Loaded");
+        }
+    </script>
+This is testing page where I test MS Dynamics CIF
+      
+<script type="text/javascript" src="https://mluvii.crm4.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" onload="ciLoadDone();" data-crmurl="@Context.Request.Query["base"]" data-cifid="CIFMainLibrary"></script> 
+
+</body>
+</html>
