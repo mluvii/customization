@@ -1,13 +1,29 @@
 <html>
 <head>
+ <style type="text/css">
+  #collapse{
+   background-color: #f00;
+  }
+  
+  
+  #open{
+   background-color: #0f0;
+   width: 20px;
+   height = 20px;
+  }
+  </style>
 </head>
 <body>
+ 
+ <div id="ci"><div>
+ <div id="collapse">\></div> 
+ <div id="open">\<</div> 
  <script>
         function ciLoadDone() {
-            console.log("CI Loaded");
+         console.log("CI Loaded");
+         document.getElementById("ci").innerHTML ="CI loaded";
         }
     </script>
-This is testing page where I test MS Dynamics CIF
       
 <script type="text/javascript" src="https://mluvii.crm4.dynamics.com/webresources/Widget/msdyn_ciLibrary.js" onload="ciLoadDone();" data-crmurl="@Context.Request.Query["base"]" data-cifid="CIFMainLibrary"></script> 
 
