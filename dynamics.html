@@ -51,8 +51,10 @@
            console.log("OpenCLicked");
            Microsoft.CIFramework.setMode(1).then(function(response){
            console.log("Open response: ", response); 
+            return Promise.resolve();
            }, function(error){
            console.log("Open Error: ", error); 
+            return Promise.resolve();
            });
          });
         
@@ -61,10 +63,19 @@
           console.log("Collapse CLicked");
            Microsoft.CIFramework.setMode(0).then(function(response){
            console.log("Collapse response: ", response); 
+            return Promise.resolve();
            }, function(error){
            console.log("Collapse Error: ", error); 
+            return Promise.resolve();
            });
          });
+        
+        handlerFunction = function(eventData) {
+console.log(eventData)
+return Promise.resolve();
+}
+
+Microsoft.CIFramework.addHandler("onmodechanged", handlerFunction);
         
         console.log("Listeners added");
        })();
