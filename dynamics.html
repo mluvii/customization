@@ -38,6 +38,11 @@
         function ciLoadDone() {
          console.log("CI Loaded");
          document.getElementById("ci").innerHTML ="CI loaded";
+         Microsoft.CIFramework.getEnvironment().then(function(response){
+           console.log("getEnvironment response: ", response); 
+           }, function(error){
+           console.log("getEnvironment Error: ", error); 
+           });
         }
   
        (function(){
