@@ -3,7 +3,7 @@
  <style type="text/css">
   #collapse{
    background-color: #f00;
-   width: 20px;
+   width: 100px;
    height: 20px;
    position: absolute;
    top: 0;
@@ -13,7 +13,7 @@
   
   #open{
    background-color: #0f0;
-   width: 20px;
+   width: 100px;
    height: 20px;
    position: absolute;
    top: 20px;
@@ -41,13 +41,17 @@
        (function(){
          let open = document.getElementById("open");
          open.addEventListener("click", function(){
+           console.log("OpenCLicked");
            Microsoft.CIFramework.setMode(1);
          });
         
         let collapse = document.getElementById("collapse");
          open.addEventListener("click", function(){
+          console.log("Collapse CLicked");
            Microsoft.CIFramework.setMode(0);
          });
+        
+        console.log("Listeners added");
        })();
     </script>
       
