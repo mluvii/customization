@@ -42,13 +42,21 @@
          let open = document.getElementById("open");
          open.addEventListener("click", function(){
            console.log("OpenCLicked");
-           Microsoft.CIFramework.setMode(1);
+           Microsoft.CIFramework.setMode(1).then(function(response){
+           console.log("Open response: ", response); 
+           }, function(error){
+           console.log("Open Error: ", error); 
+           });
          });
         
         let collapse = document.getElementById("collapse");
          collapse.addEventListener("click", function(){
           console.log("Collapse CLicked");
-           Microsoft.CIFramework.setMode(0);
+           Microsoft.CIFramework.setMode(0).then(function(response){
+           console.log("Collapse response: ", response); 
+           }, function(error){
+           console.log("Collapse Error: ", error); 
+           });
          });
         
         console.log("Listeners added");
