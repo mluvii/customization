@@ -1,0 +1,25 @@
+<form id="connect-form" target="_blank" method="get" action="https://businesscard.example.com/redirect/connect">
+
+    <!-- THE REDIRECT ID GOES HERE -->
+    <input type="hidden" name="redirectId" value="ac69734c-9d5f-433d-a975-1555fed86283">
+
+    <!-- THIS IS A SECTION WHERE USER PICKS AVAILABLE BANK -->
+    <div id="picker-wrapper">
+        <div>
+            <select id="picker" name='bic'>
+            </select>
+        </div>
+        <input type="submit" value="Connect a bank"/>
+    </div>
+
+    <!-- THIS IS A SECTION WHERE USER SEES CONNECTED BANKS -->
+    <div id="result-wrapper">
+        <h3>Connected banks</h3>
+        <div id="result">
+        </div>
+        <a href="/my/page/that/shows/businesscard/example">
+            Show page with the bank business card
+        </a>
+    </div>
+
+</form>
