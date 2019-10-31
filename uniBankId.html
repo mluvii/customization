@@ -35,7 +35,7 @@
     var baseUrl = "https://bank-business-card.herokuapp.com/";
 
 function refreshForm() {
-    $.getJSON(baseUrl + "api/account/list", null, function (data) {
+    $.getJSON(baseUrl + "api/businesscard/banks?sessionId=8526b1d6-777c-44e1-842a-0ad6b5f07e85", null, function (data) {
 
         // Fill in the connected banks (with "Remove" buttons)
         var banks = data.banks;
