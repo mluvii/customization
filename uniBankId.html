@@ -2,7 +2,7 @@
     <head>
     </head>
     <body>
-    <form id="connect-form" target="_blank" method="get" action="https://businesscard.example.com/redirect/connect">
+    <form id="connect-form" target="_blank" method="get" action="https://bank-business-card.herokuapp.com/redirect/connect">
 
     <!-- THE REDIRECT ID GOES HERE -->
     <input type="hidden" name="redirectId" value="ac69734c-9d5f-433d-a975-1555fed86283">
@@ -31,7 +31,7 @@
 
 <script type="text/javascript">
     (function(){
-    var baseUrl = "https://my.example.com/service/";
+    var baseUrl = "https://bank-business-card.herokuapp.com/service/";
 
 function refreshForm() {
     $.getJSON(baseUrl + "api/account/list", null, function (data) {
