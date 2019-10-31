@@ -1,4 +1,8 @@
-<form id="connect-form" target="_blank" method="get" action="https://businesscard.example.com/redirect/connect">
+<html>
+    <head>
+    </head>
+    <body>
+    <form id="connect-form" target="_blank" method="get" action="https://businesscard.example.com/redirect/connect">
 
     <!-- THE REDIRECT ID GOES HERE -->
     <input type="hidden" name="redirectId" value="ac69734c-9d5f-433d-a975-1555fed86283">
@@ -23,3 +27,47 @@
     </div>
 
 </form>
+
+
+<script type="text/javascript">
+    (function(){
+    var baseUrl = "https://my.example.com/service/";
+
+function refreshForm() {
+    $.getJSON(baseUrl + "api/account/list", null, function (data) {
+
+        // Fill in the connected banks (with "Remove" buttons)
+        var banks = data.banks;
+        $("#result").html("");
+        for (var i = 0; i < banks.length; i++) {
+            var bank = banks[i];
+            $("#result").append(
+                "<p>"
+                + bank.name
+                + " - <a href='#' class='deleteAccount' data-bic='"
+                + bank.bic
+                + ">Remove</a></p>"
+            );
+        }
+
+        // Fill in the available bank options
+        var availableBanks = data.availableBanks;
+        $("#picker").html("");
+        for (var i = 0; i < availableBanks.length; i++) {
+            var bank = availableBanks[i];
+            $("#picker").append("<option value='" + bank.bic + "'>" + bank.name + "</option>");
+        }
+    });
+}
+
+$(document).ready(function () {
+
+    refreshForm();
+
+    // MORE CODE HERE ...
+
+});
+    })();
+</script>
+        </body>
+    </html>
