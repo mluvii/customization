@@ -1,0 +1,45 @@
+<html>
+<head>
+</head>
+<body>
+<script type="text/javascript">
+let hiddenWidget = null;
+(function () {
+var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+scr.$owidgetOnLoad = function (owidget) {
+if (!owidget.isSupported) { return; }
+owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "NewChat");
+owidget.connectToServer();
+owidget.setAppEventCallback(function(event){
+console.log("Event: ",event.type);
+if(event.type == "chatWindowOpen"){
+console.log("Event chat window opened found");
+hiddenWidget.addCustomData("chatIsOpened","1");
+}
+});
+};
+var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+})();
+
+ 
+
+2)
+
+
+(function () {
+var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+scr.$owidgetOnLoad = function (owidget) {
+if (!owidget.isSupported) { return; }
+owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "Ceniky");
+owidget.connectToServer();
+hiddenWidget = owidget;
+hiddenWidget.addCustomData("chatIsOpened","0");
+};
+var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+
+})();
+</script>  
+</body>
+</html>
