@@ -3,17 +3,19 @@
   <style type="text/css">
     #runNewChat{
       position: fixed;
-      right: 0;
+      right: 10px;
       top: 200px;
       color: #fff;
       background-color: #f00;
+      padding: 10px;
     }
   </style>  
 </head>
 <body>
-  
+<div id="runNewChat">Open new Chat</div>  
 <script type="text/javascript">
 let hiddenWidget = null;
+let newChatWidget = null;
 (function () {
 var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
 scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
@@ -21,6 +23,7 @@ scr.$owidgetOnLoad = function (owidget) {
 if (!owidget.isSupported) { return; }
 owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "NewChat");
 owidget.connectToServer();
+newChatWidget = owidget;
 owidget.setAppEventCallback(function(event){
 console.log("Event: ",event.type);
 if(event.type == "chatWindowOpen"){
@@ -45,7 +48,13 @@ hiddenWidget.addCustomData("chatIsOpened","0");
 var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 
 })();
+  
+(function () {
+  document.getElementById("runNewChat").addEventListener(function(){
+    newChatWidget.openChat();
+  });
+})();
 </script>  
-<div id="runNewChat">Open new Chat</div>  
+
 </body>
 </html>
