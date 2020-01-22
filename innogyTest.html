@@ -13,10 +13,19 @@
   </style>  
 </head>
 <body>
+<div>
+  <p>1. V mluvii se nastaví proměnná chatIsOpened (Nastavení -> Aplikace -> Proměnné -> Přidat)</p>
+  <p>2. Vytvoří se pravidlo pro widget s jednou akcí na zobrazení pozvánky, která má 2 podmínky.<br/>
+     - Vlastní proměnná - chatIsOpened - nerovná se - 1
+     - Čas na stránce - větší nebo rovno - 30    
+  </p>
+  <p>3. Ve widgetu se spojí pravidlo vytvořené v bodu 2 s widgetem</p>
+</div>  
 <div id="runNewChat">Open new Chat</div>  
 <script type="text/javascript">
 let hiddenWidget = null;
 let newChatWidget = null;
+let isCenikyChatOpened = false;
 (function () {
 var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
 scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
@@ -43,16 +52,26 @@ scr.$owidgetOnLoad = function (owidget) {
 if (!owidget.isSupported) { return; }
 owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "Ceniky");
 owidget.connectToServer();
+  
 hiddenWidget = owidget;
 hiddenWidget.addCustomData("chatIsOpened","0");
-};
+owidget.setAppEventCallback(function(event){
+  if(event.type == "chatWindowOpen"){
+    isCenikyChatOpened = true;
+  }
+  if(event.type == "chatWindowClosed"){
+    isCenikyChatOpened = false;
+  }
+});
 var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 
 })();
   
 (function () {
   document.getElementById("runNewChat").addEventListener("click",function(){
+    if(!isCenikyChatOpened){
     newChatWidget.openChat();
+    }
   });
 })();
 </script>  
