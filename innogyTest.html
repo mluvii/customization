@@ -8,6 +8,7 @@
       color: #fff;
       background-color: #f00;
       padding: 10px;
+      cursor: pointer;
     }
   </style>  
 </head>
@@ -50,7 +51,7 @@ var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefor
 })();
   
 (function () {
-  document.getElementById("runNewChat").addEventListener(function(){
+  document.getElementById("runNewChat").addEventListener("click",function(){
     newChatWidget.openChat();
   });
 })();
