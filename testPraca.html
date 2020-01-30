@@ -1,19 +1,38 @@
 <html>
 <head>
+  <style>
+    .btn{
+      color: #fff;
+      background-color: #f00;
+      margin: 5px;
+      padding: 5px;
+    }
+  </style>
 </head>
 <body>
 <div>Test praca za rogiem</div>
+<div id="show" class="btn">Click to show widget</div>
+<div id="hide" class="btn">Click to hide widget</div>
 <script type="text/javascript">
 (function () {
   var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
   scr.src = '//app.mluvii.com/widget/OOWidget.js';
   scr.$owidgetOnLoad = function (owidget) {
     if (!owidget.isSupported) { return; }
-    owidget.init("295b1064-cf5b-4a5d-9e05-e7a74f86ae5e", "testSDK");
+    owidget.init("15d094c2-c24a-7199-1808-5520be297730", "Pracezarogiem");
     owidget.connectToServer();
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 })();
+(function () {  
+  document.getElementById("show").addEventListener("click",function(){
+    $owidget.addCustomData("chatVisibility","1");
+  });
+  document.getElementById("hide").addEventListener("click",function(){
+    $owidget.removeCustomData("chatVisibility");
+  });
+  
+})();  
 </script>
 </body>
 </html>
