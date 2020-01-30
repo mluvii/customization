@@ -21,6 +21,7 @@
     if (!owidget.isSupported) { return; }
     owidget.init("15d094c2-c24a-7199-1808-5520be297730", "Pracezarogiem");
     owidget.connectToServer();
+    owidget.addCustomData("chatVisibility","0");
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 })();
@@ -29,7 +30,7 @@
     $owidget.addCustomData("chatVisibility","1");
   });
   document.getElementById("hide").addEventListener("click",function(){
-    $owidget.removeCustomData("chatVisibility");
+      $owidget.addCustomData("chatVisibility","0");
   });
   
 })();  
