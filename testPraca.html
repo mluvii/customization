@@ -27,9 +27,11 @@
 })();
 (function () {  
   document.getElementById("show").addEventListener("click",function(){
+    console.log("Chat visible");
     $owidget.addCustomData("chatVisibility","1");
   });
   document.getElementById("hide").addEventListener("click",function(){
+      console.log("Chat invisible");
       $owidget.addCustomData("chatVisibility","0");
   });
   
