@@ -13,6 +13,7 @@
     owidget.connectToServer();
     owidget.setConnectionUpdateCallback(function(event){
       console.log("Event: ",event);
+      owidget.hideWidget();
     });
     owidget.hideWidget();
   };
