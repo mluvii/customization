@@ -1,0 +1,86 @@
+<html>
+<head>
+  <style type="text/css">
+    #runNewChat{
+      position: fixed;
+      right: 10px;
+      top: 200px;
+      color: #fff;
+      background-color: #f00;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>  
+</head>
+<body>
+<div>
+  <p>1. V mluvii se nastaví proměnná chatIsOpened (Nastavení -> Aplikace -> Proměnné -> Přidat)</p>
+  <p>2. Vytvoří se pravidlo pro widget s jednou akcí na zobrazení pozvánky, která má 2 podmínky.<br/>
+     - Vlastní proměnná - chatIsOpened - nerovná se - 1<br/>
+     - Čas na stránce - větší nebo rovno - 30    
+  </p>
+  <p>3. Ve widgetu se spojí pravidlo vytvořené v bodu 2 s widgetem</p>
+  <p>V kódu na této jsou nastavené app event callbacky, které řeší to, aby se widgety nepřekrývaly. <br/>
+   V prvním widgetu(New Chat - řádek 34 až 51) se nastavuje proměnná chatIsOpened na 1 ve chvíli, kdy klient otevře chat sám od sebe, aby na něj nevyskakovalo okno s pozvánkou.<br/>
+   V druhém widgetu(Ceniky - řádek 53 až 74) se nastavuje lokální proměnná podle toho, jestli je otevřené okno chatu tohoto widgetu, aby nešel v tu chvíli otevřít widget NewChat a překrýt již otevřené okno<br/>
+   Skript na řádkách 77 až 83 se kontroluje stav otevření widgetu Ceniky a případně otevírá widget NewChat     
+  </p>
+</div>  
+<div id="runNewChat">Open new Chat</div>  
+<script type="text/javascript">
+let hiddenWidget = null;
+let newChatWidget = null;
+let isCenikyChatOpened = false;
+(function () {
+var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+scr.$owidgetOnLoad = function (owidget) {
+if (!owidget.isSupported) { return; }
+owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "NewChat");
+owidget.connectToServer();
+newChatWidget = owidget;
+owidget.setAppEventCallback(function(event){
+console.log("Event: ",event.type);
+if(event.type == "chatWindowOpen"){
+console.log("Event chat window opened found");
+hiddenWidget.addCustomData("chatIsOpened","1");
+}
+});
+};
+var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+})();
+
+(function () {
+var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+scr.$owidgetOnLoad = function (owidget) {
+if (!owidget.isSupported) { return; }
+owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "Ceniky");
+owidget.connectToServer();
+  
+hiddenWidget = owidget;
+hiddenWidget.addCustomData("chatIsOpened","0");
+owidget.setAppEventCallback(function(event){
+  if(event.type == "chatWindowOpen"){
+    isCenikyChatOpened = true;
+  }
+  if(event.type == "chatWindowClosed"){
+    isCenikyChatOpened = false;
+  }
+});
+};
+var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+
+})();
+  
+(function () {
+  document.getElementById("runNewChat").addEventListener("click",function(){
+    if(!isCenikyChatOpened){
+    newChatWidget.openChat();
+    }
+  });
+})();
+</script>  
+
+</body>
+</html>
