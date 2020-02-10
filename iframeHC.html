@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ru" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>entry-form</title>
+
+
+  <link rel='stylesheet' href='css/jgyapo.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css'>
+<link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/css/swiper.min.css'>
+<link rel='stylesheet' href='https://unpkg.com/simplebar@2.6.1/dist/simplebar.css'>
+<link rel="stylesheet" href="css/style.css">
+
+</head>
+
+<body>
+
+    <div class="scroll-container">
+    <div class="scroll" data-simplebar>
+      <div class="swiper-container">
+          <div class="swiper-wrapper">
+
+            <!-- First slide start -->
+            <div class="swiper-slide swiper-no-swiping">
+              <div class="card">
+                <div class="card-body">
+                  <form id="main_form" class="w-100">
+                    <div class="form-check form-check-inline">
+                        <label class="form-check-label">
+                          <!-- <div class="letters-font" style="margin-bottom: 1rem;">Нажимая кнопку «Начать чат» я даю ДБ АО «Банк Хоум Кредит» <a id="myBtn" style="color: blue;">согласие на сбор, хранение и обработку персональных данных;</a> Согласен с тем, что при использовании настоящего чата информация обо мне (в том числе составляющая банковскую тайну в соответствии с законодательством РК) будет доступна Mluvii.com s.r.o;  подтверждаю, что ознакомился и согласен с условиями <a href="DBO.html" target="_blank" style="color: blue;">договора банковского обслуживания физических лиц в Банке.</a></div> -->
+                          <div class="letters-font" style="margin-bottom: 1rem;">Нажимая кнопку «Начать чат», согласен с тем, что указанная в настоящем чате информация будет доступна разработчику чата компании Mluvii.com s.r.o.</div>
+                          <!-- <a href="#" class="button" style="color: blue; font-size: 14px;">Показать полностью</a> -->
+                        </label>
+                      </div>
+                      <div id="myModal" class="modal">
+                        <div class="modal-content">
+                          <span class="close">&times;</span>
+                          <p style="font-size: 10px;">Даю ДБ АО «Банк Хоум Кредит» согласие на сбор, обработку, хранение и использование любым допускаемым законодательством РК способом и из любых источников, в том числе общедоступных, своих персональных данных в целях консультирования меня, предложения мне услуг Банка и его партнеров, заключения и исполнения договоров, выполнения Банком своих обязательств в соответствии с законодательством РК и (или) законодательством иностранных государств, распространяющим свое действие на отношения между мной и Банком с правом Банка в указанных выше целях передавать мои персональные данные третьим лицам, в том числе осуществлять трансграничную передачу данных. Указанное согласие действует бессрочно до момента отзыва согласия путем направления письменного заявления в Банк.</p>
+                        </div>
+                      </div>
+                      <div class="form-group" style="margin-top: 1rem;">
+                        <button type="submit" form="main_form" class="btn btn-block" id="btn1" name="btn1">Начать чат</button>
+                      </div>
+                  </form>
+
+                </div>
+              </div>
+            </div>
+            <!-- First slide end -->
+
+          </div>
+          <div class="swiper-pagination swiper-no-swiping"></div>
+        </div>
+    </div>
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/Swiper/4.3.3/js/swiper.min.js'></script>
+  <script src='https://unpkg.com/simplebar@2.6.1/dist/simplebar.js'></script>
+  <script>
+  var checkbox = document.getElementById('agree');
+var form = document.getElementById('main_form');
+
+var modal = document.getElementById('myModal');
+// var btn = document.getElementById("myBtn");
+var span = document.getElementsByClassName("close")[0];
+
+// btn.onclick = function() {
+//   modal.style.display = "block";
+// }
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+
+// $(document).ready(function(){
+
+//     $('.button').click(function(){
+//         $(this).toggleClass('active');
+//         $('.block').toggleClass('opener');
+//         if (!$(this).data('status')) {
+//             $(this).data('status', true).html('ĐˇĐşŃ€Ń‹Ń‚ŃŚ');
+//         } else {
+//             $(this).data('status', false).html('ĐźĐľĐşĐ°Đ·Đ°Ń‚ŃŚ ĐżĐľĐ»Đ˝ĐľŃŃ‚ŃŚŃŽ');
+//         }
+//     });
+
+// });
+
+
+var swiper = new Swiper('.swiper-container', {
+      pagination: {
+        el: '.swiper-pagination',
+        dynamicBullets: true
+      },
+    });
+
+    $('#main_form').submit(function(e) {
+      
+      e.preventDefault();
+      var group_name = "Mobile_after"
+
+       window.parent.postMessage({
+        type: "ADD_CUSTOM_DATA",
+        name: "group_name",
+        value: group_name
+      }, "*");
+      window.parent.postMessage({
+        type: "ENQUEUE"
+      }, "*");
+
+    })
+  </script>
+
+</body>
+
+</html>
