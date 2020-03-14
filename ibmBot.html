@@ -74,12 +74,34 @@
 
 <script>
 var watsonInstance = null;
+var chatbot_history = [];	
+var prepis = "";
   function receiveHandler(event) {
 
     if(event.data.output.intents['0']!= null && event.data.output.intents['0'].intent == "10.2contacts_handover"){
 	    watsonInstance.closeWindow();
+	    numbers.forEach(function(msg){
+		   prepis = prepis + msg + "; "; 
+	    });
+	    $owidget.addCustomData("key1", prepis);
 	    $owidget.openChat(true);
     }; //10.2contacts_handover	
+  }
+	
+ function receiveHandler(event) {
+    if (event.data && event.data.output && event.data.output.generic) {
+        event.data.output.generic.forEach(output => {
+            if (output.response_type == 'text') {
+                chatbot_history.push({source: 'chatbot', message: output.text});
+            }
+        });
+    }
+  }
+	
+  function sendHandler(event) {
+    if (event.data && event.data.input && event.data.input != '') {
+        chatbot_history.push({source: 'user', message: event.data.input});
+    }
   }
 	
 	
