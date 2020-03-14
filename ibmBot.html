@@ -76,8 +76,10 @@
 var watsonInstance = null;
   function receiveHandler(event) {
 
-    console.log(event.data.output.intents['0']); //10.2contacts_handover
- window.test = event.data.output.intents['0'];		
+    if(event.data.output.intents['0'].intent == "10.2contacts_handover"){
+	    watsonInstance.closeWindow();
+	    $owidget.openChat(true);
+    }; //10.2contacts_handover	
   }
 	
 	
