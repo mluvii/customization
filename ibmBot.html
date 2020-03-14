@@ -76,7 +76,7 @@
 var watsonInstance = null;
   function receiveHandler(event) {
 
-    console.log(event.data);
+    console.log(event.data.output.intents[0].intent); //10.2contacts_handover
 
   }
 	
