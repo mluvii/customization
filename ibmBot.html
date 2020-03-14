@@ -88,6 +88,7 @@ var prepis = "";
 	  if(event.data.output.intents['0']!= null && event.data.output.intents['0'].intent == "10.2contacts_handover"){
 	    watsonInstance.closeWindow();
 	    chatbot_history.forEach(function(msg){
+		    console.log("msg: ", msg);
 		   prepis = prepis + msg + "; "; 
 	    });
 	    $owidget.addCustomData("key1", prepis);
