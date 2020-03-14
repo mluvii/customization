@@ -8,13 +8,13 @@
 				padding: 5px;
 				cursor: pointer;
 			}
-		</style>
+		</style>	
 	</head>
 	<body>  	
 		<div>
 			<h2>Prerekvizity:</h2>
-			<p>Je zvolen balíček a společnost, kde jsou připojeni operátoři odbavující požadavky. Dle tohoto se odvíjí výsledna podoba mluvii scriptu na stránce s chatbotem</p>
-			<p>Na stránce, kde je chatbot, je také script, pro načtení balíčku mluvii. Lze se podívat do zdrojového kódu této stránky, jak vypadá. Kromě řádku s owidget.init, hodnoty v tomto volání se budou lišit</p>
+			<p>Je zvolen balíček a společnost, kde jsou připojeni operátoři odbavující požadavky. Dle tohoto se odvíjí výsledná podoba mluvii scriptu na stránce s chatbotem</p>
+			<p>Na stránce, kde je chatbot, je také script, pro načtení balíčku mluvii. Lze se podívat do zdrojového kódu této stránky, jak vypadá. Kromě řádku s owidget.init, hodnoty v tomto volání se budou lišit dle bodu 1</p>
 			<p>Jsou definovány hodnoty, které chatbot předává mluvii. Toto je nutné nastavit v administraci mluvii, aby oprátoři předané hodnoty viděli.</p>
 			<p>Operátoři jsou připojeni do mluvii</p>
 		</div>
@@ -23,36 +23,43 @@
 			<p>1. Shromáždění údajů na straně bota</p>
 			<p>2. Předání údajů do mluvii pomocí $owidget.addCustomData("key","value")</p>
 			<p>3. a) V případě, že chceme přepojit klienta rovnou do fronty, je nutné zavolat $owidget.openChat(true); </p>
-			<p>3. b) V případě, že chceme klientovi otevřít pouze chat, stačí zavolat $owidget.openChat(); </p>
+			<p>3. b) V případě, že chceme klientovi otevřít pouze chat, například kvůli vyplnění vstupního formuláře, stačí zavolat $owidget.openChat(); </p>
 		</div>
 		
 		<div>
+		<div>
+		<h2>Definované hodnoty při předávání přes $owidget.addCustomData</h2>
+		<p>Jméno: oo1_guest_ident - příklad: $owidget.addCustomData("oo1_guest_ident","Jan Novák")</p>
+		<p>Telefonní číslo: oo1_guest_phone - příklad: $owidget.addCustomData("oo1_guest_phone","+420777111333")</p>
+		<p>Telefonní číslo: oo1_guest_email - příklad: $owidget.addCustomData("oo1_guest_email","info@mluvii.com")</p>
+		<p>Další proměnné je nutné definovat a informovat o jejich názvech mluvii, které je přidá do administrace</p>		
+		</div>
 		<h2>Testovací část</h2>
-		<div class="button" id="btn1">$owidget.openChat(true);</div>
-		<div class="button" id="btn2">$owidget.addCustomData("key1","value1")</div>
+		<div class="button">$owidget.openChat(true);</div>
+		<div class="button">$owidget.addCustomData("key1","value1")</div>
 		</div>
 		
 		<script type="text/javascript">
-(function () {
-  var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
-  scr.src = '//app.mluvii.com/widget/OOWidget.js';
-  scr.$owidgetOnLoad = function (owidget) {
-    if (!owidget.isSupported) { return; }
-    owidget.init("295b1064-cf5b-4a5d-9e05-e7a74f86ae5e", "testSDK");
-    owidget.connectToServer();
-  };
-  var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
-})();
+			(function () {
+			  var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
+			  scr.src = '//app.mluvii.com/widget/OOWidget.js';
+			  scr.$owidgetOnLoad = function (owidget) {
+				if (!owidget.isSupported) { return; }
+				owidget.init("295b1064-cf5b-4a5d-9e05-e7a74f86ae5e", "testSDK");
+				owidget.connectToServer();
+			  };
+			  var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+			})();
 			
-(function () {
- document.getElementById("btn1").addEventListener("click",function(){
-	 $owidget.openChat(true);
- });
-	
-	document.getElementById("btn2").addEventListener("click",function(){
-	 $owidget.addCustomData("key1","value1");
- });
-})();
+			(function () {
+			 document.getElementById("btn1").addEventListener("click",function(){
+				 $owidget.openChat(true);
+			 });
+				
+				document.getElementById("btn2").addEventListener("click",function(){
+				 $owidget.addCustomData("key1","value1");
+			 });
+			})();
 </script>
 	</body>
 </html>
