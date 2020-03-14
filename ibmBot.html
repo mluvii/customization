@@ -1,5 +1,13 @@
 <html>
 	<head>
+		<style>
+			.button{
+				margin: 5px;
+				background-color: #f00;
+				color: #fff;
+				padding: 5px;
+			}
+		</style>
 	</head>
 	<body>  	
 		<div>
@@ -19,8 +27,8 @@
 		
 		<div>
 		<h2>Testovací část</h2>
-		<div class="button">$owidget.openChat(true);</div>
-		<div class="button">$owidget.addCustomData("key1","value1")</div>
+		<div class="button" id="btn1">$owidget.openChat(true);</div>
+		<div class="button" id="btn2">$owidget.addCustomData("key1","value1")</div>
 		</div>
 		
 		<script type="text/javascript">
@@ -33,6 +41,16 @@
     owidget.connectToServer();
   };
   var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
+})();
+			
+(function () {
+ document.getElementById("btn1").addEventListener(function(){
+	 $owidget.openChat(true);
+ });
+	
+	document.getElementById("btn2").addEventListener(function(){
+	 $owidget.addCustomData("key1","value1");
+ });
 })();
 </script>
 	</body>
