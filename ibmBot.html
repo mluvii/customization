@@ -90,7 +90,12 @@ var prepis = "";
 	    chatbot_history.forEach(function(msg){
 		    console.log("msg: ", msg.message);
 		    if(msg.message != ""){
-			prepis = prepis + msg.message + "; "; 
+			    if(msg.message.text != null){
+				    prepis = prepis + msg.message.text + "; "; 
+			    } else {
+				    prepis = prepis + msg.message + "; "; 
+			    }
+			
 		    }		   
 	    });
 	    $owidget.addCustomData("key1", prepis);
