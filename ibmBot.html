@@ -44,6 +44,8 @@
 		<h2>Testovací část</h2>
 		<div class="button" id="btn1">$owidget.openChat(true);</div>
 		<div class="button" id="btn2">$owidget.addCustomData("key1","value1")</div>
+		<div id="opnBtn">Open Watson</div>	
+		<div id="clsBtn">Close Watson</div>	
 		</div>
 		
 		<script type="text/javascript">
@@ -77,12 +79,14 @@
 <script src="https://web-chat.global.assistant.watson.cloud.ibm.com/loadWatsonAssistantChat.js"></script>
 
 <script>
-
+var watsonInstance = null;
   function receiveHandler(event) {
 
     console.log(event.data);
 
   }
+	
+	
  
 
   window.loadWatsonAssistantChat({
@@ -98,8 +102,20 @@
     instance.on({ type: "receive", handler: receiveHandler });
 
     instance.render();
+	  
+	watsonInstance = instance;	  
 
   });
+	
+	(function () {
+			 document.getElementById("opnBtn").addEventListener("click",function(){
+				 watsonInstance.openWindow();
+			 });
+				
+				document.getElementById("clsBtn").addEventListener("click",function(){
+				 watsonInstance.closeWindow();
+			 });
+			})();
 
 </script>		
 	</body>
