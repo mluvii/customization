@@ -54,6 +54,11 @@
 				if (!owidget.isSupported) { return; }
 				owidget.init("295b1064-cf5b-4a5d-9e05-e7a74f86ae5e", "testSDK");
 				owidget.connectToServer();
+				owidget.setAppEventCallback(function(event){
+					if(event.type == "chatWindowClosed"){
+					  console.log("Mluvii window closed");	
+					}
+				});
 			  };
 			  var ffs = document.getElementsByTagName('script')[0]; ffs.parentNode.insertBefore(scr, ffs);
 			})();
