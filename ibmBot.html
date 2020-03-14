@@ -89,7 +89,9 @@ var prepis = "";
 	    watsonInstance.closeWindow();
 	    chatbot_history.forEach(function(msg){
 		    console.log("msg: ", msg);
-		   prepis = prepis + msg + "; "; 
+		    if(msg.message != null){
+			prepis = prepis + msg + "; "; 
+		    }		   
 	    });
 	    $owidget.addCustomData("key1", prepis);
 	    $owidget.openChat(true);
