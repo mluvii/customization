@@ -104,11 +104,11 @@
 	 
 	 #thumbUp{
 	  background: url('./img/thumbUp.png') no-repeat;
-	 background-size: 30px 30px;
-	 width: 30px;
-	 height: 30px;
-	 margin-left: auto;
-    margin-right: auto;
+	  background-size: 30px 30px;
+	  width: 30px;
+	  height: 30px;
+	  margin-left: auto;
+      margin-right: auto;
 	 }
 	 
 	 #thumbDown{
@@ -155,20 +155,45 @@
 	 <script type="text/javascript">
 	 (function()
 	 {		
-		video.addEventListener("click", function() {
-			window.parent.postMessage({
-				type: "ADD_CUSTOM_DATA",
-				name: "kategorie",
-				value: firstOption
-			  }, "*");
-			window.parent.postMessage({
-				type: "ADD_CUSTOM_DATA",
-				name: "entryFormVideo",
-				value: "ANO"
-			  }, "*");
-			window.parent.postMessage({
-				type: "ENQUEUE"
-			}, "*");
+		let stars = null;
+		
+		const sendIcon = document.getElementById("sendIcon");
+		const thumbUp = document.getElementById("thumbUp");
+		const thumbDown = document.getElementById("thumbDown");
+		
+		sendIcon.addEventListener("click", function() {
+			const mailTranscript = document.getElementById("mailTranscript");
+			const mailInput = document.getElementById("mailInput");
+			const writtenRating = document.getElementById("writtenRating");
+			let mail = null;
+			let writtenRatingText = null;
+			
+			if(mailTranscript.checked && mailInput ){
+				mail = mailTranscript.value;
+			}
+			
+			if(writtenRating.value != "" ){
+				writtenRatingText = mailTranscript.value;
+			}
+			
+			if(writtenRatingText == null && stars == null){
+			return;
+			}
+		
+			 window.parent.postMessage({
+				type: "FEEDBACK_ACTION",
+				email: mail,
+				stars: stars,
+				content: writtenRatingText
+				}, "*");
+		});
+		
+		thumbUp.addEventListener("click", function() {
+			stars = 5;
+		});
+		
+		thumbDown.addEventListener("click", function() {
+			stars = 1;
 		});
 	 }
 	 )();
