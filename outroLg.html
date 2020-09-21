@@ -153,10 +153,20 @@
 		const sendIcon = document.getElementById("sendIcon");
 		const thumbUp = document.getElementById("thumbUp");
 		const thumbDown = document.getElementById("thumbDown");
+		const mailTranscript = document.getElementById("mailTranscript");
+		const mailInput = document.getElementById("mailInput");
 		
-		sendIcon.addEventListener("click", function() {
-			const mailTranscript = document.getElementById("mailTranscript");
-			const mailInput = document.getElementById("mailInput");
+		 
+		mailTranscript.addEventListener("click", function() {
+			if(mailTranscript.checked){
+				mailInput.disabled = false;
+			
+			}else{
+			 	mailInput.disabled = true;	
+			}
+		});
+		
+		sendIcon.addEventListener("click", function() {				
 			const writtenRating = document.getElementById("writtenRating");
 			let mail = null;
 			let writtenRatingText = null;
