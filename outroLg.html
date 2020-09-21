@@ -179,6 +179,7 @@
 			}
 			
 			if(writtenRatingText == null && stars == null){
+				console.log("Fail");
 			return;
 			}
 			
@@ -193,10 +194,12 @@
 		});
 		
 		thumbUp.addEventListener("click", function() {
+			console.log("Thumb up");
 			stars = 5;
 		});
 		
 		thumbDown.addEventListener("click", function() {
+			console.log("Thumb down");
 			stars = 1;
 		});
 	 }
