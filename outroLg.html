@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <style type="text/css">
+	    
+	 .smallerText{
+		margin-left: auto;
+		margin-right:auto;
+		width: 340px;
+		text-align: center;
+		margin-top: 1rem;
+		font-size: 0.9rem;
+	 }   
+	 
+	 body{
+		width: 100%;
+		padding: 0;
+		height: 100%;
+		margin: 1rem 0;
+	 }
+	    
+	 .btnDiv{
+		width: 142px;
+		background-color: #a50034;
+		color: #fff;
+		border-radius: 3px; 
+		margin-bottom: 1rem;
+		text-align: center;
+		padding: 0.5rem;
+		cursor: pointer;
+	 }
+	 
+	 .left{
+	 float:left;
+	 }
+	 
+	 .right{
+	 float:right;
+	 }
+	 
+	 #mailInput{
+		width: 320px;
+		margin-left: auto;
+		margin-right:auto;
+		background-color: #f5f5f5;
+		border-radius: 3px;
+		border-color:
+	 }
+	 
+	 #mailInput:focus{
+	 outline: none;
+	 }
+	 
+	 .centeredDiv{
+		text-align: center;
+		margin-top: 1rem;
+	 }
+	 
+	 .rating{
+		margin-left: auto;
+		margin-right:auto;
+		width: 320px;
+		margin-top: 1rem;
+	 }
+	 
+	 .textDiv{
+		text-align: center;
+		margin-top: 1rem;
+		width: 315px;
+		margin-left: auto;
+		margin-right:auto;
+	 }
+	 
+	 #writtenRating{
+		width:100%;
+		line-height: 1.2rem;
+		background-color: #f5f5f5;
+		border-radius: 3px;
+	 }
+	    
+    </style>
+  </head>
+  <body>
+	<div class="smallerText">
+	Jak jste byli spokojeni s komunikací s LG ASISTENTEM?<br/>
+	Co bychom mohli v komunikaci vylepšit?
+	</div>
+	<div class="rating">
+	<div class="btnDiv left" >Palec</div>
+	<div class="btnDiv right">Palec2</div>
+	</div>
+	<div class="textDiv">
+	<textarea id="writtenRating" rows="3">
+	</textarea>
+	</div>
+  <div class="centeredDiv"><input type="checkbox" id="mailTranscript" name="transcript" / ><label  class="smallerText" for="mailTranscript">Odeslat přepis chatu na e-mail</label></div>
+  <div class="centeredDiv"><input type="text" id="mailInput" /></div>
+	<div class="centeredDiv">
+	Děkujeme za vaše hodnocení.
+	</div>
+	  
+	 <script type="text/javascript">
+	 (function()
+	 {		
+		video.addEventListener("click", function() {
+			window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "kategorie",
+				value: firstOption
+			  }, "*");
+			window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "entryFormVideo",
+				value: "ANO"
+			  }, "*");
+			window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");
+		});
+	 }
+	 )();
+      
+      
+    </script>
+  </body>
+</html>
