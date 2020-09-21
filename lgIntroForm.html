@@ -2,75 +2,25 @@
 <html>
   <head>
     <style type="text/css">
-      #bubble{
-        width: 300px;
-        height: 300px;
-        background: url('./img/bubble.png') no-repeat;
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-		justify-content: center;
-		align-items: center;
-		margin-left: auto;
-		margin-right:auto;
-      }
-
-      #bubbleText{
-        margin: 0 auto;
-        width: 90%;
-        text-align: center;
-        color: #fff;
-		line-height: 1.5rem;
-		font-size: 1.05rem;
-     }
 	 
-	 #inputDiv{
-		border-color: #b1b1b1;
-		border-width: 1px;
-		border-style: solid;
-		background-color: #f5f5f5;
-		width: 320px;
-		padding: 3px;
-		border-radius: 3px;
-		height: 1.4rem;
-		margin-left: auto;
-		margin-right:auto;
-		margin-top: 2rem;
-	 }
-	 
-	 #inputField{
-		width: 90%;
-		border-width: 0;
-		background-color: #f5f5f5;
-		line-height: 1.2rem;
-		float:left;
-	 }
-	 
-	 #inputField:focus{
-		border-width: 0;
-		outline: none;
-	 }
-	 
-	 #sendIcon{
-		width: 8%;
-		background-color: #f00;
-		height: 1.2rem;
-		float:right;
-		background: url('./img/sipka.png') no-repeat;
-		cursor: pointer;
-	 }
-	 
-	 #sendIcon:hover{
-		background: url('./img/sipka_black.png') no-repeat;
-	 }
-	 
-	 #outroText{
+	 #biggerText{
 		margin-left: auto;
 		margin-right:auto;
 		width: 320px;
 		text-align: center;
 		margin-top: 1rem;
+		font-weight: bold;
+		font-size: 1.2rem;
 	 }
+	    
+	 #smallerText{
+		margin-left: auto;
+		margin-right:auto;
+		width: 320px;
+		text-align: center;
+		margin-top: 1rem;
+		font-size: 1rem;
+	 }   
 	 
 	 body{
 		width: 100%;
@@ -78,40 +28,84 @@
 		height: 100%;
 		margin: 1rem 0;
 	 }
+	    
+	 .btnDiv{
+		width: 300px;
+		background-color: #a50034;
+		color: #fff;
+		border-radius: 3px; 
+		margin-left: auto;
+		margin-right:auto;
+		margin-top: 1rem;
+		text-align: center;
+		padding: 0.5rem;
+	 }
+	    
+	 .hidden{
+		 display: none;
+	    }
+	 .visible{
+		 display: block;
+	    }   
     </style>
   </head>
   <body>
-    <div id="bubble">
-      <div id="bubbleText">
-	  Omlouváme se, ale Váš<br/>
-	  LG ASISTENT je momentálně offline.<br/>
-	  Na LG LIVE SHOPPING chatu<br/>
-	  se Vám bude opět věnovat<br/>
-	  mezi 9.-21. hodinou.
-	  </div>
-    </div>  
-	<div id="inputDiv">
-		<input type="text" id="inputField" />
-		<div id="sendIcon"></div>
+	<div id="first" class="visible">  
+	<div id="biggerText">
+	S čím vám můžeme pomoci?
 	</div>
-	<div id="outroText">
-	Nyní nám můžete požadavek zaslat na chat
+	<div id="smallerText">
+	Vyberte jednu z kategorií a začněte!
 	</div>
+	<div id="tv" class="btnDiv">TV/AUDIO/VIDEO</div>	
+	<div id="spotrebice" class="btnDiv">DOMÁCÍ SPOTŘEBIČE</div>	
+	</div>	
+	<div id="second" class="hidden">   
+		<div id="chat" class="btnDiv">CHAT</div>	
+		<div id="video" class="btnDiv">VIDEO</div>	
+	</div>	
+	  
 	 <script type="text/javascript">
 	 (function()
 	 {
-		const input = document.getElementById('inputField');
-		const sendIcon = document.getElementById('sendIcon');
+		const tv = document.getElementById('tv');
+		const spotrebice = document.getElementById('spotrebice');
 		
-		sendIcon.addEventListener("click", function() {
-			const mes = input.value;
-			const contact = "test@test.com";
-			 window.parent.postMessage({
-              type: "OFFLINE_ACTION",
-              contact:contact,
-              message: mes
-          }, "*");
-		  console.log("Sent");
+		const chat = document.getElementById('chat');
+		const video = document.getElementById('video');
+		
+		
+		const first = document.getElementById('first');
+		const second = document.getElementById('second');
+		
+		let firstOption = null;
+		let secondOption = null;
+		
+		tv.addEventListener("click", function() {
+			console.log("test tv");
+			first.classList.remove("visible");
+			first.classList.add("hidden");
+			second.classList.remove("hidden");
+			second.classList.add("visible");
+			firstOption = 'tv';
+			
+		});
+		 
+		spotrebice.addEventListener("click", function() {
+			console.log("test spotrebice");
+			first.classList.remove("visible");
+			first.classList.add("hidden");
+			second.classList.remove("hidden");
+			second.classList.add("visible");
+			firstOption = 'sportebice';
+		});
+		
+		chat.addEventListener("click", function() {
+				console.log("test chat");
+		});
+		
+		video.addEventListener("click", function() {
+			console.log("test video");
 		});
 	 }
 	 )();
