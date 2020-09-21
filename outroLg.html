@@ -170,12 +170,12 @@
 			let mail = null;
 			let writtenRatingText = null;
 			
-			if(mailTranscript.checked && mailInput ){
-				mail = mailTranscript.value;
+			if(mailTranscript.checked && mailInput.value != "" ){
+				mail = mailInput.value;
 			}
 			
 			if(writtenRating.value != "" ){
-				writtenRatingText = mailTranscript.value;
+				writtenRatingText = writtenRating.value;
 			}
 			
 			if(writtenRatingText == null && stars == null){
