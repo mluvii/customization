@@ -156,7 +156,6 @@
 		const mailTranscript = document.getElementById("mailTranscript");
 		const mailInput = document.getElementById("mailInput");
 		
-		 
 		mailTranscript.addEventListener("click", function() {
 			if(mailTranscript.checked){
 				mailInput.disabled = false;
@@ -182,6 +181,8 @@
 			if(writtenRatingText == null && stars == null){
 			return;
 			}
+			
+			console.log("Postmessage", mail,stars, writtenRatingText);
 		
 			 window.parent.postMessage({
 				type: "FEEDBACK_ACTION",
