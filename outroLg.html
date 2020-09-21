@@ -132,8 +132,8 @@
 	Co bychom mohli v komunikaci vylepšit?
 	</div>
 	<div class="rating">
-	<div class="btnDiv left" ><div id="thumbUp"></div></div>
-	<div class="btnDiv right"><div id="thumbDown" ></div></div>
+	<div class="btnDiv" id="btnLeft"><div id="thumbUp"></div></div>
+	<div class="btnDiv" id="btnRight"><div id="thumbDown" ></div></div>
 	</div>
 	<div class="textDiv">
 	<textarea id="writtenRating" rows="3"></textarea>
@@ -151,8 +151,8 @@
 		let stars = null;
 		
 		const sendIcon = document.getElementById("sendIcon");
-		const thumbUp = document.getElementById("thumbUp");
-		const thumbDown = document.getElementById("thumbDown");
+		const btnLeft = document.getElementById("btnLeft");
+		const btnRight = document.getElementById("btnRight");
 		const mailTranscript = document.getElementById("mailTranscript");
 		const mailInput = document.getElementById("mailInput");
 		
@@ -193,12 +193,12 @@
 				}, "*");
 		});
 		
-		thumbUp.addEventListener("click", function() {
+		btnLeft.addEventListener("click", function() {
 			console.log("Thumb up");
 			stars = 5;
 		});
 		
-		thumbDown.addEventListener("click", function() {
+		btnRight.addEventListener("click", function() {
 			console.log("Thumb down");
 			stars = 1;
 		});
