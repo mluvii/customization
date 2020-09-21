@@ -86,7 +86,6 @@
 		let secondOption = null;
 		
 		tv.addEventListener("click", function() {
-			console.log("test tv");
 			first.classList.remove("visible");
 			first.classList.add("hidden");
 			second.classList.remove("hidden");
@@ -96,7 +95,6 @@
 		});
 		 
 		spotrebice.addEventListener("click", function() {
-			console.log("test spotrebice");
 			first.classList.remove("visible");
 			first.classList.add("hidden");
 			second.classList.remove("hidden");
@@ -105,7 +103,12 @@
 		});
 		
 		chat.addEventListener("click", function() {
-				console.log("test chat");
+			
+				window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "kategorie",
+				value: firstOption
+			  }, "*");
 				window.parent.postMessage({
 					type: "ENQUEUE"
 				}, "*");
