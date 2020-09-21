@@ -24,7 +24,7 @@
 		background-color: #a50034;
 		color: #fff;
 		border-radius: 3px; 
-		margin-bottom: 1rem;
+		margin-bottom: 2rem;
 		text-align: center;
 		padding: 0.5rem;
 		cursor: pointer;
@@ -39,12 +39,14 @@
 	 }
 	 
 	 #mailInput{
-		width: 320px;
+		width: 315px;
 		margin-left: auto;
-		margin-right:auto;
+		margin-right:auto; 
 		background-color: #f5f5f5;
 		border-radius: 3px;
-		border-color:
+		border-color: #b1b1b1;
+		border-width: 1px;
+		border-style: solid;
 	 }
 	 
 	 #mailInput:focus{
@@ -52,8 +54,16 @@
 	 }
 	 
 	 .centeredDiv{
-		text-align: center;
+		width: 320px;
+		margin-left: auto;
+		margin-right: auto;
 		margin-top: 1rem;
+		text-align: left;
+	 }
+	 
+	 .textCenter{
+	 text-align: center !important;
+	 font-size: 1.1rem;
 	 }
 	 
 	 .rating{
@@ -61,23 +71,66 @@
 		margin-right:auto;
 		width: 320px;
 		margin-top: 1rem;
+		margin-bottom: 5rem;
 	 }
 	 
 	 .textDiv{
 		text-align: center;
-		margin-top: 1rem;
+		margin-top: 2rem;
 		width: 315px;
 		margin-left: auto;
 		margin-right:auto;
+		background-color: #f5f5f5;
+		border-radius: 3px;
+		border-color: #b1b1b1;
+		border-width: 1px;
+		border-style: solid;
 	 }
 	 
 	 #writtenRating{
 		width:100%;
 		line-height: 1.2rem;
+		border-style: none;
 		background-color: #f5f5f5;
-		border-radius: 3px;
+		max-width: 270px;
+		padding-right: 30px;
+		resize: none;
 	 }
-	    
+	 
+	  #writtenRating:focus{
+	 outline: none;
+	 }
+	 
+	 
+	 #thumbUp{
+	  background: url('./img/thumbUp.png') no-repeat;
+	 background-size: 30px 30px;
+	 width: 30px;
+	 height: 30px;
+	 margin-left: auto;
+    margin-right: auto;
+	 }
+	 
+	 #thumbDown{
+	 background: url('./img/thumbDown.png') no-repeat;
+	 background-size: 30px 30px;
+	 width: 30px;
+	 height: 30px;
+	 margin-left: auto;
+     margin-right: auto;
+	 }
+	 
+	 #sendIcon{
+		width: 8%;
+		background-color: #f00;
+		height: 1.2rem;
+		float:right;
+		background: url('./img/sipka.png') no-repeat;
+		cursor: pointer;
+		position: relative;
+		top: -4.5rem;
+		right: 5px;
+	 }	    
     </style>
   </head>
   <body>
@@ -86,16 +139,16 @@
 	Co bychom mohli v komunikaci vylepšit?
 	</div>
 	<div class="rating">
-	<div class="btnDiv left" >Palec</div>
-	<div class="btnDiv right">Palec2</div>
+	<div class="btnDiv left" ><div id="thumbUp"></div></div>
+	<div class="btnDiv right"><div id="thumbDown" ></div></div>
 	</div>
 	<div class="textDiv">
-	<textarea id="writtenRating" rows="3">
-	</textarea>
+	<textarea id="writtenRating" rows="3"></textarea>
+	<div id="sendIcon"></div>
 	</div>
   <div class="centeredDiv"><input type="checkbox" id="mailTranscript" name="transcript" / ><label  class="smallerText" for="mailTranscript">Odeslat přepis chatu na e-mail</label></div>
-  <div class="centeredDiv"><input type="text" id="mailInput" /></div>
-	<div class="centeredDiv">
+  <div class="centeredDiv "><input type="text" id="mailInput" /></div>
+	<div class="centeredDiv textCenter">
 	Děkujeme za vaše hodnocení.
 	</div>
 	  
