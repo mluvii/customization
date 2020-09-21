@@ -6,19 +6,108 @@
         width: 300px;
         height: 300px;
         background: url('./img/bubble.png') no-repeat;
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+		justify-content: center;
+		align-items: center;
+		margin-left: auto;
+		margin-right:auto;
       }
 
       #bubbleText{
         margin: 0 auto;
-        width: 50%;
+        width: 90%;
         text-align: center;
         color: #fff;
+		line-height: 1.5rem;
+		font-size: 1.05rem;
      }
+	 
+	 #inputDiv{
+		border-color: #b1b1b1;
+		border-width: 1px;
+		border-style: solid;
+		background-color: #f5f5f5;
+		width: 350px;
+		padding: 3px;
+		border-radius: 3px;
+		height: 1.4rem;
+		margin-left: auto;
+		margin-right:auto;
+		margin-top: 2rem;
+	 }
+	 
+	 #inputField{
+		width: 90%;
+		border-width: 0;
+		background-color: #f5f5f5;
+		line-height: 1.2rem;
+		float:left;
+	 }
+	 
+	 #inputField:focus{
+		border-width: 0;
+		outline: none;
+	 }
+	 
+	 #sendIcon{
+		width: 8%;
+		background-color: #f00;
+		height: 1.2rem;
+		float:right;
+		background: url('./img/sipka.png') no-repeat;
+		cursor: pointer;
+	 }
+	 
+	 #sendIcon:hover{
+		background: url('./img/sipka_black.png') no-repeat;
+	 }
+	 
+	 body{
+		width: 100%;
+		padding: 0;
+		height: 100%;
+	 }
     </style>
   </head>
   <body>
     <div id="bubble">
-      <div>Test text<br/>Test testr</div>
+      <div id="bubbleText">
+	  Omlouváme se, ale Váš<br/>
+	  LG ASISTENT je momentálně offline.<br/>
+	  Na LG LIVE SHOPPING chatu<br/>
+	  se Vám bude opět věnovat<br/>
+	  mezi 9.-21. hodinou.
+	  </div>
     </div>  
+	<div id="inputDiv">
+		<input type="text" id="inputField" />
+		<div id="sendIcon"></div>
+	</div>
+	<div id="outroText">
+	Nyní nám můžete požadavek zaslat na chat
+	</div>
+	 <script type="text/javascript">
+	 (function()
+	 {
+		const input = document.getElementById('inputField');
+		const sendIcon = document.getElementById('sendIcon');
+		
+		sendIcon.addEventListener("click", function() {
+			const mes = input.value;
+			const contact = "test@test.com";
+			 window.parent.postMessage({
+              type: "OFFLINE_ACTION",
+              contact:contact,
+              message: mes
+          }, "*");
+		  console.log("Sent");
+		});
+	 }
+	 )();
+      
+      
+    </script>
   </body>
 </html>
