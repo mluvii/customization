@@ -39,6 +39,7 @@
 		margin-top: 1rem;
 		text-align: center;
 		padding: 0.5rem;
+		cursor: pointer;
 	 }
 	    
 	 .hidden{
@@ -61,6 +62,9 @@
 	<div id="spotrebice" class="btnDiv">DOMÁCÍ SPOTŘEBIČE</div>	
 	</div>	
 	<div id="second" class="hidden">   
+	<div id="biggerText">
+	Jaký kanál chcete použít?
+	</div>
 		<div id="chat" class="btnDiv">CHAT</div>	
 		<div id="video" class="btnDiv">VIDEO</div>	
 	</div>	
@@ -102,10 +106,25 @@
 		
 		chat.addEventListener("click", function() {
 				console.log("test chat");
+				window.parent.postMessage({
+					type: "ENQUEUE"
+				}, "*");
 		});
 		
 		video.addEventListener("click", function() {
-			console.log("test video");
+			window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "kategorie",
+				value: firstOption
+			  }, "*");
+			window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "entryFormVideo",
+				value: "yes"
+			  }, "*");
+			window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");
 		});
 	 }
 	 )();
