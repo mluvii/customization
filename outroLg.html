@@ -2,7 +2,11 @@
 <html>
   <head>
     <style type="text/css">
-	    
+	 @font-face {
+  		font-family: lgFont;
+  		src: url("./LG Smart Regular.ttf");
+	  }		
+		
 	 .smallerText{
 		margin-left: auto;
 		margin-right:auto;
@@ -17,10 +21,11 @@
 		padding: 0;
 		height: 100%;
 		margin: 1rem 0;
+		font-family: lgFont;
 	 }
 	    
 	 .btnDiv{
-		width: 142px;
+		width: 140px;
 		background-color: #a50034;
 		color: #fff;
 		border-radius: 3px; 
@@ -113,6 +118,18 @@
      margin-right: auto;
 	 }
 	 
+	 .btnDiv:hover{	
+		 transform: scale(0.9); 
+		 border-right: 2px solid #B51044;
+		 border-bottom: 2px solid #B51044;
+	 }
+	 
+	 .btnDiv.clicked{
+		 transform: scale(0.90); 
+		 border-bottom: 2px solid #550024;
+		  border-right: 2px solid #550024;
+	 }
+	 
 	 #sendIcon{
 		width: 8%;
 		background-color: #f00;
@@ -124,6 +141,14 @@
 		top: -3.8rem;
 		right: 5px;
 	 }	    
+	 
+	 .wrong{
+		border-color: #f00 !important;
+	 }
+	 
+	 .hidden{
+	   display: none;
+	 }
     </style>
   </head>
   <body>
@@ -135,17 +160,23 @@
 	<div class="btnDiv" id="btnLeft"><div id="thumbUp"></div></div>
 	<div class="btnDiv" id="btnRight"><div id="thumbDown" ></div></div>
 	</div>
-	<div class="textDiv">
+	<div class="textDiv" id="textDiv">
 	<textarea id="writtenRating" rows="3"></textarea>
 	<div id="sendIcon"></div>
 	</div>
   <div class="centeredDiv"><input type="checkbox" id="mailTranscript" name="transcript" / ><label  class="smallerText" for="mailTranscript">Odeslat přepis chatu na e-mail</label></div>
-  <div class="centeredDiv "><input type="text" id="mailInput" disabled/></div>
+  <div class="centeredDiv "><input type="text" id="mailInput" placeholder="@" disabled/></div>
+  <div id="warningText" class="smallerText hidden">Musíte alespoň ohodnotit práci operátora, abyste si mohli poslat přepis konverzace.</div>
 	<div class="centeredDiv textCenter">
 	Děkujeme za vaše hodnocení.
 	</div>
 	  
 	 <script type="text/javascript">
+	 function validateEmail(email) {
+		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+		return re.test(String(email).toLowerCase());
+	}	
+	 
 	 (function()
 	 {		
 		let stars = null;
@@ -155,6 +186,8 @@
 		const btnRight = document.getElementById("btnRight");
 		const mailTranscript = document.getElementById("mailTranscript");
 		const mailInput = document.getElementById("mailInput");
+		const textDiv = document.getElementById("textDiv");
+		const warningText = document.getElementById("warningText");
 		
 		mailTranscript.addEventListener("click", function() {
 			if(mailTranscript.checked){
@@ -171,20 +204,28 @@
 			let writtenRatingText = null;
 			
 			if(mailTranscript.checked && mailInput.value != "" ){
+				
 				mail = mailInput.value;
-			}
+				if(!validateEmail(mail)){
+					mailInput.classList.add("wrong");
+					return;
+				}
+			}			
 			
 			if(writtenRating.value != "" ){
 				writtenRatingText = writtenRating.value;
 			}
 			
-			if(writtenRatingText == null && stars == null){
-				console.log("Fail");
-			return;
+			if(writtenRatingText == null && stars == null && mail == null){
+				textDiv.classList.add("wrong");
+				return;
 			}
 			
-			console.log("Postmessage", mail,stars, writtenRatingText);
-		
+			if(writtenRatingText == null && stars == null && mail != null){
+				warningText.classList.remove("hidden");
+				return;
+			}
+			
 			 window.parent.postMessage({
 				type: "FEEDBACK_ACTION",
 				email: mail,
@@ -194,12 +235,14 @@
 		});
 		
 		btnLeft.addEventListener("click", function() {
-			console.log("Thumb up");
+			btnLeft.classList.add("clicked");
+			btnRight.classList.remove("clicked");
 			stars = 5;
 		});
 		
 		btnRight.addEventListener("click", function() {
-			console.log("Thumb down");
+			btnRight.classList.add("clicked");
+			btnLeft.classList.remove("clicked");
 			stars = 1;
 		});
 	 }
