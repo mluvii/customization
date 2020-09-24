@@ -10,7 +10,7 @@
 	 .smallerText{
 		margin-left: auto;
 		margin-right:auto;
-		width: 340px;
+		width: 320px;
 		text-align: center;
 		margin-top: 2rem;
 		font-size: 0.9rem;
@@ -86,12 +86,10 @@
 	 }
 	 
 	 #writtenRating{
-		width:100%;
+		width:98%;
 		line-height: 1.2rem;
 		border-style: none;
 		background-color: #f5f5f5;
-		max-width: 270px;
-		padding-right: 30px;
 		resize: none;
 	 }
 	 
@@ -131,15 +129,17 @@
 	 }
 	 
 	 #sendIcon{
-		width: 8%;
-		background-color: #f00;
-		height: 1.2rem;
-		float:right;
-		background: url('./img/sipka.png') no-repeat;
+		width: 20%;
+		height: 2rem;
 		cursor: pointer;
-		position: relative;
-		top: -3.8rem;
-		right: 5px;
+		margin-left:auto;
+		margin-right:auto;
+		text-align: center;
+		background-color: #a50034;
+		color: #fff;
+		line-height: 2rem;
+		margin-top: 0.5rem;
+		border-radius: 3px;
 	 }	    
 	 
 	 .wrong{
@@ -148,6 +148,10 @@
 	 
 	 .hidden{
 	   display: none;
+	 }
+	 
+	 .errorText{
+	 margin-top: 0.1rem !important;
 	 }
     </style>
   </head>
@@ -162,14 +166,15 @@
 	</div>
 	<div class="textDiv" id="textDiv">
 	<textarea id="writtenRating" rows="3"></textarea>
-	<div id="sendIcon"></div>
+	
 	</div>
   <div class="centeredDiv"><input type="checkbox" id="mailTranscript" name="transcript" / ><label  class="smallerText" for="mailTranscript">Odeslat přepis chatu na e-mail</label></div>
   <div class="centeredDiv "><input type="text" id="mailInput" placeholder="@" disabled/></div>
-  <div id="warningText" class="smallerText hidden">Musíte alespoň ohodnotit práci operátora, abyste si mohli poslat přepis konverzace.</div>
+  <div id="warningText" class="smallerText hidden errorText" >Musíte alespoň ohodnotit práci operátora, abyste si mohli poslat přepis konverzace.</div>
 	<div class="centeredDiv textCenter">
 	Děkujeme za vaše hodnocení.
 	</div>
+	<div id="sendIcon">Odeslat</div>
 	  
 	 <script type="text/javascript">
 	 function validateEmail(email) {
