@@ -2,10 +2,16 @@
 <html>
   <head>
     <style type="text/css">
+	  @font-face {
+  		font-family: lgFont;
+  		src: url("./LG Smart Regular.ttf");
+	  }
+	
       #bubble{
-        width: 300px;
-        height: 300px;
+        width: 250px;
+        height: 250px;
         background: url('./img/bubble.png') no-repeat;
+		background-size: cover;
 		display: flex;
 		flex-direction: row;
 		flex-wrap: wrap;
@@ -35,11 +41,10 @@
 		height: 1.4rem;
 		margin-left: auto;
 		margin-right:auto;
-		margin-top: 2rem;
 	 }
 	 
 	 #inputField{
-		width: 90%;
+		width: 98%;
 		border-width: 0;
 		background-color: #f5f5f5;
 		line-height: 1.2rem;
@@ -51,17 +56,35 @@
 		outline: none;
 	 }
 	 
-	 #sendIcon{
-		width: 8%;
-		background-color: #f00;
-		height: 1.2rem;
-		float:right;
-		background: url('./img/sipka.png') no-repeat;
+	 #mailField{
+		width: 98%;
+		border-width: 0;
+		background-color: #f5f5f5;
+		line-height: 1.2rem;
+		float:left;
+	 }
+	 
+	  #mailField:focus{
+		border-width: 0;
+		outline: none;
+	 }
+	 
+	  #sendIcon{
+		width: 150px;
+		height: 2rem;
 		cursor: pointer;
+		margin-left:auto;
+		margin-right:auto;
+		text-align: center;
+		background-color: #a50034;
+		color: #fff;
+		line-height: 2rem;
+		margin-top: 0.5rem;
+		border-radius: 3px;
 	 }
 	 
 	 #sendIcon:hover{
-		background: url('./img/sipka_black.png') no-repeat;
+		box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 6px 0px;
 	 }
 	 
 	 #outroText{
@@ -77,6 +100,7 @@
 		padding: 0;
 		height: 100%;
 		margin: 1rem 0; 
+		font-family: lgFont;
 	 }
     </style>
   </head>
@@ -90,13 +114,20 @@
 	  mezi 9.-21. hodinou.
 	  </div>
     </div>  
+	
+	<div id="outroText">
+	Zde nám můžete napsat svůj dotaz:
+	</div>
 	<div id="inputDiv">
 		<input type="text" id="inputField" />
-		<div id="sendIcon"></div>
 	</div>
 	<div id="outroText">
-	Nyní nám můžete požadavek zaslat na chat
+	E-mail, na kterém vás zastihneme:
 	</div>
+	<div id="inputDiv">
+		<input type="text" id="mailField" placeholder="@" />
+	</div>
+	<div id="sendIcon">Odeslat</div>
 	 <script type="text/javascript">
 	 (function()
 	 {
