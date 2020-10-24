@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InnogysvetBot1</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            font-family: Segoe UI;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+     </style>
+     <script type="text/javascript">
+  (function () {
+    var scr = document.createElement('script');
+    scr.type = 'text/javascript';
+    scr.charset = 'UTF-8';
+    scr.async = true;
+    scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+    scr.$owidgetOnLoad = function (owidget) {
+      if (!owidget.isSupported) { return; }
+      owidget.init("295b1064-cf5b-4a5d-9e05-e7a74f86ae5e", "Jarda");
+      owidget.connectToServer();
+       owidget.addCustomData('innosvetdata', '{"identities":[{"identityname":"Tomáš Tolar","OPS":12345678,"MS":7778889994}, {"identities":[{"identityname":"Paní Marie Vostrá","OPS":99999999,"MS":5588552}]}');
+    };
+    var ffs = document.getElementsByTagName('script')[0];
+    ffs.parentNode.insertBefore(scr, ffs);
+  })();
+</script>
+</head>
+<body>
+  <h1>Test propojení chatbota na innogysvet<h1>
+</body>
+</html>
