@@ -25,10 +25,10 @@
     scr.type = 'text/javascript';
     scr.charset = 'UTF-8';
     scr.async = true;
-    scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+    scr.src = '//app.mluvii.com/widget/OOWidget.js';
     scr.$owidgetOnLoad = function (owidget) {
       if (!owidget.isSupported) { return; }
-      owidget.init("09935d2e-07fd-4a22-95d5-c47a8de29b9c", "InnogySvetBot");
+      owidget.init("09935d2e-07fd-4a22-95d5-c47a8de29b9c", "InnosvetBotTest");
       owidget.connectToServer();
       owidget.addCustomData('innosvetdata', '{"identities":[{"identityname":"Tomáš Tolar","OPS":12345678,"MS":7778889994}, {"identityname":"Paní Marie Vostrá","OPS":99999999,"MS":5588552}]}');
     };
