@@ -55,13 +55,11 @@
 	    }   
 		
 	 #disclaimer{
-		position: absolute;
-		bottom: 3rem;
-		text-align: center;
-		width: 60%;
-		left: 20%;
-		right: 20%;
-		font-size: 1.2rem;
+		    bottom: 3rem;
+    text-align: center;
+    padding-left: 20%;
+    padding-right: 20%;
+    font-size: 1.2rem;
 	 }	 
 	    
 	     #biggerText2{
@@ -96,9 +94,14 @@
 	</div>
 		<div id="chat" class="btnDiv">CHAT</div>	
 		<div id="video" class="btnDiv">VIDEO</div>	
-		<div id="disclaimer">
+	</div>	
+	<div id="third" class="hidden">   
+	<div id="disclaimer">
 		Kliknutím na výše uvedené souhlasíte s poskytováním rozsahu služeb pouze po dobu komunikace s LG ASISTENTEM.
 		</div>
+		<div id="consentYes" class="btnDiv">ANO</div>	
+		<div id="consentNo" class="btnDiv">NE</div>	
+		
 	</div>	
 		
 	  
@@ -114,6 +117,10 @@
 		
 		const first = document.getElementById('first');
 		const second = document.getElementById('second');
+		const third = document.getElementById('third');
+		
+		const consentYes = document.getElementById('consentYes');
+		const consentNo = document.getElementById('consentNo');
 		
 		let firstOption = null;
 		let secondOption = null;
@@ -142,9 +149,13 @@
 				name: "kategorie",
 				value: firstOption
 			  }, "*");
-				window.parent.postMessage({
+				/*window.parent.postMessage({
 					type: "ENQUEUE"
-				}, "*");
+				}, "*");*/
+				second.classList.remove("visible");
+				second.classList.add("hidden");
+				third.classList.remove("hidden");
+				third.classList.add("visible");
 		});
 		
 		video.addEventListener("click", function() {
@@ -158,10 +169,32 @@
 				name: "entryFormVideo",
 				value: "ANO"
 			  }, "*");
-			window.parent.postMessage({
+			/*window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");*/
+			second.classList.remove("visible");
+				second.classList.add("hidden");
+				third.classList.remove("hidden");
+				third.classList.add("visible");
+		});
+		
+		consentYes.addEventListener("click", function() {
+		window.parent.postMessage({
 				type: "ENQUEUE"
 			}, "*");
+		
 		});
+		
+		consentNo.addEventListener("click", function() {
+		window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "closeChat",
+				value: "1"
+			  }, "*");
+		
+		});
+		
+		
 	 }
 	 )();
       
