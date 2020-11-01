@@ -186,11 +186,8 @@
 		});
 		
 		consentNo.addEventListener("click", function() {	
-		window.parent.postMessage({
-				close: "true"
-			}, "*");
-				
-		 console.log("event sent");
+		window.parent.postMessage('close', "*");
+		 console.log("event sent", window.parent);
 		 
 		}); 
 		 
