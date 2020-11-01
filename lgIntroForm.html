@@ -187,16 +187,11 @@
 		
 		consentNo.addEventListener("click", function() {
 		window.parent.postMessage({
-				type: "ADD_CUSTOM_DATA",
-				name: "closeChat",
-				value: "1"
-			  }, "*");
-		window.parent.postMessage({
-				type: "ENQUEUE"
+				type: "CLOSE_CHAT"
 			}, "*");
-		console.log("clicked");
+		
 		});
-		 
+		
 		
 	 }
 	 )();
