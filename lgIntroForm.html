@@ -185,14 +185,9 @@
 		
 		});
 		
-		consentNo.addEventListener("click", function() {
+		consentNo.addEventListener("click", function() {	
 		window.parent.postMessage({
-				type: "ADD_CUSTOM_DATA",
-				name: "entryFormVideo",
-				value: "ANO"
-			  }, "*");	
-		window.parent.postMessage({
-				type: "CLOSE_CHAT"
+				close: "true"
 			}, "*");
 				
 		 console.log("event sent");
