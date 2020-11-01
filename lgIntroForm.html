@@ -191,9 +191,12 @@
 				name: "closeChat",
 				value: "1"
 			  }, "*");
-		conosle.log("clicked");
+		window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");
+		console.log("clicked");
 		});
-		
+		 
 		
 	 }
 	 )();
