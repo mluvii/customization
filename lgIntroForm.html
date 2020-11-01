@@ -187,10 +187,21 @@
 		
 		consentNo.addEventListener("click", function() {
 		window.parent.postMessage({
+				type: "ADD_CUSTOM_DATA",
+				name: "entryFormVideo",
+				value: "ANO"
+			  }, "*");	
+		window.parent.postMessage({
 				type: "CLOSE_CHAT"
 			}, "*");
 		
 		});
+		window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");
+		
+		}); 
+		 
 		 console.log("event sent");
 		
 		
