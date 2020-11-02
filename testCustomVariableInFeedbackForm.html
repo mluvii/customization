@@ -399,10 +399,7 @@
     form.onsubmit = function (e) {
       e.preventDefault();
       
-      var text = '{ "employees" : [' +
-'{ "firstName":"John" , "lastName":"Doe" },' +
-'{ "firstName":"Anna" , "lastName":"Smith" },' +
-'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
+      var text = '{ "randomPromenna" : "test" }';
 
       var email = document.getElementById('email').value;
       var feedback = JSON.parse(text);
