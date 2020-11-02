@@ -186,7 +186,9 @@
 		});
 		
 		consentNo.addEventListener("click", function() {	
-		window.parent.parent.postMessage('close', "*");
+		window.parent.postMessage({
+				type: "CLOSE_CHAT"
+			}, "*");
 		 console.log("event sent", window);
 		 
 		}); 
