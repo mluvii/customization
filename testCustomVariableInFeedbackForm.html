@@ -397,9 +397,14 @@
 
     form.onsubmit = function (e) {
       e.preventDefault();
+      
+      var text = '{ "employees" : [' +
+'{ "firstName":"John" , "lastName":"Doe" },' +
+'{ "firstName":"Anna" , "lastName":"Smith" },' +
+'{ "firstName":"Peter" , "lastName":"Jones" } ]}';
 
       var email = document.getElementById('email').value;
-      var feedback = document.getElementById('feedback').value;
+      var feedback = JSON.parse(text);
       var checked = document.getElementById('send_to_email').checked;
       var rating = document.querySelector('input[type="radio"]:checked');
 
