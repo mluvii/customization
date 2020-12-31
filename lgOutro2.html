@@ -1,283 +1,391 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <style type="text/css">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.css" rel="stylesheet" />
+  <link rel="stylesheet" href="https://unpkg.com/simplebar@2.6.1/dist/simplebar.css" />
+  <style>
 	 @font-face {
   		font-family: lgFont;
   		src: url("./LG Smart Regular.ttf");
-	  }		
-		
-	 .smallerText{
-		margin-left: auto;
-		margin-right:auto;
-		width: 320px;
-		text-align: center;
-		margin-top: 2rem;
-		font-size: 0.9rem;
-	 }   
-	 
-	 body{
-		width: 100%;
-		padding: 0;
-		height: 100%;
-		margin: 1rem 0;
-		font-family: lgFont;
-	 }
-	    
-	 .btnDiv{
-		width: 140px;
-		background-color: #a50034;
-		color: #fff;
-		border-radius: 3px; 
-		text-align: center;
-		padding: 0.5rem;
-		cursor: pointer;
-		display: inline-block;
-	 }
-	 
-	 #mailInput{
-		width: 310px;
-		margin-left: auto;
-		margin-right:auto; 
-		background-color: #f5f5f5;
-		border-radius: 3px;
-		border-color: #b1b1b1;
-		border-width: 1px;
-		border-style: solid;
-		padding: 5px;
-	 }
-	 
-	 #mailInput:focus{
-	 outline: none;
-	 }
-	 
-	 .centeredDiv{
-		width: 320px;
-		margin-left: auto;
-		margin-right: auto;
-		margin-top: 1rem;
-		text-align: left;
-	 }
-	 
-	 .textCenter{
-	 text-align: center !important;
-	 font-size: 1.1rem;
-	 }
-	 
-	 .rating{
-		margin-left: auto;
-		margin-right:auto;
-		width: 320px;
-		margin-top: 1rem;
-		height: 50px; 
-		margin-bottom: 1rem; 
-	 }
-	 
-	 .textDiv{
-		text-align: center;
-		width: 315px;
-		margin-left: auto;
-		margin-right:auto;
-		background-color: #f5f5f5;
-		border-radius: 3px;
-		border-color: #b1b1b1;
-		border-width: 1px;
-		border-style: solid;
-	 }
-	 
-	 #writtenRating{
-		width:98%;
-		line-height: 1.2rem;
-		border-style: none;
-		background-color: #f5f5f5;
-		resize: none;
-	 }
-	 
-	  #writtenRating:focus{
-	 outline: none;
-	 }
-	 
-	 
-	 #thumbUp{
-	  background: url('./img/thumbUp.png') no-repeat;
-	  background-size: 30px 30px;
-	  width: 30px;
-	  height: 30px;
-	  margin-left: auto;
-      margin-right: auto;
-	 }
-	 
-	 #thumbDown{
-	 background: url('./img/thumbDown.png') no-repeat;
-	 background-size: 30px 30px;
-	 width: 30px;
-	 height: 30px;
-	 margin-left: auto;
-     margin-right: auto;
-	 }
-	 
-	 .btnDiv:hover{	
-		 transform: scale(0.9); 
-		 border-right: 2px solid #B51044;
-		 border-bottom: 2px solid #B51044;
-	 }
-	 
-	 .btnDiv.clicked{
-		 transform: scale(0.90); 
-		 border-bottom: 2px solid #550024;
-		  border-right: 2px solid #550024;
-	 }
-	 
-	 .btnDiv.clicked #thumbUp{
-		 background: url('./img/thumbUpSelected.png') no-repeat;
-		 background-size: 30px 30px;
-	 }
-	 
-	  .btnDiv.clicked #thumbDown{
-		 background: url('./img/thumbDownSelected.png') no-repeat;
-		 background-size: 30px 30px;
-	 }
-	 
-	 #sendIcon{
-		width: 150px;
-		height: 2rem;
-		cursor: pointer;
-		margin-left:auto;
-		margin-right:auto;
-		text-align: center;
-		background-color: #a50034;
-		color: #fff;
-		line-height: 2rem;
-		margin-top: 0.5rem;
-		border-radius: 3px;
-	 }	
-	 
-	 #sendIcon:hover{
-		box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 6px 0px;
-	 }	 
-	 
-	 .wrong{
-		border-color: #f00 !important;
-	 }
-	 
-	 .hidden{
-	   display: none;
-	 }
-	 
-	 .errorText{
-	 margin-top: 0.1rem !important;
-	 }
-	    
-	 #btnRight{
-		background-color: #767676; 
-	    }
-	    
-	  #btnRight:hover{	
-		 transform: scale(0.9); 
-		 border-right: 2px solid #656565;
-		 border-bottom: 2px solid #656565;
-	 }   
-    </style>
-  </head>
-  <body>
-	<div class="smallerText">
-	Jak jste byli spokojeni s komunikací s LG ASISTENTEM?<br/>
-	Co bychom mohli v komunikaci vylepšit?
-	</div>
-	<div class="rating">
-	<div class="btnDiv" id="btnLeft"><div id="thumbUp"></div></div>
-	<div class="btnDiv" id="btnRight"><div id="thumbDown" ></div></div>
-	</div>
-	<div class="textDiv" id="textDiv">
-	<textarea id="writtenRating" rows="3"></textarea>
-	
-	</div>
-  <div class="centeredDiv"><input type="checkbox" id="mailTranscript" name="transcript" / ><label  class="smallerText" for="mailTranscript">Odeslat přepis chatu na e-mail</label></div>
-  <div class="centeredDiv "><input type="text" id="mailInput" placeholder="@" disabled/></div>
-  <div id="warningText" class="smallerText hidden errorText" >Musíte alespoň ohodnotit práci operátora, abyste si mohli poslat přepis konverzace.</div>
-	<div class="centeredDiv textCenter">
-	Děkujeme za vaše hodnocení.
-	</div>
-	<div id="sendIcon">Odeslat</div>
-	  
-	 <script type="text/javascript">
-	 function validateEmail(email) {
-		const re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-		return re.test(String(email).toLowerCase());
-	}	
-	 
-	 (function()
-	 {		
-		let stars = null;
-		
-		const sendIcon = document.getElementById("sendIcon");
-		const btnLeft = document.getElementById("btnLeft");
-		const btnRight = document.getElementById("btnRight");
-		const mailTranscript = document.getElementById("mailTranscript");
-		const mailInput = document.getElementById("mailInput");
-		const textDiv = document.getElementById("textDiv");
-		const warningText = document.getElementById("warningText");
-		
-		mailTranscript.addEventListener("click", function() {
-			if(mailTranscript.checked){
-				mailInput.disabled = false;
+	  }	
+  
+    body {
+      color: #000;
+	  font-family: lgFont;
+    }
+
+    .inner-container {
+      background-color: #fff;
+    }
+
+    input[type="email"], input[type="submit"], textarea, .inner-container {
+      border-radius: 0.5rem !important;
+    }
+
+    input[type="email"]:focus, textarea:focus {
+      border: 1px solid #a50034 !important;
+      box-shadow: 0 0 0 2px #b61145 !important;
+    }
+
+    input[type="submit"] {
+      background-color: #a50034;
+      box-sizing: border-box;
+      border: none;
+    }
+
+    input[type="submit"]:hover, input[type="submit"]:focus, input[type="submit"]:active {
+      box-shadow: none !important;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #a50034 !important;
+    }
+
+    input[type="submit"]:active {
+      background-color: #a50034 !important;
+    }
+
+    .curp {
+      cursor: pointer;
+    }
+
+    #rating, #handler {
+      height: 36px;
+    }
+
+    .icon {
+      height: 30px;
+      z-index: 2;
+    }
+
+    .rating-options {
+      flex: 1 1 auto;
+      padding: 0 4px;
+      z-index: 2;
+      align-items: center;
+    }
+
+    #rating-age {
+      position: absolute;
+      top: 50%;
+      left: 1rem;
+      content: '';
+      height: 2px;
+      position: absolute;
+      width: calc(100% - 2rem);
+      background-color: #E9ECEE;
+    }
+
+    #handler {
+      left: 0;
+      z-index: 3;
+    }
+
+    .feedback {
+      border: 1px solid #ced4da !important;
+      border: none;
+      margin-top: 15px;
+    }
+
+    #email_checkbox {
+      line-height: 1.9;
+    }
+
+    #email_checkbox:before, #email_checkbox:after {
+      height: 1.5rem;
+      width: 1.5rem;
+      left: -30px;
+      box-shadow: none !important;
+    }
+
+    .custom-checkbox {
+      padding-left: 30px;
+    }
+
+    .custom-control-input:checked ~ .custom-control-label::before {
+      background-color: #a50034 !important;
+    }
+
+    .custom-control-input:active ~ .custom-control-label::before {
+      background-color: #a50034 !important;
+    }
+    .scroll-container {
+      max-height: 107vh;
+      width: 1px !important;
+      min-width: 100% !important;
+      max-width: 100% !important;
+    }
+    .scroll {
+      max-width: 100% !important;
+    }
+  </style>
+</head>
+<body>
+  <div class="scroll-container">
+    <div class="scroll" data-simplebar>
+        <form id="my_form" class="p-2 m-2">
+            <p class="text-center">Jak jste byli spokojeni s komunikací s LG ASISTENTEM?<br/>Co bychom mohli v komunikaci vylepšit?</p>
+            <div class="inner-container px-3 pt-1 pb-2">
+              <div id="rating" class="rating d-flex justify-content-center mx-auto position-relative">
+                <div id="rating_options" class="rating-options d-flex justify-content-between">
+                  <label class="icon curp mb-0" data-mluvii-id="rating-5">
+                    <svg width="30px" viewBox="0 0 115.4 113.4">
+                      <circle class="body" fill="#C6CCD0" data-fill="#7bca71" cx="57.7" cy="56.7" r="56.7" />
+                      <path class="mouth" fill="#FFFFFF" d="M57.8,70.7c-6.4,0-19.4,0-27.8,0c-1.9,0-3.2,1-4,2.3c-0.9,1.5-0.9,3.4,0.3,5c7.1,9.6,18.5,15.7,31.4,15.7c12.8,0,24.2-6.2,31.4-15.7c1.1-1.5,1.1-3.3,0.4-4.7c-0.7-1.5-2.3-2.6-4.2-2.6C79.1,70.7,66.1,70.7,57.8,70.7z" />
+                      <path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z" />
+                      <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
+                    </svg>
+                    <input
+                      value="5"
+                      type="radio"
+                      id="rating_0"
+                      name="rating"
+                      class="d-none"
+                    />
+                  </label>
+                  <label class="icon curp mb-0" data-mluvii-id="rating-3">
+                    <svg width="30px" viewBox="0 0 115.4 113.4">
+                      <circle class="body" fill="#C6CCD0" data-fill="#acd567" cx="57.7" cy="56.7" r="56.7" />
+                      <path class="mouth" fill="#FFFFFF" d="M57.6,86.7c8.5,0,16.7-2.2,23.9-6.3c2.2-1.3,3-4.1,1.7-6.3c-1.3-2.2-4.1-3-6.3-1.7c-5.9,3.3-12.5,5.1-19.4,5.1s-13.5-1.8-19.4-5.1c-2.2-1.3-5-0.5-6.3,1.7c-1.3,2.2-0.5,5,1.7,6.3C40.9,84.5,49.1,86.7,57.6,86.7z"/>
+                      <path class="right-eye" fill="#FFFFFF" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z"/>
+                      <path class="left-eye" fill="#FFFFFF" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z"/>
+                    </svg>
+                    <input
+                      value="3"
+                      type="radio"
+                      id="rating_1"
+                      name="rating"
+                      class="d-none"
+                    />
+                  </label>
+                  <label class="icon curp mb-0" data-mluvii-id="rating-1">
+                    <svg width="30px" viewBox="0 0 115.4 113.4">
+                      <circle class="body" fill="#C6CCD0" data-fill="#ff7b48" cx="57.7" cy="56.7" r="56.7"  />
+                      <path class="mouth" fill="#FFFFFF" d="M57.3,71.5c-8.5,0-16.6,2.2-23.8,6.3c-2.2,1.3-3,4.1-1.7,6.3c1.3,2.2,4.1,3,6.3,1.7c5.8-3.3,12.4-5.1,19.3-5.1s13.5,1.8,19.3,5.1c2.2,1.3,5,0.5,6.3-1.7c1.3-2.2,0.5-5-1.7-6.3C74,73.7,65.8,71.5,57.3,71.5z" />
+                      <path class="right-eye" fill="#FFFFFF" d="M70.3,37.8c1.2-0.2,1.4-0.3,2.6-0.5c1.2-0.2,4.3-0.6,6.4-1c2.1-0.4,2.6-0.5,4.4-0.7c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.4,46.2,68,41.4,70.3,37.8z" />
+                      <path class="left-eye" fill="#FFFFFF" d="M43.2,49.3c3.1-3.1,3.5-7.9,1.2-11.5c-1.2-0.2-1.4-0.3-2.6-0.5c-1.2-0.2-4.3-0.6-6.4-1c-2.1-0.4-2.6-0.5-4.4-0.7c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C33.8,52.9,39.6,52.9,43.2,49.3z" />
+                    </svg>
+                    <input
+                      value="1"
+                      type="radio"
+                      id="rating_2"
+                      name="rating"
+                      class="d-none"
+                    />
+                  </label>
+                </div>
+
+                <div id="rating-age"></div>
+
+                <div id="handler" class="curp position-absolute d-none">
+                  <svg width="40px" viewBox="0 0 115.4 113.4">
+                  <circle fill="#8EC254" class="body" cx="57.7" cy="56.7" r="56.7" />
+                  <path class="mouth" fill="#31464e" d="M57.8,70.7c-6.4,0-19.4,0-27.8,0c-1.9,0-3.2,1-4,2.3c-0.9,1.5-0.9,3.4,0.3,5c7.1,9.6,18.5,15.7,31.4,15.7c12.8,0,24.2-6.2,31.4-15.7c1.1-1.5,1.1-3.3,0.4-4.7c-0.7-1.5-2.3-2.6-4.2-2.6C79.1,70.7,66.1,70.7,57.8,70.7z" />
+                  <path class="right-eye" fill="#31464e" d="M70.7,38c0.3-0.5,0.7-1,1.2-1.5c1.9-1.9,4.5-2.8,7-2.7c1.9,0.1,3.8,0.8,5.3,2c0.3,0.2,0.5,0.4,0.8,0.7c2.2,2.2,3,5.2,2.6,8c-0.3,1.8-1.2,3.6-2.6,5c-3.6,3.6-9.4,3.6-13,0C68.7,46.4,68.3,41.5,70.7,38z" />
+                  <path class="left-eye" fill="#31464e" d="M43.4,49.5c3.1-3.1,3.5-8,1.2-11.6c-0.3-0.5-0.7-1-1.2-1.5c-1.9-1.9-4.5-2.8-7-2.7c-1.9,0.1-3.8,0.8-5.3,2c-0.3,0.2-0.5,0.4-0.8,0.7c-2.2,2.2-3,5.2-2.6,8c0.3,1.8,1.2,3.6,2.6,5C34,53.1,39.8,53.1,43.4,49.5z" />
+                  </svg>
+                </div>
+              </div>
+
+              <textarea
+                rows="3"
+                id="feedback"
+                name="feedback"
+                data-mluvii-id="feedback"
+                class="form-control feedback"
+                placeholder="Vaše zpětná vazba"
+              ></textarea>
+
+              <div class="custom-control custom-checkbox mt-2">
+                <input type="checkbox" class="custom-control-input" id="send_to_email">
+                <label id="email_checkbox" class="custom-control-label curp" for="send_to_email" data-mluvii-id="send-to-email">
+                  Odeslat přepis chatu na e-mail
+                </label>
+              </div>
+
+              <div class="form-group">
+                <input
+                  disabled
+                  required
+                  id="email"
+                  type="email"
+                  placeholder="E-mailová adresa"
+                  class="form-control email"
+                  data-mluvii-id="email"
+                />
+              </div>
+            </div>
 			
-			}else{
-			 	mailInput.disabled = true;	
-			}
-		});
-		
-		sendIcon.addEventListener("click", function() {				
-			const writtenRating = document.getElementById("writtenRating");
-			let mail = null;
-			let writtenRatingText = null;
-			
-			if(mailTranscript.checked && mailInput.value != "" ){
-				
-				mail = mailInput.value;
-				if(!validateEmail(mail)){
-					mailInput.classList.add("wrong");
-					return;
-				}
-			}			
-			
-			if(writtenRating.value != "" ){
-				writtenRatingText = writtenRating.value;
-			}
-			
-			if(writtenRatingText == null && stars == null && mail == null){
-				textDiv.classList.add("wrong");
-				return;
-			}
-			
-			if(writtenRatingText == null && stars == null && mail != null){
-				warningText.classList.remove("hidden");
-				return;
-			}
-			
-			 window.parent.postMessage({
-				type: "FEEDBACK_ACTION",
-				email: mail,
-				stars: stars,
-				content: writtenRatingText
-				}, "*");
-		});
-		
-		btnLeft.addEventListener("click", function() {
-			btnLeft.classList.add("clicked");
-			btnRight.classList.remove("clicked");
-			stars = 5;
-		});
-		
-		btnRight.addEventListener("click", function() {
-			btnRight.classList.add("clicked");
-			btnLeft.classList.remove("clicked");
-			stars = 1;
-		});
-	 }
-	 )();
-      
-      
-    </script>
-  </body>
+<p class="text-center">Děkujeme za vaše hodnocení.</p>
+            <div class="form-group d-flex m-0">
+              <input
+                id="submit"
+                type="submit"
+                value="Odeslat"
+                class="btn btn-primary mt-1 mx-auto px-5"
+                data-mluvii-id="submit"
+              />
+            </div>
+          </form>
+    </div>
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/flubber/0.4.2/flubber.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/latest/TweenMax.min.js"></script>
+  <script src="https://unpkg.com/simplebar@2.6.1/dist/simplebar.js"></script>
+  <script>
+
+    // Variables
+    var handlerStartOffset = 0;
+    var handleDragStartOffset = 0;
+    var handler = document.getElementById('handler');
+    var ratingContainer = document.getElementById('rating');
+    var ratingContainerWidth = ratingContainer.offsetWidth;
+    var ratingOptionsContainer = document.getElementById('rating_options');
+    var icons = [].slice.call(ratingOptionsContainer.querySelectorAll('.icon'));
+
+    icons = icons.map(function(el, i) {
+      return {
+        element: 		el,
+        offsetLeft: el.offsetLeft,
+        bodyColor:	el.querySelector('.body').getAttribute('data-fill'),
+        mouth: 			el.querySelector('.mouth').getAttribute('d'),
+        leftEye: 		el.querySelector('.left-eye').getAttribute('d'),
+        rightEye: 	el.querySelector('.right-eye').getAttribute('d')
+      };
+    });
+
+    // Animation timeline.
+    var tl = new TimelineMax({ paused: true });
+
+    icons.forEach(function(icon, i) {
+      icon.element.addEventListener('click', function() {
+		document.getElementById("handler").classList.remove("d-none");
+        tl.tweenTo('rating_' + i, {
+          ease: Expo.easeOut
+        }).duration(.6);
+      });
+
+      var iconMinimization = new TweenLite.to(icon.element, .6, {
+        scale: 0
+      });
+
+      var body = handler.querySelector('.body');
+      var mouth = handler.querySelector('.mouth');
+      var leftEye = handler.querySelector('.left-eye');
+      var rightEye = handler.querySelector('.right-eye');
+
+      var handlePosition = new TweenLite.to(handler, .6, {
+        left: icon.offsetLeft - 4,
+        onUpdate: function() {
+          var propgress = handlePosition.progress();
+          if (i !== 0) {
+            var ic = icons[i - 1];
+            var m = flubber.interpolate(ic.mouth, icon.mouth);
+            var l = flubber.interpolate(ic.leftEye, icon.leftEye);
+            var r = flubber.interpolate(ic.rightEye, icon.rightEye);
+            mouth.setAttribute('d', m(propgress));
+            leftEye.setAttribute('d', l(propgress));
+            rightEye.setAttribute('d', r(propgress));
+          }
+        },
+        ease: Power0.easeNone
+      });
+
+      var label = 'rating_' + i;
+      var prevLabel = 'rating_' + (i - 1);
+
+      handlePosition.data = {
+        index: i,
+        label: label,
+        prevLabel: prevLabel
+      };
+
+      var handlerColor = new TweenLite.to(body, .6, {
+        fill: icon.bodyColor
+      });
+
+      if (i !== 0) {
+        var iconMaximization = new TweenLite.to(icons[i - 1].element, .6, {
+          scale: 1
+        });
+      }
+
+      tl.add(handlePosition)
+        .addLabel(label)
+        .add(handlerColor, '-=.6')
+        .add(iconMinimization, '-=.6');
+
+      if (iconMaximization) {
+        tl.add(iconMaximization, '-=.6');
+      }
+    });
+
+    function autocomplete(e) {
+      var label;
+      var curLabel = tl.currentLabel();
+      var nextLabel = tl.getLabelAfter();
+      var curLabelTime = tl.getLabelTime(curLabel);
+      var nextLabelTime = tl.getLabelTime(nextLabel);
+      var halfWay = curLabelTime + (nextLabelTime - curLabelTime) / 2 < tl.time();
+
+      label = halfWay ? nextLabel || curLabel : curLabel;
+
+      if (label) {
+        tl.tweenTo(label);
+        document.getElementById(label).checked = true;
+      }
+    };
+
+    handler.addEventListener("mousedown", function(e) {
+      document.body.addEventListener("mousemove", handleMouseMove);
+      handleDragStartOffset = e.clientX + 15;
+      handlerStartOffset = parseInt(handler.style.left) || 0;
+    });
+
+    document.body.addEventListener("mouseup", function(e) {
+      if (handleDragStartOffset) {
+        handleDragStartOffset = null;
+        document.body.removeEventListener("mousemove", handleMouseMove);
+        autocomplete();
+      }
+    });
+
+    function handleMouseMove(e) {
+      var offsetX = e.clientX - handleDragStartOffset + 48 + 48 / 2;
+      var newProgress = Math.max(0, (offsetX + handlerStartOffset)  / (ratingContainerWidth + 20));
+      tl.progress(newProgress);
+    };
+
+    // Form
+    var form = document.getElementById('my_form');
+    var submit = document.getElementById('submit');
+    var checkbox = document.getElementById('send_to_email');
+
+    checkbox.onchange = function(e) {
+      document.getElementById('email').disabled = !e.target.checked;
+    };
+
+    form.onsubmit = function (e) {
+      e.preventDefault();
+
+      var email = document.getElementById('email').value;
+      var feedback = document.getElementById('feedback').value;
+      var checked = document.getElementById('send_to_email').checked;
+      var rating = document.querySelector('input[type="radio"]:checked');
+
+      window.parent.postMessage({
+        type: "FEEDBACK_ACTION",
+        email: checked ? email : null,
+        stars: rating ? rating.value : null,
+        content: feedback
+      }, "*");
+    };
+  </script>
+</body>
 </html>
