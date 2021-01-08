@@ -379,15 +379,18 @@ input[type="submit"]:active {
 
       // First two questions are mandatory, if checkbox for email isn't checked...
       if((rating === null && rating_nps !== null) || (rating !== null && rating_nps === null)) {
+	   console.log("not right");
           error_box.style.display = "block";
           error_box.innerHTML = "Pro odeslání prosím vyplňte obě otázky.";
           return false;
       }
       else {
+	      console.log("right");
           error_box.style.display = "none";
           error_box.innerHTML = "";
       }
         return false;
+	    console.log("how?");
       window.parent.postMessage({
         type: "FEEDBACK_ACTION",
         email: checked ? email : null,
