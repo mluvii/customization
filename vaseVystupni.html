@@ -393,7 +393,7 @@ input[type="submit"]:active {
       window.parent.postMessage({
         type: "FEEDBACK_ACTION",
         email: checked ? email : null,
-        stars: rating.value,
+        stars: rating ? rating.value: null,
         content: feedback
       }, "*");
 
