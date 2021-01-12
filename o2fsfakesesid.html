@@ -1,0 +1,55 @@
+<html>
+<head>
+  <style type="text/css">
+    #runNewChat{
+      position: fixed;
+      right: 10px;
+      top: 200px;
+      color: #fff;
+      background-color: #f00;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>  
+</head>
+<body>
+<div>
+  <p>1. V mluvii se nastaví proměnná chatIsOpened (Nastavení -> Aplikace -> Proměnné -> Přidat)</p>
+  <p>2. Vytvoří se pravidlo pro widget s jednou akcí na zobrazení pozvánky, která má 2 podmínky.<br/>
+     - Vlastní proměnná - chatIsOpened - nerovná se - 1<br/>
+     - Čas na stránce - větší nebo rovno - 30    
+  </p>
+  <p>3. Ve widgetu se spojí pravidlo vytvořené v bodu 2 s widgetem</p>
+  <p>V kódu na této jsou nastavené app event callbacky, které řeší to, aby se widgety nepřekrývaly. <br/>
+   V prvním widgetu(New Chat - řádek 34 až 51) se nastavuje proměnná chatIsOpened na 1 ve chvíli, kdy klient otevře chat sám od sebe, aby na něj nevyskakovalo okno s pozvánkou.<br/>
+   V druhém widgetu(Ceniky - řádek 53 až 74) se nastavuje lokální proměnná podle toho, jestli je otevřené okno chatu tohoto widgetu, aby nešel v tu chvíli otevřít widget NewChat a překrýt již otevřené okno<br/>
+   Skript na řádkách 77 až 83 se kontroluje stav otevření widgetu Ceniky a případně otevírá widget NewChat     
+  </p>
+</div>  
+<p>
+<span id="fids"></span>
+</p>
+<div id="runNewChat">Open new Chat</div>  
+<script type="text/javascript">
+   var arr = new Uint8Array(20);
+   var sessFakeId = window.crypto.getRandomValues(arr).join('').toString('hex');
+   document.getElementById("fids").innerHTML = sessFakeId;
+  (function () {
+    var scr = document.createElement('script');
+    scr.type = 'text/javascript';
+    scr.charset = 'UTF-8';
+    scr.async = true;
+   scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+    scr.$owidgetOnLoad = function (owidget) {
+      if (!owidget.isSupported) { return; }
+       owidget.init("ad22a866-a3f3-4594-8a88-636fece16072", "callback");
+      owidget.connectToServer();
+      owidget.addCustomData('sessFakeId', sessFakeId);
+    };
+    var ffs = document.getElementsByTagName('script')[0];
+    ffs.parentNode.insertBefore(scr, ffs);
+  })();
+</script>
+
+</body>
+</html>
