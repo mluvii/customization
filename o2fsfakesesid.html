@@ -38,7 +38,7 @@
    scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
     scr.$owidgetOnLoad = function (owidget) {
       if (!owidget.isSupported) { return; }
-       owidget.init("ad22a866-a3f3-4594-8a88-636fece16072", "callback");
+       owidget.init("ad22a866-a3f3-4594-8a88-636fece16072", null);
       owidget.connectToServer();
       owidget.addCustomData('sessFakeId', sessFakeId);
     };
