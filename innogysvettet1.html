@@ -25,12 +25,12 @@
     scr.type = 'text/javascript';
     scr.charset = 'UTF-8';
     scr.async = true;
-    scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
+   scr.src = '//ptr.mluvii.com/widget/OOWidget.js';
     scr.$owidgetOnLoad = function (owidget) {
       if (!owidget.isSupported) { return; }
-      owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "SvetZive");
+      owidget.init(["d4cd3376-5653-45bb-8e22-f02b009d496a",73], "ChatInnosvetOvereni");
       owidget.connectToServer();
-      owidget.addCustomData('innosvetdata', '{"identities": [ {"identityname": "Libuše Reichová","OPS": ["9510325157"],"MS": ["9300099318"]}]}');
+      owidget.addCustomData('innosvetdata', '{"identities": [ {"identityname": "Libuše Reichová","OPS": ["9510325157"],"MS": ["9300099318"]},{"identityname": "Jiřina Ulmová","OPS": ["9510264070"],"MS": ["9302481379","9302443306","9300280567"]},{ "identityname": "Paní Natálie Mazurová","OPS": ["9510268915"],"MS": ["9302952580","9300264081"]},{"identityname": "Paní Alena Demeterová","OPS": ["9511186110"],"MS": ["9302451081"]},{"identityname": "Alena Marie Hanáková","OPS": ["9512782811"],"MS": ["9300699172","9301329246"]},{"identityname": "Alenka Živčáková", "OPS": ["9513194395"],"MS": ["9301136744"] }, { "identityname": "Paní Michaela Matuškovičová", "OPS": [],"MS": []}, {"identityname": "DeeDee Casting Management, s.r.o.","OPS": [ "9620027841"],"MS": ["9302884597"]}]}');
     };
     var ffs = document.getElementsByTagName('script')[0];
     ffs.parentNode.insertBefore(scr, ffs);
