@@ -51,8 +51,8 @@
     <script type="text/javascript">
      (function()
 	   {
-       let btn = document.getElementById("btn");
-       btn.addEventListener("click",() =>{
+       let enqueueBtn = document.getElementById("btn");
+       enqueueBtn.addEventListener("click",function(){
          window.parent.postMessage({
 				type: "ENQUEUE"
 			}, "*");
