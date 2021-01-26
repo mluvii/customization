@@ -30,6 +30,7 @@
           border-radius: 0.3rem;
           margin-top: 1rem;
           position: relative;
+         cursor: pointer;
      }
      
      #text{
@@ -37,11 +38,28 @@
         margin-bottom: 1rem;
         text-align: center;
         width: 100%;
-        cursor: pointer;
+       
+      }
+      
+       #text:hover{
+          background-color: #419fc3;
       }
       
      
     </style>  
+    
+    <script type="text/javascript">
+     (function()
+	   {
+       const btn = document.getElementById("btn");
+       btn.addEventListener("click",() =>{
+         window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");
+       });
+     }
+       )();
+      </script>  
   </head>
   <body>
     <div id="topBackground">
