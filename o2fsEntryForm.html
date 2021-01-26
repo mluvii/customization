@@ -48,18 +48,7 @@
      
     </style>  
     
-    <script type="text/javascript">
-     (function()
-	   {
-       let enqueueBtn = document.getElementById("btn");
-       enqueueBtn.addEventListener("click",function(){
-         window.parent.postMessage({
-				type: "ENQUEUE"
-			}, "*");
-       });
-     }
-       )();
-      </script>  
+    
   </head>
   <body>
     <div id="topBackground">
@@ -73,5 +62,17 @@
     <div>
       <div id="btn">Chci vstoupit do chatu</div>
     </div>  
+	   <script type="text/javascript">
+     (function()
+	   {
+       let enqueueBtn = document.getElementById("btn");
+       enqueueBtn.addEventListener("click",function(){
+         window.parent.postMessage({
+				type: "ENQUEUE"
+			}, "*");
+       });
+     }
+       )();
+      </script> 
   </body>
 </html>
