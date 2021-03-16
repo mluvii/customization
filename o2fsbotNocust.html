@@ -1,0 +1,43 @@
+<html>
+<head>
+  <style type="text/css">
+    #runNewChat{
+      position: fixed;
+      right: 10px;
+      top: 200px;
+      color: #fff;
+      background-color: #f00;
+      padding: 10px;
+      cursor: pointer;
+    }
+  </style>  
+</head>
+<body>
+<div>
+  <p>Příklad startu chatbota pro O2FS </p>
+</div>  
+<p>
+<span id="fids"></span>
+</p>
+
+<script type="text/javascript">
+  (function () {
+    var scr = document.createElement('script');
+    scr.type = 'text/javascript';
+    scr.charset = 'UTF-8';
+    scr.async = true;
+    scr.src = '//app.mluvii.com/widget/OOWidget.js';
+    scr.$owidgetOnLoad = function (owidget) {
+      if (!owidget.isSupported) { return; }
+      owidget.init("ad22a866-a3f3-4594-8a88-636fece16072", "TestBota");
+      owidget.connectToServer();
+//      owidget.addCustomData('o2fs_id', '2a812a3cdaa9f5626a28d59a2fd463db');
+//      owidget.addCustomData('o2fs_contractNumber', '9800665486');
+    };
+    var ffs = document.getElementsByTagName('script')[0];
+    ffs.parentNode.insertBefore(scr, ffs);
+  })();
+</script>
+
+</body>
+</html>
