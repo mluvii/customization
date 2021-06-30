@@ -29,7 +29,7 @@
     scr.$owidgetOnLoad = function (owidget) {
       if (!owidget.isSupported) { return; }
       owidget.init("7392a0bc-52c7-9e49-7f5c-97aa899077dc", "PolerokSondaRPA");
-      owidget.addCustomData('CustomData', '{ "customData":{"pageId": "6.2.1","contactPerson":{"userName":"koutsky@home.to","firstName":"Pavel","lastName":"Koutský","extRoles":[ "E210", "E311" ],"msisdn":"602123456"},"customer": {"customerId":"12345","customerName":"Testovací firma","customerRefSegment":"R","customerCareLevel":"1","subjectType":"Soukromá osoba","basicServiceType":"O2POP","MKTCagreement":"Y"},"order":{"orderId":"123456"},"invoice":{"invoiceNumber":"654321"},"products":[{"productCode":"10001","assetRefNo":"20002"}]}}');
+      owidget.setCustomData('CustomData', '{ "customData":{"pageId": "6.2.1","contactPerson":{"userName":"koutsky@home.to","firstName":"Pavel","lastName":"Koutský","extRoles":[ "E210", "E311" ],"msisdn":"602123456"},"customer": {"customerId":"12345","customerName":"Testovací firma","customerRefSegment":"R","customerCareLevel":"1","subjectType":"Soukromá osoba","basicServiceType":"O2POP","MKTCagreement":"Y"},"order":{"orderId":"123456"},"invoice":{"invoiceNumber":"654321"},"products":[{"productCode":"10001","assetRefNo":"20002"}]}}');
       owidget.connectToServer();
     };
     var ffs = document.getElementsByTagName('script')[0];
@@ -38,6 +38,6 @@
 </script>
 </head>
 <body>
-  <h1>Test O2 parse custom data-<h1>
+  <h1>Test O2 parse custom data()<h1>
 </body>
 </html>
