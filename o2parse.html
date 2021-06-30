@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InnogysvetBot1</title>
+    <style>
+        body {
+            margin: 0px;
+            padding: 0px;
+            font-family: Segoe UI;
+        }
+
+        html,
+        body {
+            height: 100%;
+        }
+
+     </style>
+     
+   <script type="text/javascript">
+  (function () {
+    var scr = document.createElement('script');
+    scr.type = 'text/javascript';
+    scr.charset = 'UTF-8';
+    scr.async = true;
+    scr.src = '//virtualni-prodejna.o2.cz/widget/OOWidget.js';
+    scr.$owidgetOnLoad = function (owidget) {
+      if (!owidget.isSupported) { return; }
+      owidget.init("7392a0bc-52c7-9e49-7f5c-97aa899077dc", "PolerokSondaRPA");
+      owidget.connectToServer();
+    };
+    var ffs = document.getElementsByTagName('script')[0];
+    ffs.parentNode.insertBefore(scr, ffs);
+  })();
+</script>
+</head>
+<body>
+  <h1>Test propojení chatbota na innogysvet<h1>
+</body>
+</html>
