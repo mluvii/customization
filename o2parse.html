@@ -29,7 +29,7 @@
     scr.$owidgetOnLoad = function (owidget) {
       if (!owidget.isSupported) { return; }
       owidget.init("7392a0bc-52c7-9e49-7f5c-97aa899077dc", "PolerokSondaRPA");
-      owidget.addCustomData('CustomData', '{ "customData":{"pageId": "6.2.1","contactPerson":{"userName":"koutsky@home.to","firstName":"Pavel","lastName":"Koutský","extRoles":[ "E210", "E311" ],"msisdn":"602123456"},"customer": {"customerId":"12345","customerName":"Testovací firma","customerRefSegment":"R","customerCareLevel":"1","subjectType":"Soukromá osoba","basicServiceType":"O2POP","MKTCagreement":"Y"},"order":{"orderId":"123456"},"invoice":{"invoiceNumber":"654321"},"products":[{"productCode":"10001","assetRefNo":"20002"}]}}');
+      owidget.addCustomData('chatCustomParamName', '{"url":"https://ppt-moje.o2.cz/web/o2/userdashboard?logToVisitedHistory=true","contactPerson":{"userName":"jirik.ttsik@o2.cz","extRoles":"E110","firstAndLastName":"Jiřík ttsík"},"customer":{"customerId":"Person","customerName":"1937362009","customerCareLevel":"BASIC","customerRefSegment":"R","basicServiceType":"postpaid","MKTCagreement":true},"order":{},"invoice":{},"product":{}}');
       owidget.connectToServer();
     };
     var ffs = document.getElementsByTagName('script')[0];
