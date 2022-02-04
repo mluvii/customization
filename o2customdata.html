@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta charset="windows-1250">
+  <title>Jaro's web</title>
+  
+  <style type="text/css">                  
+    body {color: black; background-color: white}
+
+    a:link {color: black;}
+    a:visited {color: black;}
+    a:hover {color: black}
+    a:link, a:visited    {text-decoration: none}
+  </style>
+  
+</head>
+<body>
+ 
+
+   <script type="text/javascript">
+  (function () {
+    var scr = document.createElement('script');
+    scr.type = 'text/javascript';
+    scr.charset = 'UTF-8';
+    scr.async = true;
+    scr.src = '//virtualni-prodejna.o2.cz/widget/OOWidget.js';
+    scr.$owidgetOnLoad = function (owidget) {
+      if (!owidget.isSupported) { return; }
+      owidget.init(["7392a0bc-52c7-9e49-7f5c-97aa899077dc", 1], "Pisek");
+      owidget.connectToServer();
+      owidget.setNewData = function(varName, varVal) {
+        owidget.addCustomData(varName,varVal);
+        }
+    };
+    var ffs = document.getElementsByTagName('script')[0];
+    ffs.parentNode.insertBefore(scr, ffs);
+  })();
+</script>
+
+<h1>Testovací prostředí pro nastaveni cust param</h1>
+
+</body>     
+</html>
