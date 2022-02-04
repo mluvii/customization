@@ -28,7 +28,7 @@
       if (!owidget.isSupported) { return; }
       owidget.init(["7392a0bc-52c7-9e49-7f5c-97aa899077dc", 1], "Pisek");
       owidget.connectToServer();
-      owidget.setNewData = function(varName, varVal) {
+      owidget._setNewData = function(varName, varVal) {
         owidget.addCustomData(varName,varVal);
         }
     };
