@@ -104,12 +104,12 @@ border-color: #ccc;
 <script type="text/javascript">
 (function () {
   var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
-  scr.src = '//virtualni-prodejna.o2.cz/widget/OOWidget.js';
+  scr.src = '//app.mluvii.com/widget/OOWidget.js';
 
   var onlineBool = false;
   scr.$owidgetOnLoad = function (owidget) {
     if (!owidget.isSupported) { return; }
-    owidget.init(['7392a0bc-52c7-9e49-7f5c-97aa899077dc', 2], null);
+    owidget.init("1388a754-6769-4364-9cbd-ac28b7580544", null);
     owidget.setStatusUpdateCallback(function(code) {
       var statusDiv = document.getElementById("centerDiv");
       statusDiv.className="online";
