@@ -1,3 +1,4 @@
+
 <html>
 <head>
 <meta charset="UTF-8" />
@@ -15,103 +16,78 @@ body{
 	background-repeat: no-repeat;
 	width: 155px;
     height: 150px;
-	margin-left: auto;
-	margin-right: auto;
 }
-
 
 #centerDiv{
 position: absolute;
 background-color:white;
 top:50%;
 left: 50%;
-margin-top: -175px;
-margin-left: -225px;
-width: 450px;
-height: 350px;
+margin-top: -125px;
+margin-left: -175px;
+width: 350px;
+height: 250px;
 border-radius: 8px;
 }
 
-.guru{
-    background-image: url('./guru-01.png');
-    width: 250px;
-    height: 250px;
-    background-repeat: no-repeat;
-    background-size: contain;
-    position: absolute;
-    top: -100px;
-    left: 100px;
+.online{
+background-image: url("online.png");
+background-repeat: no-repeat;
+background-position: center 20px;
 }
 
 .offline{
+background-image: url("NA.png");
+background-repeat: no-repeat;
+background-position: center 20px;
+}
+
+.busy{
+background: url("busy.png");
 background-repeat: no-repeat;
 background-position: center 20px;
 }
 
 #numInput{
     position: absolute;
-    bottom: 120px;
-    width: 300px;
+    bottom: 70px;
+    width: 200px;
     left: 75px;
 text-align: center;
-    height: 45px;
+    height: 30px;
     border-radius: 5px;
 border-style: solid;
 border-width: 1px;
 border-color: #ccc;
-font-size: 20px;
 }
 
 #submitBtn{
     position: absolute;
     bottom: 35px;
-    width: 300px;
+    width: 200px;
     left: 75px;
-  height: 55px;
+  height: 30px;
     border-radius: 5px;
     color: #fff;
-	font-size: 20px;
  
 }
 
 .wrongCode{
    border-style: none;
-  background: #2286bf;
+  background: #999;
 }
 
 .goodCode{
    border-style: solid;
-  background: #2286bf;
+  background: -webkit-linear-gradient(#a5cd00, #7bb300); 
+  background: -o-linear-gradient(#a5cd00, #7bb300);
+  background: -moz-linear-gradient(#a5cd00, #7bb300);
+  background: linear-gradient(#a5cd00, #7bb300);
+  border-top-color: #d3e780;	
+  border-bottom-color: #538000;
   border-left: none;
   border-right: none;
-  cursor: pointer;
 }
-
-@media only screen and (max-width: 475px) {
-
-  #centerDiv{
-    width: 100%;
-	left: 0;
-	margin-left: 0;
-  }
-}
-
-@media only screen and (max-height: 550px) {
-
-  #centerDiv{
-    top: 0;
-	bottom: 0;
-	margin-top: 0px;
-	height: 100%;
-  }
-  
-  .guru{
-    margin-top: 0;
-	top: 0;
-  }
-}
-
-
 </style>
 
 
@@ -120,7 +96,6 @@ font-size: 20px;
 <body>
 <div id='logo' ></div>
 <div id="centerDiv" class="offline">
-<div class="guru"></div>
 <input type="text" id="numInput" placeholder="Vložte kód" >
 <input type="submit" id="submitBtn" class="wrongCode" value="Vstoupit do místnosti">
 </div>
@@ -128,17 +103,45 @@ font-size: 20px;
 <script type="text/javascript">
 (function () {
   var scr = document.createElement('script'); scr.type = 'text/javascript'; scr.async = true; scr.charset = 'UTF-8';
-  scr.src = '//app.mluvii.com/widget/OOWidget.js';
+  scr.src = '//virtualni-prodejna.o2.cz/widget/OOWidget.js';
 
   var onlineBool = false;
   scr.$owidgetOnLoad = function (owidget) {
     if (!owidget.isSupported) { return; }
-    owidget.init("1388a754-6769-4364-9cbd-ac28b7580544", null);
+    owidget.init(['7392a0bc-52c7-9e49-7f5c-97aa899077dc', 2], null);
+    owidget.setStatusUpdateCallback(function(code) {
+      var statusDiv = document.getElementById("centerDiv");
+      statusDiv.className="online";
+      onlineBool = true;
+
+      /*	switch (code) {
+
+        case 0:
+          var statusDiv=document.getElementById("centerDiv");
+          statusDiv.className="offline";
+          onlineBool = false;
+          break;
+        case 1:
+          var statusDiv=document.getElementById("centerDiv");
+          statusDiv.className="online";
+          onlineBool = true;
+          break;	
+        case 2:
+          var statusDiv=document.getElementById("centerDiv");
+          statusDiv.className="busy";
+          onlineBool = true;
+          break;
+
+      } */
+
+    });
 
     document.getElementById("submitBtn").disabled = true;
     document.getElementById("submitBtn").onclick = function () {
       var callshowNr = document.getElementById("numInput").value;
-      owidget.openAppOnCurrentPage('callshow', callshowNr);
+      if (onlineBool) {
+        owidget.openAppOnCurrentPage('callshow', callshowNr);
+      }
     };
     document.getElementById("numInput").oninput = function () {
       var str = document.getElementById("numInput").value;
@@ -153,7 +156,7 @@ font-size: 20px;
     document.getElementById("numInput").onpropertychange = document.getElementById("numInput").oninput;
     document.onkeypress = function keypressed(e) {
       var keyCode = (window.event) ? e.which : e.keyCode;
-      if (keyCode == 13 && !document.getElementById("submitBtn").disabled) {
+      if (keyCode == 13 && !document.getElementById("submitBtn").disabled && onlineBool) {
         owidget.openAppOnCurrentPage('callshow', document.getElementById("numInput").value);
       }
     };
