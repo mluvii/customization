@@ -1,0 +1,79 @@
+@font-face {
+    font-family: 'innogyWEB Regular';
+    src: url('/Innogy/innogyCustForm/fonts/innogyWEB-Regular.eot'); /* IE9 Compat Modes */
+    src: url('/Innogy/innogyCustForm/fonts/innogyWEB-Regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+         url('/Innogy/innogyCustForm/fonts/innogyWEB-Regular.woff2') format('woff2'), /* Super Modern Browsers */
+         url('/Innogy/innogyCustForm/fonts/innogyWEB-Regular.woff') format('woff'), /* Pretty Modern Browsers */
+         url('/Innogy/innogyCustForm/fonts/innogyWEB-Regular.ttf')  format('truetype'), /* Safari, Android, iOS */
+         url('/Innogy/innogyCustForm/fonts/innogyWEB-Regular.svg') format('svg'); /* Legacy iOS */
+  }
+html {
+	height: 100%;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #304558;
+	font-family: "innogyWEB Regular", "Segoe UI", "SF Optimized", system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular", "Roboto", sans-serif;
+}
+
+body {
+	height: 100%;
+	background-color: transparent;
+	 font-family: "innogyWEB Regular", "Segoe UI", "SF Optimized", system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular", "Roboto", sans-serif;
+}
+
+.flex-1 { flex: 1; }
+.color-gray { color: #8a939d; }
+
+.whiteboard {
+	overflow: auto;
+	background: white;
+	border-radius: 1rem;
+	box-shadow: rgba(0, 0, 0, 0.06) 0px 2px 8px 0px;
+}
+
+input[type="text"], 
+input[type="number"] {
+	width: 100%;
+	height: 48px;
+	outline: none;
+	margin-top: 2px;
+	font-size: 13px;
+	padding: 0.75rem;
+	transition: .2s ease;
+	border-radius: 0.5rem;
+	border: 2px solid #d6dade;
+}
+
+input[type="text"]:focus, 
+input[type="number"]:focus {
+	border-color: #64b42d;
+}
+
+input[type="text"]:focus + span, 
+input[type="number"]:focus + span {
+	color: #64b42d;
+}
+
+button[type="submit"] {
+	cursor: pointer;
+	width: 112px;
+	height: 40px;
+	color: white;
+	border: none;
+	outline: none;
+	display: block;
+	font-size: 16px;
+	min-width: 7rem;
+	transition: .2s;
+	align-self: center;
+	margin: 16px 0 4px;
+	border-radius: 0.5rem;
+	padding: 0.25rem 0.75rem;
+	background-color: #64b42d;
+	box-shadow: rgba(0, 0, 0, 0.4) 0px 0px 4px 0px;
+}
+
+button[type="submit"]:active {
+	transform: translateY(2px);
+	box-shadow: rgba(0, 0, 0, 0.1) 0px 0px 3px;
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>mluvii-custom-entry-form-ing</title>
+
+
+    <link rel='stylesheet' href='css/jgyapo.css'>
+    <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.2/css/bootstrap.min.css'>
+
+    <link rel="stylesheet" href="css/style.css">
+
+
+</head>
+
+<body>
+
+    <div class="d-flex flex-1 flex-column mx-4 h-100">
+        <div class="text-center align-self-center p-3" style="max-width: 290px">
+            Dobrý den, jak Vám můžeme pomoci? Vyplnění formuláře není povinné.
+        </div>
+        <form id="my_form" class="d-flex flex-1 flex-column" style="min-height: 0">
+            <div class="whiteboard d-flex flex-1 flex-column">
+                <div class="px-4 py-2">
+                    <label class="d-flex flex-column m-0 py-2">
+					<input type="text" class="order-1" id="name" placeholder="Jméno" maxlength="100">
+					<!--<span class="order-0 color-gray">Jméno</span> -->
+				</label>
+                    <label class="d-flex flex-column m-0 py-2">
+					<input type="text" class="order-1" id="email" placeholder="E-mail" maxlength="150">
+				</label>
+                    <label class="d-flex flex-column m-0 py-2">
+					<input type="text" class="order-1" id="phone" placeholder="Telefon" maxlength="20">
+				</label>
+                    <label class="d-flex flex-column m-0 py-2">
+					<input type="text" class="order-1" id="vs" placeholder="Zákaznické číslo nebo var. symbol" maxlength="50">
+				</label>
+                </div>
+            </div>
+            <button type="submit">Pokračovat</button>
+        </form>
+    </div>
+    <script src='js/jgyapo.js'></script>
+    <script src='js/submitdata.js'></script>
+
+
+
+</body>
+
+</html>

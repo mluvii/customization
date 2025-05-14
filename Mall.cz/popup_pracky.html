@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+  <html>
+  <head>
+  <script>
+    window.addEventListener('load', function (){
+	if(screen.width < 768){
+	  window.parent.postMessage({type:"HIDE_MLUVII_CHAT"},"*");
+	  return;
+        }
+	document.getElementById('bcgImg').addEventListener('click', function() {
+	  window.parent.postMessage({type:"OPEN_MLUVII_CHAT"},"*");
+	});
+	document.getElementById('btnClose').addEventListener('click', function() {
+	  window.parent.postMessage({type:"HIDE_MLUVII_CHAT"},"*");
+	});
+	window.addEventListener('message', function(msg){
+	  console.log("Message received in iframe", msg.data.params);
+
+      if(msg.data.type === 'SET_MLUVII_CUSTOM_PARAMS'){
+	    if(msg.data.params.oo1_widget_lang === 'cs'){
+			document.getElementById("bcgImg").style.backgroundImage = 'url("https://custom.mluvii.com/Mall.cz/Chat_pracky.png")';
+			document.getElementById("btnClose").style.visibility = 'visible';
+
+		}else{
+		    document.getElementById("bcgImg").style.backgroundImage = 'url("https://custom.mluvii.com/Mall.cz/Chat_pracky.png")';
+			document.getElementById("btnClose").style.visibility = 'visible';
+		}
+	  }	
+	});
+	
+	 window.parent.postMessage({type:"GET_MLUVII_CUSTOM_PARAMS"},"*");
+  });
+ 
+  
+  
+  </script>
+  <style>
+   #bcgImg{
+	width: 90%;
+    height: 90%;
+    background-repeat: no-repeat;
+    background-size: cover;
+    position: absolute;
+	cursor: pointer;
+   }
+   
+   #btnClose{
+	background: url("https://custom.mluvii.com/Mall.cz/mall_cross.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 17px;
+    height: 17px;
+    position: absolute;
+    right: 25px;
+    top: 15px;
+	visibility: hidden;
+	cursor: pointer;
+   }
+   
+   body{
+     margin: 0;
+   }
+  </style>
+  </head>
+  <body>
+   <div id="bcgImg"></div>
+   <div id="btnClose"></div>
+  </body>
+  </html>

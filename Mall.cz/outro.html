@@ -1,0 +1,402 @@
+
+
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
+  <style>  
+    form {
+      margin-top: 2rem;
+    }
+    
+    #secondClose {
+      margin-right: 5px;
+    }
+    
+    #secondCall {
+      margin-left: 5px;
+    }
+    
+    #tfMailInput, #ffMailInput {
+      width: 100%;
+      height: 2.5rem;
+      outline: none;
+      border-radius: 0.5rem;
+    }
+    
+    #tfMailInput {
+      margin-bottom: 2rem;
+    }
+    
+    #tfTextArea {
+      border-radius: 0.5rem;
+      width: 100%;
+      height: 4rem;
+      resize: none;
+      outline: none;
+	  border-color: #5b8099;
+	  border-width: 2px;
+	  margin-bottom: 1rem;
+    }
+
+    /* #firstForm,
+    #secondForm,
+    #thirdForm,
+    #fourthForm {} */
+
+    #firstForm form {
+      margin-bottom: 1rem;
+    }
+
+    #firstForm label {
+      margin-bottom: 1rem;
+    }
+
+    #fourthForm .email {
+      text-align: left;
+    }
+
+    #fourthForm p {
+      margin-bottom: 2rem;
+    }
+
+    p {
+      max-width: 100%;
+    }
+
+    html {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+    
+    body {
+      margin: 0px;
+      padding: 16px;
+      height: 100%;
+      font-family: "SF Optimized", system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular", "Segoe UI", "Roboto", sans-serif;
+      font-size: 16px;
+      line-height: 1.4;
+      cursor: default;
+      color: #414141;
+      word-break: break-word;
+      background-color: #f0f4f7;
+      box-sizing: border-box;
+      /* display: table; */
+      width: 100%;
+    }
+
+    input, textarea {
+      font-family: "SF Optimized", system-ui, -apple-system, BlinkMacSystemFont, ".SFNSText-Regular", "Segoe UI", "Roboto", sans-serif;
+    }
+    
+    body>div {
+      box-sizing: border-box;
+      height: 100%;
+      /* display: table-cell;
+      vertical-align: middle;
+      text-align: center; */
+    }
+    
+    .custom-control-input:checked~.custom-control-indicator {
+      background-color: rgb(75, 156, 213);
+    }
+
+    .text-center {
+      text-align: center;
+    }
+
+    .primaryButton, .whiteButton {
+      border-radius: 0.5rem;
+      padding: 0.25rem 0.75rem;
+      min-width: 7rem;
+      border: none;
+      line-height: 1.4;
+      height: 2.5rem;
+      cursor: pointer;
+      outline: none;
+      box-shadow: 0px 0px 4px 0px rgba(0,0,0,0.4);
+    }
+    
+    .primaryButton {
+      color: #fff;
+      background-color: #5b8099;
+    }
+
+    .whiteButton {
+      background-color: #fff;
+      color: rgb(48, 69, 88)
+    }
+    
+    .buttonDiv {
+      margin-top: 1rem;
+	  text-align: center;
+    }
+	
+	.whiteBox{
+	  background-color: #fff;
+	  border-radius: 0.5rem;
+	  padding: 1.5rem;
+	}
+	
+	.redBorder{
+	  border-color: #5b8099;
+	  border-width: 2px;
+	}
+	
+	.biggerText{
+	 font-size: 18px;
+	 font-weight: bold;
+	}
+	
+	.custom-checkbox .custom-control-indicator{
+	  top: 0;
+	  width: 1.5rem;
+      height: 1.5rem;
+	}
+	
+	.custom-control-input:checked ~ .custom-control-indicator {
+       color: #fff;
+       background-color: #5b8099;
+     }
+	 
+	 .custom-control-input:focus ~ .custom-control-indicator {
+          -webkit-box-shadow: 0 0 0 1px #fff, 0 0 0 3px #5b8099;
+          box-shadow: 0 0 0 1px #fff, 0 0 0 3px #5b8099;
+     }
+	 
+	 .custom-control-description{
+	 margin-left: 0.5rem;
+	 }
+	 
+	 #ffMailInput:disabled{
+		border: none;
+	 }
+	 
+	 #ffMailInput{
+		 border-color: #5b8099;
+	  border-width: 2px;
+	 }
+	 
+	 .centeredDiv{
+	   width: 100%;
+	   text-align: center;
+	   margin-bottom: 1rem;
+	 }
+	 
+	 .markRadio{
+	  display: inline-block;
+	  width: 2.5rem;
+	  height: 2.5rem;
+	  padding-top: 0.1rem;
+	  font-size: 1.5rem;
+	  border-color: #5b8099;
+	  border-width: 2px;
+	  border-radius: 1.25rem;
+	  border-style: solid;
+	  cursor: pointer;
+	 }
+	 
+	 .markRadio.selected{
+		background-color: #5b8099;
+		color: #fff;
+	 }
+	 
+	 .hidden{
+	  display: none;
+	 }
+  </style>
+  <script defer>
+	  var selectedValue = 0;	
+	  var emailIsValid = true;
+	  
+	  function setArrayFrom(){
+	  if (!Array.from) {
+  Array.from = (function () {
+    var toStr = Object.prototype.toString;
+    var isCallable = function (fn) {
+      return typeof fn === 'function' || toStr.call(fn) === '[object Function]';
+    };
+    var toInteger = function (value) {
+      var number = Number(value);
+      if (isNaN(number)) { return 0; }
+      if (number === 0 || !isFinite(number)) { return number; }
+      return (number > 0 ? 1 : -1) * Math.floor(Math.abs(number));
+    };
+    var maxSafeInteger = Math.pow(2, 53) - 1;
+    var toLength = function (value) {
+      var len = toInteger(value);
+      return Math.min(Math.max(len, 0), maxSafeInteger);
+    };
+
+    // The length property of the from method is 1.
+    return function from(arrayLike/*, mapFn, thisArg */) {
+      // 1. Let C be the this value.
+      var C = this;
+
+      // 2. Let items be ToObject(arrayLike).
+      var items = Object(arrayLike);
+
+      // 3. ReturnIfAbrupt(items).
+      if (arrayLike == null) {
+        throw new TypeError("Array.from requires an array-like object - not null or undefined");
+      }
+
+      // 4. If mapfn is undefined, then let mapping be false.
+      var mapFn = arguments.length > 1 ? arguments[1] : void undefined;
+      var T;
+      if (typeof mapFn !== 'undefined') {
+        // 5. else
+        // 5. a If IsCallable(mapfn) is false, throw a TypeError exception.
+        if (!isCallable(mapFn)) {
+          throw new TypeError('Array.from: when provided, the second argument must be a function');
+        }
+
+        // 5. b. If thisArg was supplied, let T be thisArg; else let T be undefined.
+        if (arguments.length > 2) {
+          T = arguments[2];
+        }
+      }
+
+      // 10. Let lenValue be Get(items, "length").
+      // 11. Let len be ToLength(lenValue).
+      var len = toLength(items.length);
+
+      // 13. If IsConstructor(C) is true, then
+      // 13. a. Let A be the result of calling the [[Construct]] internal method of C with an argument list containing the single item len.
+      // 14. a. Else, Let A be ArrayCreate(len).
+      var A = isCallable(C) ? Object(new C(len)) : new Array(len);
+
+      // 16. Let k be 0.
+      var k = 0;
+      // 17. Repeat, while k < len… (also steps a - h)
+      var kValue;
+      while (k < len) {
+        kValue = items[k];
+        if (mapFn) {
+          A[k] = typeof T === 'undefined' ? mapFn(kValue, k) : mapFn.call(T, kValue, k);
+        } else {
+          A[k] = kValue;
+        }
+        k += 1;
+      }
+      // 18. Let putStatus be Put(A, "length", len, true).
+      A.length = len;
+      // 20. Return A.
+      return A;
+    };
+  }());
+}
+	  }
+  
+      window.addEventListener("load", function() {
+	  setArrayFrom();
+      document.getElementById("ffMail").addEventListener('change',function(){
+	    
+	    var checkboxChecked = document.getElementById("ffMail").checked;	
+		var mailInput = document.getElementById("ffMailInput");
+		var mInfo = document.getElementById("wrongMailInfo");
+		mailInput.disabled = !checkboxChecked;
+		if(!checkboxChecked){
+		  mInfo.className="centeredDiv hidden";
+		} else if(mailInput.value.length > 0){
+		 validateInputField();
+		}
+	  });
+	  
+	  document.getElementById("ffMailInput").addEventListener('change',function(){ validateInputField()});
+	  document.getElementById("ffMailInput").addEventListener('keyup', function(){ validateInputField()});
+	  document.getElementById("ffMailInput").addEventListener('click', function(){ validateInputField()});
+      
+	  	Array.from(document.getElementsByClassName("markRadio")).forEach( function(element, index, array) {
+	  element.addEventListener('click', function(event){
+	    selectedValue = event.target.getAttribute('value');
+	    
+		Array.from(document.getElementsByClassName("markRadio")).forEach( function(element2, index2, array2) {
+		element2.className = "markRadio";
+		});
+		event.target.className = "markRadio selected";
+	  });
+	});
+	
+	 document.getElementById("firstButton").addEventListener('click', function(event){
+	  var mailChecked = document.getElementById("ffMail").checked;	
+	  var emailToSend = null;
+	  var reason = null;
+	  
+	  if(mailChecked && !emailIsValid){
+		return;
+	  }
+	  
+	  var mailAdded = document.getElementById("ffMailInput").value;
+	  if(mailChecked && mailAdded.length > 0){
+	   emailToSend = mailAdded;
+	  }
+	  
+	  var taValue = document.getElementById("tfTextArea").value;
+	  if(taValue.length > 0){
+		reason = taValue;
+	  }
+	  
+	  window.parent.postMessage({
+            type: "FEEDBACK_ACTION",
+			stars: selectedValue,
+            content: reason,
+			email: emailToSend,
+          }, "*");
+	
+	});
+	
+    });
+	
+	function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    }
+	
+	function validateInputField(){
+	 var mailInput = document.getElementById("ffMailInput").value;
+	 
+	 emailIsValid = validateEmail(mailInput);
+	 var mailInfo = document.getElementById("wrongMailInfo");
+	 if(emailIsValid){
+	 mailInfo.className="centeredDiv hidden";
+	 } else {
+	 mailInfo.className="centeredDiv";
+	  }
+	}
+
+  </script>
+</head>
+
+<body>
+
+  <div id="firstForm" class="container-fluid d-flex flex-column justify-content-center align-items-center">
+    <p class="biggerText">Jak jste s námi byli spokojeni?</p>
+	<div class="whiteBox">
+	<p class="centeredDiv">Ohodnoťte prosím jako ve škole.</p>
+	<div class="centeredDiv">
+	<div class="markRadio" value="5">1*</div>
+	<div class="markRadio" value="4">2</div>
+	<div class="markRadio" value="3">3</div>
+	<div class="markRadio" value="2">4</div>
+ 	<div class="markRadio" value="1">5-</div>
+	</div>
+	  <textarea id="tfTextArea" class="form-control" placeholder="Vaše zpětná vazba"></textarea>
+    <label class="custom-control custom-checkbox">
+        <input id="ffMail" type="checkbox" class="custom-control-input">
+        <span class="custom-control-indicator"></span>
+        <span class="custom-control-description">Chci poslat přepis konverzace</span>
+      </label>
+	  <input id="ffMailInput" type="email" class="form-control" placeholder="E-mailová adresa" disabled/>
+	  <p id="wrongMailInfo" class="centeredDiv hidden">E-mail nemá správný formát.</p>
+	  </div>
+    <div class="buttonDiv"><input id="firstButton" class="primaryButton" type="button" value="OK" /></div>
+	
+  </div>
+
+</body>
+
+</html>
